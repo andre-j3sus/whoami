@@ -200,17 +200,19 @@ const personalData = {
     icon: "fas fa-briefcase",
     experiences: [
       {
-        title: "Software Engineer Intern",
+        title: "Systems Engineer",
         company: {
           name: "Cloudflare, Inc.",
           conglomerate: "Cloudflare",
           url: "https://www.cloudflare.com/",
           logoPath: "cloudflare_logo.png"
         },
-        duration: "May 2024 - PRESENT",
+        duration: "May 2024 - September 2024",
         location: "Lisbon, Portugal",
         descriptions: [
-          "⚡ Member of the Cloudflare Radar team, which is responsible for the development of the Cloudflare Radar product, a real-time security and performance monitoring solution for web applications."
+          "⚡ Member of the Cloudflare Radar team, responsible for developing real-time security and performance monitoring solutions.",
+          "⚡ Worked on backend systems and data processing pipelines for web application analytics.",
+          "⚡ Contributed to the development of scalable infrastructure for global network monitoring."
         ]
       },
       {

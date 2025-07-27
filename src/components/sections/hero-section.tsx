@@ -1,7 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Github, ExternalLink, FileText } from "lucide-react";
-import heroImage from "@/assets/andre-jesus-hero.jpg";
+import heroImage from "@/assets/andre-professional-1.jpg";
+// Alternative options:
+// import heroImage from "@/assets/andre-workspace.jpg";
+// import heroImage from "@/assets/andre-abstract.jpg";
 
 interface HeroSectionProps {
   data: {

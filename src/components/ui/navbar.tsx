@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 
 interface NavbarProps {
@@ -56,10 +57,12 @@ export function Navbar({ activeSection, onSectionClick }: NavbarProps) {
                 {item.label}
               </Button>
             ))}
+            <ThemeToggle />
           </div>
 
           {/* Mobile menu button - simplified for now */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center space-x-2">
+            <ThemeToggle />
             <Button variant="ghost" size="sm">
               Menu
             </Button>

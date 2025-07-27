@@ -50,18 +50,29 @@ export function ExperienceSection({ data }: ExperienceSectionProps) {
             >
               <CardHeader>
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-                  <div className="space-y-2">
-                    <CardTitle className="text-2xl lg:text-3xl font-bold text-foreground">
-                      {experience.title}
-                    </CardTitle>
-                    <div className="flex items-center space-x-2">
-                      <h3 className="text-lg font-semibold text-primary">
-                        {experience.company.name}
-                      </h3>
-                      <ExternalLink 
-                        className="w-4 h-4 text-muted-foreground hover:text-primary cursor-pointer transition-colors"
-                        onClick={() => window.open(experience.company.url, '_blank')}
-                      />
+                  <div className="flex items-start space-x-4">
+                    {experience.company.logoPath && (
+                      <div className="w-16 h-16 flex-shrink-0 bg-background rounded-lg p-2 border border-primary/20">
+                        <img 
+                          src={`/logos/${experience.company.logoPath}`}
+                          alt={`${experience.company.name} logo`}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                    )}
+                    <div className="space-y-2">
+                      <CardTitle className="text-2xl lg:text-3xl font-bold text-foreground">
+                        {experience.title}
+                      </CardTitle>
+                      <div className="flex items-center space-x-2">
+                        <h3 className="text-lg font-semibold text-primary">
+                          {experience.company.name}
+                        </h3>
+                        <ExternalLink 
+                          className="w-4 h-4 text-muted-foreground hover:text-primary cursor-pointer transition-colors"
+                          onClick={() => window.open(experience.company.url, '_blank')}
+                        />
+                      </div>
                     </div>
                   </div>
                   
