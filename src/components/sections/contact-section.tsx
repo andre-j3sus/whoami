@@ -1,5 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import * as Icons from "react-icons/si";
+import * as FaIcons from "react-icons/fa";
+import * as FaBrands from "react-icons/fa6";
 
 interface ContactData {
   name: string;
@@ -17,21 +20,23 @@ interface ContactSectionProps {
   };
 }
 
-// Map FontAwesome icons to Lucide icons (simplified for demo)
+// Map FontAwesome icons to React Icons
 const getIconComponent = (iconClass: string) => {
-  // This is a simplified mapping - in a real app you'd use actual FontAwesome or implement proper icon mapping
-  if (iconClass.includes('linkedin')) return '💼';
-  if (iconClass.includes('github')) return '🐙';
-  if (iconClass.includes('orcid')) return '🎓';
-  if (iconClass.includes('stack-overflow')) return '📚';
-  if (iconClass.includes('google')) return '📧';
-  if (iconClass.includes('youtube')) return '📺';
-  if (iconClass.includes('instagram')) return '📷';
-  if (iconClass.includes('twitter')) return '🐦';
-  if (iconClass.includes('spotify')) return '🎵';
-  if (iconClass.includes('goodreads')) return '📖';
-  if (iconClass.includes('tv')) return '📺';
-  return '🔗';
+  const iconSize = 24;
+  const iconStyle = { fontSize: iconSize };
+  
+  if (iconClass.includes('linkedin')) return <FaBrands.FaLinkedin style={iconStyle} />;
+  if (iconClass.includes('github')) return <FaBrands.FaGithub style={iconStyle} />;
+  if (iconClass.includes('orcid')) return <FaBrands.FaOrcid style={iconStyle} />;
+  if (iconClass.includes('stack-overflow')) return <FaBrands.FaStackOverflow style={iconStyle} />;
+  if (iconClass.includes('google')) return <FaBrands.FaGoogle style={iconStyle} />;
+  if (iconClass.includes('youtube')) return <FaBrands.FaYoutube style={iconStyle} />;
+  if (iconClass.includes('instagram')) return <FaBrands.FaInstagram style={iconStyle} />;
+  if (iconClass.includes('twitter')) return <FaBrands.FaTwitter style={iconStyle} />;
+  if (iconClass.includes('spotify')) return <FaBrands.FaSpotify style={iconStyle} />;
+  if (iconClass.includes('goodreads')) return <FaBrands.FaGoodreads style={iconStyle} />;
+  if (iconClass.includes('tv')) return <FaIcons.FaTv style={iconStyle} />;
+  return <FaIcons.FaLink style={iconStyle} />;
 };
 
 export function ContactSection({ data }: ContactSectionProps) {
@@ -39,10 +44,8 @@ export function ContactSection({ data }: ContactSectionProps) {
     <section id="contact" className="py-20 px-6">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            <span className="bg-gradient-primary bg-clip-text text-transparent">
-              {data.title}
-            </span>
+          <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-primary">
+            {data.title}
           </h2>
           <p className="text-xl text-muted-foreground mb-4">
             {data.subtitle}
@@ -56,7 +59,7 @@ export function ContactSection({ data }: ContactSectionProps) {
           {data.data.map((contact, index) => (
             <Card 
               key={index}
-              className="group p-6 bg-gradient-to-br from-card to-secondary/30 border-primary/20 shadow-elegant hover:shadow-glow transition-all duration-500 cursor-pointer"
+              className="group p-6 bg-card border-primary/20 shadow-elegant hover:shadow-glow transition-all duration-500 cursor-pointer"
               onClick={() => window.open(contact.url, '_blank')}
             >
               <CardContent className="flex flex-col items-center text-center space-y-4 p-0">
@@ -90,7 +93,7 @@ export function ContactSection({ data }: ContactSectionProps) {
 
         {/* Contact CTA */}
         <div className="text-center mt-16">
-          <Card className="p-8 bg-gradient-primary max-w-2xl mx-auto shadow-glow">
+          <Card className="p-8 bg-primary max-w-2xl mx-auto shadow-glow">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-primary-foreground">
                 Let's Work Together
