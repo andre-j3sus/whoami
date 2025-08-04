@@ -71,7 +71,7 @@ export function EducationSection({ data }: EducationSectionProps) {
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-col sm:flex-row gap-2">
+                  <div className="flex flex-col sm:flex-row gap-2 self-start">
                     <Badge variant="secondary" className="flex items-center space-x-1">
                       <CalendarDays className="w-4 h-4" />
                       <span>{degree.duration}</span>

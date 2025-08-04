@@ -11,8 +11,8 @@ import { Footer } from "@/components/sections/footer";
 // Personal data - this would typically come from a CMS or API
 const personalData = {
   name: "André Jesus",
-  position: "Software Engineer Intern | Computer Science & Engineering Student",
-  url: "https://andre-j3sus.github.io",
+  position: "Systems Engineer | Computer Science & Engineering Student",
+  url: "https://andrejesus.com",
   headline: "Hey there 👋, welcome to my website!",
   logoName: "Andre Jesus",
   homeImagePath: "website-creator-bro.svg",
@@ -171,7 +171,7 @@ const personalData = {
       {
         title: "MSc. in Computer Science and Engineering",
         subtitle: "Instituto Superior Técnico - Universidade de Lisboa",
-        logoPath: "IST_A_RGB_POS.png",
+        logoPath: "ist.png",
         duration: "2023 - 2025",
         descriptions: [
           "Focus Areas: Distributed Systems ☁️ and Cyber-Security 🔒",
@@ -181,7 +181,7 @@ const personalData = {
       {
         title: "BSc. in Computer Science and Engineering",
         subtitle: "Instituto Superior de Engenharia de Lisboa - Instituto Politécnico de Lisboa",
-        logoPath: "isel_logo.png",
+        logoPath: "isel.png",
         duration: "2020 - 2023",
         descriptions: [
           "I have studied basic software engineering concepts of Computer Science, such as Algorithms and Data Structures, Object-Oriented Programming, Software Engineering, Databases, Computer Networks, Operating Systems, Distributed Systems, Computer Netorks, among others.",
@@ -205,7 +205,7 @@ const personalData = {
           name: "Cloudflare, Inc.",
           conglomerate: "Cloudflare",
           url: "https://www.cloudflare.com/",
-          logoPath: "cloudflare_logo.png"
+          logoPath: "cf.png"
         },
         duration: "May 2024 - Present",
         location: "Lisbon, Portugal",
@@ -221,7 +221,7 @@ const personalData = {
           name: "Instituto Superior de Engenharia de Lisboa",
           conglomerate: "Instituto Politécnico de Lisboa",
           url: "https://www.isel.pt/en",
-          logoPath: "isel_logo.png"
+          logoPath: "isel.png"
         },
         duration: "October 2022 - May 2024",
         location: "Lisbon, Portugal",

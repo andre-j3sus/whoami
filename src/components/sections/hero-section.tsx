@@ -66,7 +66,7 @@ export function HeroSection({ data }: HeroSectionProps) {
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
         <button
           onClick={scrollToNextSection}
-          className="text-muted-foreground hover:text-primary transition-colors duration-300 animate-bounce"
+          className="text-muted-foreground hover:text-primary transition-colors duration-450 animate-bounce"
           aria-label="Scroll to next section"
         >
           <ChevronDown size={32} />
