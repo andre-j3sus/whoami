@@ -1,10 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { Github, ExternalLink, FileText } from "lucide-react";
-import heroImage from "@/assets/andre-professional-1.jpg";
-// Alternative options:
-// import heroImage from "@/assets/andre-workspace.jpg";
-// import heroImage from "@/assets/andre-abstract.jpg";
 
 interface HeroSectionProps {
   data: {
@@ -25,7 +20,7 @@ export function HeroSection({ data }: HeroSectionProps) {
           {/* Text Content */}
           <div className="space-y-4">
             <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
-              <span className="bg-gradient-primary bg-clip-text text-transparent">
+              <span className="bg-gradient-primary bg-clip-text text-primary">
                 {data.name}
               </span>
             </h1>
@@ -40,7 +35,7 @@ export function HeroSection({ data }: HeroSectionProps) {
           <div className="flex flex-wrap justify-center gap-4">
             <Button 
               size="lg" 
-              className="bg-gradient-primary hover:shadow-glow transition-all duration-300"
+              className="bg-primary hover:shadow-glow transition-all duration-300"
               onClick={() => window.open(data.resume, '_blank')}
             >
               <FileText className="mr-2 h-5 w-5" />
@@ -55,16 +50,6 @@ export function HeroSection({ data }: HeroSectionProps) {
             >
               <Github className="mr-2 h-5 w-5" />
               GitHub
-            </Button>
-            
-            <Button 
-              variant="outline" 
-              size="lg"
-              onClick={() => window.open(data.url, '_blank')}
-              className="border-primary/50 hover:border-primary hover:bg-primary/10 transition-all duration-300"
-            >
-              <ExternalLink className="mr-2 h-5 w-5" />
-              Portfolio
             </Button>
           </div>
         </div>

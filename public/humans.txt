@@ -1,0 +1,9 @@
+/* TEAM */
+	Developer: André Jesus
+	From:Lisbon, Portugal	
+
+/* SITE */
+	Last update:2025/08
+	Language: English
+	Doctype:HTML5
+	IDE: Visual Studio Code

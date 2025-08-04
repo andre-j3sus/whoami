@@ -19,7 +19,7 @@ interface ExperienceSectionProps {
   data: {
     title: string;
     subtitle: string;
-    description: string;
+    description?: string;
     experiences: Experience[];
   };
 }
@@ -30,21 +30,23 @@ export function ExperienceSection({ data }: ExperienceSectionProps) {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            <span className="bg-gradient-primary bg-clip-text text-transparent">
+            <span className="bg-gradient-primary bg-clip-text text-primary">
               {data.title}
             </span>
           </h2>
           <p className="text-xl text-muted-foreground mb-4">
             {data.subtitle}
           </p>
-          <p className="text-foreground/80 max-w-3xl mx-auto">
-            {data.description}
-          </p>
+          {data.description && (
+            <p className="text-foreground/80 max-w-3xl mx-auto">
+              {data.description}
+            </p>
+          )}
         </div>
 
         <div className="space-y-8">
           {data.experiences.map((experience, index) => (
-            <Card 
+            <Card
               key={index}
               className="p-8 bg-gradient-to-br from-card to-secondary/30 border-primary/20 shadow-elegant hover:shadow-glow transition-all duration-500"
             >
@@ -53,7 +55,7 @@ export function ExperienceSection({ data }: ExperienceSectionProps) {
                   <div className="flex items-start space-x-4">
                     {experience.company.logoPath && (
                       <div className="w-16 h-16 flex-shrink-0 bg-background rounded-lg p-2 border border-primary/20">
-                        <img 
+                        <img
                           src={`/logos/${experience.company.logoPath}`}
                           alt={`${experience.company.name} logo`}
                           className="w-full h-full object-contain"
@@ -68,15 +70,15 @@ export function ExperienceSection({ data }: ExperienceSectionProps) {
                         <h3 className="text-lg font-semibold text-primary">
                           {experience.company.name}
                         </h3>
-                        <ExternalLink 
+                        <ExternalLink
                           className="w-4 h-4 text-muted-foreground hover:text-primary cursor-pointer transition-colors"
                           onClick={() => window.open(experience.company.url, '_blank')}
                         />
                       </div>
                     </div>
                   </div>
-                  
-                  <div className="flex flex-col sm:flex-row gap-2">
+
+                  <div className="flex flex-col gap-2 items-end">
                     <Badge variant="secondary" className="flex items-center space-x-1">
                       <CalendarDays className="w-4 h-4" />
                       <span>{experience.duration}</span>
@@ -88,14 +90,14 @@ export function ExperienceSection({ data }: ExperienceSectionProps) {
                   </div>
                 </div>
               </CardHeader>
-              
+
               <CardContent>
                 <div className="space-y-3">
                   {experience.descriptions.map((description, descIndex) => (
                     <div key={descIndex} className="flex items-start space-x-3">
                       <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
                       <p className="text-foreground/80 leading-relaxed">
-                        {description.replace('⚡ ', '')}
+                        {description}
                       </p>
                     </div>
                   ))}

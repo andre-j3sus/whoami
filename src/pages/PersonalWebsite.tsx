@@ -21,7 +21,7 @@ const personalData = {
   contacts: {
     title: "Contact Me",
     subtitle: "Want to get in touch? Feel free to reach out.",
-    description: "I am available on almost every social media. You can message me, I will reply within 24 hours. I can help you with React, Node, Express, Spring, Android, Kotlin, Python, Machine Learning and Opensource Development.",
+    //description: "",
     data: [
       {
         name: "LinkedIn",
@@ -97,10 +97,10 @@ const personalData = {
         title: "Programming Languages and DevOps",
         imagePath: "code-typing-bro.svg",
         skills: [
-          "⚡ Well-versed in programming paradigms, enabling flexible problem-solving approaches.",
-          "⚡ Experience in developing software solutions using diverse programming languages.",
-          "⚡ Proficiency in Git, GitHub, and DevOps tools for seamless collaboration, CI/CD, and code management.",
-          "⚡ Well-versed in LaTeX for creating professional and well-formatted documents."
+          "Well-versed in programming paradigms, enabling flexible problem-solving approaches.",
+          "Experience in developing software solutions using diverse programming languages.",
+          "Proficiency in Git, GitHub, and DevOps tools for seamless collaboration, CI/CD, and code management.",
+          "Well-versed in LaTeX for creating professional and well-formatted documents."
         ],
         softwareSkills: [
           { skillName: "Java", icon: "devicon:java", style: { color: "#007396" } },
@@ -121,9 +121,9 @@ const personalData = {
         title: "Web Development",
         imagePath: "domain-names-bro.svg",
         skills: [
-          "⚡ Experienced in backend development, ensuring security and scalability.",
-          "⚡ Building responsive user interfaces for web applications.",
-          "⚡ Familiarity with tools like Webpack, NGINX, and Postman for efficient development and testing processes."
+          "Experienced in backend development, ensuring security and scalability.",
+          "Building responsive user interfaces for web applications.",
+          "Familiarity with tools like Webpack, NGINX, and Postman for efficient development and testing processes."
         ],
         softwareSkills: [
           { skillName: "HTML5", icon: "devicon-html5", style: { color: "#E34F26" } },
@@ -143,10 +143,10 @@ const personalData = {
         title: "Cloud Infra, Databases & OS",
         imagePath: "server-bro.svg",
         skills: [
-          "⚡ Proficiency in Docker for efficient application deployment through containerization.",
-          "⚡ Experience in Linux for effective server management and administration.",
-          "⚡ Familiarity with Google Cloud Platform scalable and reliable cloud infrastructure solutions.",
-          "⚡ Experience in several database technologies, for efficient data storage and retrieval."
+          "Proficiency in Docker for efficient application deployment through containerization.",
+          "Experience in Linux for effective server management and administration.",
+          "Familiarity with Google Cloud Platform scalable and reliable cloud infrastructure solutions.",
+          "Experience in several database technologies, for efficient data storage and retrieval."
         ],
         softwareSkills: [
           { skillName: "Docker", icon: "devicon:docker", style: { color: "#2496ED" } },
@@ -163,30 +163,29 @@ const personalData = {
   education: {
     title: "Education",
     subtitle: "Qualification and Certifications",
-    description: "Here's my educational background. I am currently pursuing my BSc. in Computer Science and Engineering from Instituto Superior de Engenharia de Lisboa.",
+    description: "Here's my educational background. I am currently finishing my Master Thesis.",
     headerImagePath: "learning-bro.svg",
     icon: "fas fa-graduation-cap",
     degrees: [
       {
-        title: "Master of Science - MSc. in Computer Science and Engineering",
+        title: "MSc. in Computer Science and Engineering",
         subtitle: "Instituto Superior Técnico - Universidade de Lisboa",
         logoPath: "IST_A_RGB_POS.png",
         duration: "2023 - 2025",
         descriptions: [
-          "⚡ Specializations: Distributed Systems ☁️ and Cyber-Security 🔒",
-          "⚡ Additional Focus Areas: Deep Learning 🧠 and Data Science 📊"
+          "Focus Areas: Distributed Systems ☁️ and Cyber-Security 🔒",
         ],
         url: "https://tecnico.ulisboa.pt/en/"
       },
       {
-        title: "Bachelor of Science - BSc. in Computer Science and Engineering",
+        title: "BSc. in Computer Science and Engineering",
         subtitle: "Instituto Superior de Engenharia de Lisboa - Instituto Politécnico de Lisboa",
         logoPath: "isel_logo.png",
         duration: "2020 - 2023",
         descriptions: [
-          "⚡ I have studied basic software engineering concepts of Computer Science, such as Algorithms and Data Structures, Object-Oriented Programming, Software Engineering, Databases, Computer Networks, Operating Systems, Distributed Systems, Computer Netorks, among others.",
-          "⚡ Apart from this, I were the student representative between 2022 and 2023, where I represented the students of my degree in the pedagogical council of the school.",
-          "⚡ I received two merit scholarships for my academic excellence, one in 2020 and another one in 2022."
+          "I have studied basic software engineering concepts of Computer Science, such as Algorithms and Data Structures, Object-Oriented Programming, Software Engineering, Databases, Computer Networks, Operating Systems, Distributed Systems, Computer Netorks, among others.",
+          "Apart from this, I were the student representative between 2022 and 2023, where I represented the students of my degree in the pedagogical council of the school.",
+          "I received two merit scholarships for my academic excellence, one in 2020 and another one in 2022."
         ],
         url: "https://www.isel.pt/en"
       }
@@ -195,7 +194,7 @@ const personalData = {
   experience: {
     title: "Experience",
     subtitle: "Work, Internship and Volunteership",
-    description: "Here's my work experience so far.",
+    //description: "Here's my work experience so far.",
     headerImagePath: "signing-a-contract-bro.svg",
     icon: "fas fa-briefcase",
     experiences: [
@@ -207,12 +206,12 @@ const personalData = {
           url: "https://www.cloudflare.com/",
           logoPath: "cloudflare_logo.png"
         },
-        duration: "May 2024 - September 2024",
+        duration: "May 2024 - Present",
         location: "Lisbon, Portugal",
         descriptions: [
-          "⚡ Member of the Cloudflare Radar team, responsible for developing real-time security and performance monitoring solutions.",
-          "⚡ Worked on backend systems and data processing pipelines for web application analytics.",
-          "⚡ Contributed to the development of scalable infrastructure for global network monitoring."
+          "Member of the Cloudflare Radar team, responsible for developing real-time security and performance monitoring solutions.",
+          "Worked on backend systems and data processing pipelines for web application analytics.",
+          "Contributed to the development of scalable infrastructure for global network monitoring."
         ]
       },
       {
@@ -223,14 +222,14 @@ const personalData = {
           url: "https://www.isel.pt/en",
           logoPath: "isel_logo.png"
         },
-        duration: "November 2022 - PRESENT",
+        duration: "October 2022 - May 2024",
         location: "Lisbon, Portugal",
         descriptions: [
-          "⚡ Support for the functioning of the Algorithms and Data Structures, Introduction to Web Programming and Software Laboratory curricular units of the 2nd, 3rd and 4th semesters of the BSc in Computer Science and Computer Engineering.",
-          "⚡ Support to practical lessons.",
-          "⚡ Clarification of doubts to students.",
-          "⚡ Maintenance of software installed on the server used in Software Laboratory curricular unit projects.",
-          "⚡ Vigilance and correction of the moments of evaluation of the curricular units."
+          "Support for the functioning of the Algorithms and Data Structures, Introduction to Web Programming and Software Laboratory curricular units of the 2nd, 3rd and 4th semesters of the BSc in Computer Science and Computer Engineering.",
+          "Support to practical lessons.",
+          "Clarification of doubts to students.",
+          "Maintenance of software installed on the server used in Software Laboratory curricular unit projects.",
+          "Vigilance and correction of the moments of evaluation of the curricular units."
         ]
       }
     ]
@@ -249,7 +248,7 @@ const personalData = {
         position: "Developer",
         url: "https://github.com/phyloviz/phyloviz-web-platform",
         logoPath: "phyloviz_logo.png",
-        duration: "2023 - PRESENT",
+        duration: "February 2023 - January 2024",
         techStack: [
           { skillName: "TypeScript", icon: "devicon:typescript", style: { color: "#007ACC" } },
           { skillName: "React", icon: "devicon:react", style: { color: "#61DAFB" } },

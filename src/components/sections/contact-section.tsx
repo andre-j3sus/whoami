@@ -1,6 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import * as Icons from "react-icons/si";
 import * as FaIcons from "react-icons/fa";
 import * as FaBrands from "react-icons/fa6";
 
@@ -15,7 +14,7 @@ interface ContactSectionProps {
   data: {
     title: string;
     subtitle: string;
-    description: string;
+    description?: string;
     data: ContactData[];
   };
 }
@@ -50,9 +49,11 @@ export function ContactSection({ data }: ContactSectionProps) {
           <p className="text-xl text-muted-foreground mb-4">
             {data.subtitle}
           </p>
-          <p className="text-foreground/80 max-w-3xl mx-auto">
-            {data.description}
-          </p>
+          {data.description && (
+            <p className="text-foreground/80 max-w-3xl mx-auto">
+              {data.description}
+            </p>
+          )}
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -92,7 +93,7 @@ export function ContactSection({ data }: ContactSectionProps) {
         </div>
 
         {/* Contact CTA */}
-        <div className="text-center mt-16">
+        {/* <div className="text-center mt-16">
           <Card className="p-8 bg-primary max-w-2xl mx-auto shadow-glow">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-primary-foreground">
@@ -113,7 +114,7 @@ export function ContactSection({ data }: ContactSectionProps) {
               </Button>
             </CardContent>
           </Card>
-        </div>
+        </div> */}
       </div>
     </section>
   );
