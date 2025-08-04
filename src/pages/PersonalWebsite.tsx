@@ -6,6 +6,7 @@ import { ExperienceSection } from "@/components/sections/experience-section";
 import { EducationSection } from "@/components/sections/education-section";
 import { PortfolioSection } from "@/components/sections/portfolio-section";
 import { ContactSection } from "@/components/sections/contact-section";
+import { Footer } from "@/components/sections/footer";
 
 // Personal data - this would typically come from a CMS or API
 const personalData = {
@@ -306,6 +307,8 @@ export default function PersonalWebsite() {
         <PortfolioSection data={personalData.portfolio} />
         <ContactSection data={personalData.contacts} />
       </main>
+      
+      <Footer socialLinks={personalData.contacts.data} />
     </div>
   );
 }

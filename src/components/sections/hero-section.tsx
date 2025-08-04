@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Github, ExternalLink, FileText } from "lucide-react";
+import { Github, ExternalLink, FileText, ChevronDown } from "lucide-react";
 
 interface HeroSectionProps {
   data: {
@@ -13,9 +13,16 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ data }: HeroSectionProps) {
+  const scrollToNextSection = () => {
+    const skillsSection = document.getElementById('skills');
+    if (skillsSection) {
+      skillsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center bg-gradient-subtle px-6">
-      <div className="container mx-auto max-w-4xl">
+    <section id="hero" className="min-h-screen flex flex-col items-center justify-center bg-gradient-subtle px-6 relative">
+      <div className="container mx-auto max-w-4xl flex-1 flex items-center justify-center">
         <div className="text-center space-y-8">
           {/* Text Content */}
           <div className="space-y-4">
@@ -53,6 +60,17 @@ export function HeroSection({ data }: HeroSectionProps) {
             </Button>
           </div>
         </div>
+      </div>
+      
+      {/* Scroll Down Arrow */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+        <button
+          onClick={scrollToNextSection}
+          className="text-muted-foreground hover:text-primary transition-colors duration-300 animate-bounce"
+          aria-label="Scroll to next section"
+        >
+          <ChevronDown size={32} />
+        </button>
       </div>
     </section>
   );
