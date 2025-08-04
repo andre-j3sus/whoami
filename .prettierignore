@@ -1,0 +1,9 @@
+# Ignore artifacts:
+build
+coverage
+dist
+.wrangler
+node_modules
+
+worker-configuration.d.ts
+wrangler.jsonc

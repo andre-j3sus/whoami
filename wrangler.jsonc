@@ -1,0 +1,17 @@
+{
+	"name": "whoami",
+	"compatibility_date": "2025-08-04",
+	"assets": {
+		"not_found_handling": "single-page-application"
+	},
+	"observability": {
+		"enabled": true
+	},
+	"upload_source_maps": true,
+	"routes": [
+		{
+			"pattern": "andrejesus.com",
+			"custom_domain": true
+		}
+	]
+}
