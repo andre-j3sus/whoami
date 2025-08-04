@@ -23,18 +23,28 @@ interface ContactSectionProps {
 const getIconComponent = (iconClass: string) => {
   const iconSize = 24;
   const iconStyle = { fontSize: iconSize };
-  
-  if (iconClass.includes('linkedin')) return <FaBrands.FaLinkedin style={iconStyle} />;
-  if (iconClass.includes('github')) return <FaBrands.FaGithub style={iconStyle} />;
-  if (iconClass.includes('orcid')) return <FaBrands.FaOrcid style={iconStyle} />;
-  if (iconClass.includes('stack-overflow')) return <FaBrands.FaStackOverflow style={iconStyle} />;
-  if (iconClass.includes('google')) return <FaBrands.FaGoogle style={iconStyle} />;
-  if (iconClass.includes('youtube')) return <FaBrands.FaYoutube style={iconStyle} />;
-  if (iconClass.includes('instagram')) return <FaBrands.FaInstagram style={iconStyle} />;
-  if (iconClass.includes('twitter')) return <FaBrands.FaTwitter style={iconStyle} />;
-  if (iconClass.includes('spotify')) return <FaBrands.FaSpotify style={iconStyle} />;
-  if (iconClass.includes('goodreads')) return <FaBrands.FaGoodreads style={iconStyle} />;
-  if (iconClass.includes('tv')) return <FaIcons.FaTv style={iconStyle} />;
+
+  if (iconClass.includes("linkedin"))
+    return <FaBrands.FaLinkedin style={iconStyle} />;
+  if (iconClass.includes("github"))
+    return <FaBrands.FaGithub style={iconStyle} />;
+  if (iconClass.includes("orcid"))
+    return <FaBrands.FaOrcid style={iconStyle} />;
+  if (iconClass.includes("stack-overflow"))
+    return <FaBrands.FaStackOverflow style={iconStyle} />;
+  if (iconClass.includes("google"))
+    return <FaBrands.FaGoogle style={iconStyle} />;
+  if (iconClass.includes("youtube"))
+    return <FaBrands.FaYoutube style={iconStyle} />;
+  if (iconClass.includes("instagram"))
+    return <FaBrands.FaInstagram style={iconStyle} />;
+  if (iconClass.includes("twitter"))
+    return <FaBrands.FaTwitter style={iconStyle} />;
+  if (iconClass.includes("spotify"))
+    return <FaBrands.FaSpotify style={iconStyle} />;
+  if (iconClass.includes("goodreads"))
+    return <FaBrands.FaGoodreads style={iconStyle} />;
+  if (iconClass.includes("tv")) return <FaIcons.FaTv style={iconStyle} />;
   return <FaIcons.FaLink style={iconStyle} />;
 };
 
@@ -46,9 +56,7 @@ export function ContactSection({ data }: ContactSectionProps) {
           <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-primary">
             {data.title}
           </h2>
-          <p className="text-xl text-muted-foreground mb-4">
-            {data.subtitle}
-          </p>
+          <p className="text-xl text-muted-foreground mb-4">{data.subtitle}</p>
           {data.description && (
             <p className="text-foreground/80 max-w-3xl mx-auto">
               {data.description}
@@ -58,19 +66,19 @@ export function ContactSection({ data }: ContactSectionProps) {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {data.data.map((contact, index) => (
-            <Card 
+            <Card
               key={index}
               className="group p-6 bg-card border-primary/20 shadow-elegant hover:shadow-glow transition-all duration-500 cursor-pointer"
-              onClick={() => window.open(contact.url, '_blank')}
+              onClick={() => window.open(contact.url, "_blank")}
             >
               <CardContent className="flex flex-col items-center text-center space-y-4 p-0">
-                <div 
+                <div
                   className="w-16 h-16 rounded-full flex items-center justify-center text-3xl text-white shadow-lg group-hover:scale-110 transition-transform duration-300"
                   style={{ backgroundColor: contact.backgroundColor }}
                 >
                   {getIconComponent(contact.fontAwesomeIcon)}
                 </div>
-                
+
                 <div>
                   <h3 className="font-bold text-lg text-foreground group-hover:text-primary transition-colors">
                     {contact.name}
@@ -79,9 +87,9 @@ export function ContactSection({ data }: ContactSectionProps) {
                     Connect with me
                   </p>
                 </div>
-                
-                <Button 
-                  variant="outline" 
+
+                <Button
+                  variant="outline"
                   size="sm"
                   className="w-full border-primary/50 hover:border-primary hover:bg-primary/10 transition-all duration-300"
                 >

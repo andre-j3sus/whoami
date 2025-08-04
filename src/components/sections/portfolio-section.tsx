@@ -40,9 +40,7 @@ export function PortfolioSection({ data }: PortfolioSectionProps) {
               {data.title}
             </span>
           </h2>
-          <p className="text-xl text-muted-foreground mb-4">
-            {data.subtitle}
-          </p>
+          <p className="text-xl text-muted-foreground mb-4">{data.subtitle}</p>
           <p className="text-foreground/80 max-w-3xl mx-auto">
             {data.description}
           </p>
@@ -75,7 +73,10 @@ export function PortfolioSection({ data }: PortfolioSectionProps) {
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-2">
-                    <Badge variant="secondary" className="flex items-center space-x-1">
+                    <Badge
+                      variant="secondary"
+                      className="flex items-center space-x-1"
+                    >
                       <CalendarDays className="w-4 h-4" />
                       <span>{project.duration}</span>
                     </Badge>
@@ -86,9 +87,10 @@ export function PortfolioSection({ data }: PortfolioSectionProps) {
               <CardContent className="space-y-6">
                 {/* Tech Stack */}
                 <div>
-                  <h4 className="text-lg font-semibold mb-4 text-foreground">Technology Stack</h4>
+                  <h4 className="text-lg font-semibold mb-4 text-foreground">
+                    Technology Stack
+                  </h4>
                   <div className="flex flex-wrap gap-3">
-
                     <div className="grid grid-cols-4 sm:grid-cols-6 gap-1 justify-items-center">
                       {project.techStack.map((tech, techIndex) => (
                         <div
@@ -99,7 +101,7 @@ export function PortfolioSection({ data }: PortfolioSectionProps) {
                             className="w-6 h-6 flex items-center justify-center rounded-lg bg-secondary/50 group-hover:scale-110 transition-transform duration-300"
                             style={{
                               color: tech.style.color,
-                              boxShadow: `0 4px 20px ${tech.style.color}20`
+                              boxShadow: `0 4px 20px ${tech.style.color}20`,
                             }}
                           >
                             {getSkillIcon(tech.skillName, tech.style.color)}
@@ -117,7 +119,7 @@ export function PortfolioSection({ data }: PortfolioSectionProps) {
                 <div className="flex flex-wrap gap-4">
                   <Button
                     size="lg"
-                    onClick={() => window.open(project.url, '_blank')}
+                    onClick={() => window.open(project.url, "_blank")}
                     className="bg-primary hover:shadow-glow transition-all duration-300"
                   >
                     <Github className="mr-2 h-5 w-5" />

@@ -14,14 +14,17 @@ interface HeroSectionProps {
 
 export function HeroSection({ data }: HeroSectionProps) {
   const scrollToNextSection = () => {
-    const skillsSection = document.getElementById('skills');
+    const skillsSection = document.getElementById("skills");
     if (skillsSection) {
-      skillsSection.scrollIntoView({ behavior: 'smooth' });
+      skillsSection.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
-    <section id="hero" className="min-h-screen flex flex-col items-center justify-center bg-gradient-subtle px-6 relative">
+    <section
+      id="hero"
+      className="min-h-screen flex flex-col items-center justify-center bg-gradient-subtle px-6 relative"
+    >
       <div className="container mx-auto max-w-4xl flex-1 flex items-center justify-center">
         <div className="text-center space-y-8">
           {/* Text Content */}
@@ -40,19 +43,19 @@ export function HeroSection({ data }: HeroSectionProps) {
           </div>
 
           <div className="flex flex-wrap justify-center gap-4">
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="bg-primary hover:shadow-glow transition-all duration-300"
-              onClick={() => window.open(data.resume, '_blank')}
+              onClick={() => window.open(data.resume, "_blank")}
             >
               <FileText className="mr-2 h-5 w-5" />
               View Resume
             </Button>
-            
-            <Button 
-              variant="outline" 
+
+            <Button
+              variant="outline"
               size="lg"
-              onClick={() => window.open(data.github, '_blank')}
+              onClick={() => window.open(data.github, "_blank")}
               className="border-primary/50 hover:border-primary hover:bg-primary/10 transition-all duration-300"
             >
               <Github className="mr-2 h-5 w-5" />
@@ -61,7 +64,7 @@ export function HeroSection({ data }: HeroSectionProps) {
           </div>
         </div>
       </div>
-      
+
       {/* Scroll Down Arrow */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
         <button

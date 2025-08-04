@@ -92,9 +92,21 @@ All colors MUST be HSL.
     --primary-glow: 200 88% 70%;
     --tech-blue: 200 88% 82%;
     --tech-navy: 200 88% 70%;
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
-    --gradient-tech: linear-gradient(135deg, hsl(var(--tech-blue)), hsl(var(--tech-navy)));
-    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(var(--primary)),
+      hsl(var(--primary-glow))
+    );
+    --gradient-tech: linear-gradient(
+      135deg,
+      hsl(var(--tech-blue)),
+      hsl(var(--tech-navy))
+    );
+    --gradient-subtle: linear-gradient(
+      180deg,
+      hsl(var(--background)),
+      hsl(var(--muted))
+    );
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;

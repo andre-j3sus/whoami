@@ -30,9 +30,7 @@ export function EducationSection({ data }: EducationSectionProps) {
               {data.title}
             </span>
           </h2>
-          <p className="text-xl text-muted-foreground mb-4">
-            {data.subtitle}
-          </p>
+          <p className="text-xl text-muted-foreground mb-4">{data.subtitle}</p>
           <p className="text-foreground/80 max-w-3xl mx-auto">
             {data.description}
           </p>
@@ -66,13 +64,16 @@ export function EducationSection({ data }: EducationSectionProps) {
                         </h3>
                         <ExternalLink
                           className="w-4 h-4 text-muted-foreground hover:text-primary cursor-pointer transition-colors"
-                          onClick={() => window.open(degree.url, '_blank')}
+                          onClick={() => window.open(degree.url, "_blank")}
                         />
                       </div>
                     </div>
                   </div>
                   <div className="flex flex-col sm:flex-row gap-2 self-start">
-                    <Badge variant="secondary" className="flex items-center space-x-1">
+                    <Badge
+                      variant="secondary"
+                      className="flex items-center space-x-1"
+                    >
                       <CalendarDays className="w-4 h-4" />
                       <span>{degree.duration}</span>
                     </Badge>

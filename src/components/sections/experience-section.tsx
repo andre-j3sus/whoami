@@ -34,9 +34,7 @@ export function ExperienceSection({ data }: ExperienceSectionProps) {
               {data.title}
             </span>
           </h2>
-          <p className="text-xl text-muted-foreground mb-4">
-            {data.subtitle}
-          </p>
+          <p className="text-xl text-muted-foreground mb-4">{data.subtitle}</p>
           {data.description && (
             <p className="text-foreground/80 max-w-3xl mx-auto">
               {data.description}
@@ -72,18 +70,26 @@ export function ExperienceSection({ data }: ExperienceSectionProps) {
                         </h3>
                         <ExternalLink
                           className="w-4 h-4 text-muted-foreground hover:text-primary cursor-pointer transition-colors"
-                          onClick={() => window.open(experience.company.url, '_blank')}
+                          onClick={() =>
+                            window.open(experience.company.url, "_blank")
+                          }
                         />
                       </div>
                     </div>
                   </div>
 
                   <div className="flex flex-col gap-2 items-end">
-                    <Badge variant="secondary" className="flex items-center space-x-1">
+                    <Badge
+                      variant="secondary"
+                      className="flex items-center space-x-1"
+                    >
                       <CalendarDays className="w-4 h-4" />
                       <span>{experience.duration}</span>
                     </Badge>
-                    <Badge variant="outline" className="flex items-center space-x-1">
+                    <Badge
+                      variant="outline"
+                      className="flex items-center space-x-1"
+                    >
                       <MapPin className="w-4 h-4" />
                       <span>{experience.location}</span>
                     </Badge>
