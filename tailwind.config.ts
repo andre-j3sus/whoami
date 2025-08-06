@@ -117,6 +117,9 @@ export default {
       transitionTimingFunction: {
         smooth: "var(--transition-smooth)",
       },
+      fontFamily: {
+        agustina: ['Agustina', 'sans-serif'],
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

@@ -8,13 +8,13 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 194.1 89.5% 96.3%;
+    --foreground: 222.2 84% 4.9%; 
 
-    --card: 0 0% 100%;
+    --card: 194.1 89.5% 96.3%;
     --card-foreground: 222.2 84% 4.9%;
 
-    --popover: 0 0% 100%;
+    --popover: 194.1 89.5% 96.3%;
     --popover-foreground: 222.2 84% 4.9%;
 
     --primary: 215 80% 23%;
@@ -133,4 +133,11 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@font-face {
+  font-family: "Agustina";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/Agustina.woff") format("woff");
 }
