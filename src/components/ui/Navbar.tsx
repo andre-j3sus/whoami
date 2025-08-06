@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Menu, X } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
 
@@ -20,6 +22,7 @@ const navItems = [
 
 export default function Navbar({ activeSection, onSectionClick }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,12 +62,39 @@ export default function Navbar({ activeSection, onSectionClick }: NavbarProps) {
             <ThemeToggle />
           </div>
 
-          {/* Mobile menu button - simplified for now */}
+          {/* Mobile menu */}
           <div className="md:hidden flex items-center space-x-2">
             <ThemeToggle />
-            <Button variant="ghost" size="sm">
-              Menu
-            </Button>
+            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="sm" className="h-10 w-10 px-0">
+                  <Menu className="h-5 w-5" />
+                  <span className="sr-only">Toggle navigation menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                <div className="flex flex-col space-y-4 mt-8">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-lg font-semibold">Navigation</h2>
+                  </div>
+                  <nav className="flex flex-col space-y-2">
+                    {navItems.map((item) => (
+                      <Button
+                        key={item.id}
+                        variant={activeSection === item.id ? "default" : "ghost"}
+                        className="justify-start text-left h-12"
+                        onClick={() => {
+                          onSectionClick(item.id);
+                          setIsMobileMenuOpen(false);
+                        }}
+                      >
+                        {item.label}
+                      </Button>
+                    ))}
+                  </nav>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </div>

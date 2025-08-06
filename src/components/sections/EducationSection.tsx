@@ -11,6 +11,7 @@ interface Degree {
   duration: string;
   descriptions: string[];
   url: string;
+  grade?: string;
 }
 
 interface EducationSectionProps {
@@ -102,6 +103,14 @@ const EducationCard = ({
                 <CalendarDays className="w-4 h-4" />
                 <span>{degree.duration}</span>
               </Badge>
+              {degree.grade && (
+                <Badge
+                  variant="outline"
+                  className="bg-primary/10 text-primary border-primary/20"
+                >
+                  Grade: {degree.grade}
+                </Badge>
+              )}
             </div>
           </div>
         </CardHeader>
