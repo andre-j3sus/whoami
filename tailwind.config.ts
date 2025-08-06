@@ -118,7 +118,7 @@ export default {
         smooth: "var(--transition-smooth)",
       },
       fontFamily: {
-        agustina: ['Agustina', 'sans-serif'],
+        agustina: ["Agustina", "sans-serif"],
       },
     },
   },

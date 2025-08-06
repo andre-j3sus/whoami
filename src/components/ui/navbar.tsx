@@ -41,7 +41,9 @@ export function Navbar({ activeSection, onSectionClick }: NavbarProps) {
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="font-agustina text-2xl font-bold text-primary self-end">Andre Jesus</div>
+          <div className="font-agustina text-2xl font-bold text-primary self-end">
+            Andre Jesus
+          </div>
           <div className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => (
               <Button
