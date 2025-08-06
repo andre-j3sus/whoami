@@ -1,6 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CalendarDays, ExternalLink, GraduationCap } from "lucide-react";
+import { motion } from "framer-motion";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 interface Degree {
   title: string;
@@ -21,6 +23,8 @@ interface EducationSectionProps {
 }
 
 export function EducationSection({ data }: EducationSectionProps) {
+  const { ref, isInView, variants } = useScrollAnimation();
+
   return (
     <section id="education" className="py-20 px-6">
       <div className="container mx-auto max-w-6xl">
@@ -36,12 +40,23 @@ export function EducationSection({ data }: EducationSectionProps) {
           </p>
         </div>
 
-        <div className="space-y-8">
+        <motion.div 
+          ref={ref}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          variants={variants}
+          className="space-y-8"
+        >
           {data.degrees.map((degree, index) => (
-            <Card
+            <motion.div
               key={index}
-              className="p-8 bg-gradient-to-br from-card to-secondary/30 border-primary/20 shadow-elegant hover:shadow-glow transition-all duration-500"
+              variants={variants}
+              transition={{ delay: index * 0.2 }}
             >
+              <Card
+                className="p-8 bg-gradient-to-br from-card to-secondary/30 border-primary/20 shadow-elegant hover:shadow-glow transition-all duration-500"
+              >
               <CardHeader>
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                   <div className="flex items-start space-x-4">
@@ -93,9 +108,10 @@ export function EducationSection({ data }: EducationSectionProps) {
                   ))}
                 </div>
               </CardContent>
-            </Card>
+              </Card>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

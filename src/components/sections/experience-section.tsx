@@ -1,6 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CalendarDays, MapPin, ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 interface Experience {
   title: string;
@@ -25,6 +27,8 @@ interface ExperienceSectionProps {
 }
 
 export function ExperienceSection({ data }: ExperienceSectionProps) {
+  const { ref, isInView, variants } = useScrollAnimation();
+
   return (
     <section id="experience" className="py-20 px-6 bg-gradient-subtle">
       <div className="container mx-auto max-w-6xl">
@@ -42,12 +46,23 @@ export function ExperienceSection({ data }: ExperienceSectionProps) {
           )}
         </div>
 
-        <div className="space-y-8">
+        <motion.div 
+          ref={ref}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          variants={variants}
+          className="space-y-8"
+        >
           {data.experiences.map((experience, index) => (
-            <Card
+            <motion.div
               key={index}
-              className="p-8 bg-gradient-to-br from-card to-secondary/30 border-primary/20 shadow-elegant hover:shadow-glow transition-all duration-500"
+              variants={variants}
+              transition={{ delay: index * 0.2 }}
             >
+              <Card
+                className="p-8 bg-gradient-to-br from-card to-secondary/30 border-primary/20 shadow-elegant hover:shadow-glow transition-all duration-500"
+              >
               <CardHeader>
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                   <div className="flex items-start space-x-4">
@@ -109,9 +124,10 @@ export function ExperienceSection({ data }: ExperienceSectionProps) {
                   ))}
                 </div>
               </CardContent>
-            </Card>
+              </Card>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

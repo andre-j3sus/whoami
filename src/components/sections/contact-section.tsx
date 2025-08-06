@@ -1,7 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import * as FaIcons from "react-icons/fa";
 import * as FaBrands from "react-icons/fa6";
+import { motion } from "framer-motion";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 interface ContactData {
   name: string;
@@ -48,7 +49,25 @@ const getIconComponent = (iconClass: string) => {
   return <FaIcons.FaLink style={iconStyle} />;
 };
 
+// Get custom message for each platform
+const getCustomMessage = (iconClass: string) => {
+  if (iconClass.includes("linkedin")) return "Let's connect professionally";
+  if (iconClass.includes("github")) return "Check out my projects";
+  if (iconClass.includes("twitter")) return "Follow my thoughts";
+  if (iconClass.includes("instagram")) return "Peek into my life";
+  if (iconClass.includes("youtube")) return "Watch my content";
+  if (iconClass.includes("spotify")) return "Listen to my playlists";
+  if (iconClass.includes("goodreads")) return "See what I'm reading";
+  if (iconClass.includes("orcid")) return "View my research";
+  if (iconClass.includes("stack-overflow")) return "Check my contributions";
+  if (iconClass.includes("google")) return "Explore my work";
+  if (iconClass.includes("tv")) return "Watch my shows";
+  return "Connect with me";
+};
+
 export function ContactSection({ data }: ContactSectionProps) {
+  const { ref, isInView, variants } = useScrollAnimation();
+
   return (
     <section id="contact" className="py-20 px-6">
       <div className="container mx-auto max-w-6xl">
@@ -64,41 +83,45 @@ export function ContactSection({ data }: ContactSectionProps) {
           )}
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <motion.div 
+          ref={ref}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          variants={variants}
+          className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+        >
           {data.data.map((contact, index) => (
-            <Card
+            <motion.div
               key={index}
-              className="group p-6 bg-card border-primary/20 shadow-elegant hover:shadow-glow transition-all duration-500 cursor-pointer"
-              onClick={() => window.open(contact.url, "_blank")}
+              variants={variants}
+              transition={{ delay: index * 0.1 }}
             >
-              <CardContent className="flex flex-col items-center text-center space-y-4 p-0">
-                <div
-                  className="w-16 h-16 rounded-full flex items-center justify-center text-3xl text-white shadow-lg group-hover:scale-110 transition-transform duration-300"
-                  style={{ backgroundColor: contact.backgroundColor }}
-                >
-                  {getIconComponent(contact.fontAwesomeIcon)}
-                </div>
+              <Card
+                className="group p-6 bg-card border-primary/20 shadow-elegant hover:shadow-glow transition-all duration-500 cursor-pointer transform hover:scale-105"
+                onClick={() => window.open(contact.url, "_blank")}
+              >
+                <CardContent className="flex flex-col items-center text-center space-y-4 p-0">
+                  <div
+                    className="w-16 h-16 rounded-full flex items-center justify-center text-3xl text-white shadow-lg group-hover:scale-110 transition-transform duration-300"
+                    style={{ backgroundColor: contact.backgroundColor }}
+                  >
+                    {getIconComponent(contact.fontAwesomeIcon)}
+                  </div>
 
-                <div>
-                  <h3 className="font-bold text-lg text-foreground group-hover:text-primary transition-colors">
-                    {contact.name}
-                  </h3>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    Connect with me
-                  </p>
-                </div>
-
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="w-full border-primary/50 hover:border-primary hover:bg-primary/10 transition-all duration-300"
-                >
-                  Visit Profile
-                </Button>
-              </CardContent>
-            </Card>
+                  <div>
+                    <h3 className="font-bold text-lg text-foreground group-hover:text-primary transition-colors">
+                      {contact.name}
+                    </h3>
+                    <p className="text-sm text-muted-foreground mt-1 group-hover:text-foreground transition-colors">
+                      {getCustomMessage(contact.fontAwesomeIcon)}
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Contact CTA */}
         {/* <div className="text-center mt-16">

@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Github, CalendarDays } from "lucide-react";
 import { getSkillIcon } from "@/lib/icons";
+import { motion } from "framer-motion";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 interface Project {
   title: string;
@@ -31,6 +33,8 @@ interface PortfolioSectionProps {
 }
 
 export function PortfolioSection({ data }: PortfolioSectionProps) {
+  const { ref, isInView, variants } = useScrollAnimation();
+
   return (
     <section id="portfolio" className="py-20 px-6 bg-gradient-subtle">
       <div className="container mx-auto max-w-6xl">
@@ -46,12 +50,23 @@ export function PortfolioSection({ data }: PortfolioSectionProps) {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-1 gap-8">
+        <motion.div 
+          ref={ref}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          variants={variants}
+          className="grid lg:grid-cols-1 gap-8"
+        >
           {data.projects.map((project, index) => (
-            <Card
+            <motion.div
               key={index}
-              className="p-8 bg-gradient-to-br from-card to-secondary/30 border-primary/20 shadow-elegant hover:shadow-glow transition-all duration-500"
+              variants={variants}
+              transition={{ delay: index * 0.2 }}
             >
+              <Card
+                className="p-8 bg-gradient-to-br from-card to-secondary/30 border-primary/20 shadow-elegant hover:shadow-glow transition-all duration-500"
+              >
               <CardHeader>
                 <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                   <div className="space-y-4 flex-1">
@@ -127,9 +142,10 @@ export function PortfolioSection({ data }: PortfolioSectionProps) {
                   </Button>
                 </div>
               </CardContent>
-            </Card>
+              </Card>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

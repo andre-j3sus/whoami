@@ -1,5 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getSkillIcon } from "@/lib/icons";
+import { motion } from "framer-motion";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 interface Skill {
   skillName: string;
@@ -23,6 +25,8 @@ interface SkillsSectionProps {
 }
 
 export function SkillsSection({ data }: SkillsSectionProps) {
+  const { ref, isInView, variants } = useScrollAnimation();
+
   return (
     <section id="skills" className="py-20 px-6">
       <div className="container mx-auto max-w-6xl">
@@ -36,12 +40,23 @@ export function SkillsSection({ data }: SkillsSectionProps) {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-1 gap-12">
+        <motion.div 
+          ref={ref}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          variants={variants}
+          className="grid lg:grid-cols-1 gap-12"
+        >
           {data.data.map((category, index) => (
-            <Card
+            <motion.div
               key={index}
-              className="p-8 bg-card border-primary/20 shadow-elegant hover:shadow-glow transition-all duration-500"
+              variants={variants}
+              transition={{ delay: index * 0.2 }}
             >
+              <Card
+                className="p-8 bg-card border-primary/20 shadow-elegant hover:shadow-glow transition-all duration-500"
+              >
               <CardHeader className="text-center">
                 <CardTitle className="text-2xl lg:text-3xl font-bold text-primary">
                   {category.title}
@@ -89,9 +104,10 @@ export function SkillsSection({ data }: SkillsSectionProps) {
                   </div>
                 </div>
               </CardContent>
-            </Card>
+              </Card>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
