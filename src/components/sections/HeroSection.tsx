@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Github, ExternalLink, FileText, ChevronDown } from "lucide-react";
+import { Github, FileText, ChevronDown } from "lucide-react";
 
 interface HeroSectionProps {
   data: {
@@ -12,7 +12,7 @@ interface HeroSectionProps {
   };
 }
 
-export function HeroSection({ data }: HeroSectionProps) {
+export default function HeroSection({ data }: HeroSectionProps) {
   const scrollToNextSection = () => {
     const skillsSection = document.getElementById("skills");
     if (skillsSection) {

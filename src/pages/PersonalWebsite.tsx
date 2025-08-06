@@ -1,12 +1,23 @@
 import { useState, useEffect } from "react";
-import { Navbar } from "@/components/ui/navbar";
-import { HeroSection } from "@/components/sections/hero-section";
-import { SkillsSection } from "@/components/sections/skills-section";
-import { ExperienceSection } from "@/components/sections/experience-section";
-import { EducationSection } from "@/components/sections/education-section";
-import { PortfolioSection } from "@/components/sections/portfolio-section";
-import { ContactSection } from "@/components/sections/contact-section";
-import { Footer } from "@/components/sections/footer";
+import {
+  FaGithub,
+  FaGoodreads,
+  FaGoogle,
+  FaInstagram,
+  FaLinkedin,
+  FaOrcid,
+  FaSpotify,
+  FaTv,
+  FaYoutube,
+} from "react-icons/fa6";
+import HeroSection from "@/components/sections/HeroSection";
+import SkillsSection from "@/components/sections/SkillsSection";
+import ExperienceSection from "@/components/sections/ExperienceSection";
+import EducationSection from "@/components/sections/EducationSection";
+import PortfolioSection from "@/components/sections/PortfolioSection";
+import ContactSection from "@/components/sections/ContactSection";
+import Footer from "@/components/sections/Footer";
+import Navbar from "@/components/ui/Navbar";
 
 // Personal data - this would typically come from a CMS or API
 const personalData = {
@@ -28,68 +39,82 @@ const personalData = {
       {
         name: "LinkedIn",
         url: "https://www.linkedin.com/in/andre-j3sus",
-        fontAwesomeIcon: "fa-brands fa-linkedin fa-2xl",
+        icon: FaLinkedin,
         backgroundColor: "#0077B5",
+        showOnFooter: true,
+        description: "Let's connect",
       },
       {
         name: "Github",
         url: "https://github.com/andre-j3sus",
-        fontAwesomeIcon: "fa-brands fa-github fa-2xl",
+        icon: FaGithub,
         backgroundColor: "#181717",
+        showOnFooter: true,
+        description: "Check out my projects",
       },
       {
         name: "ORCID",
         url: "https://orcid.org/0009-0007-8693-7054",
-        fontAwesomeIcon: "fa-brands fa-orcid fa-2xl",
+        icon: FaOrcid,
         backgroundColor: "#A6CE39",
+        description: "View my research",
       },
-      {
-        name: "Stack Overflow",
-        url: "https://stackoverflow.com/users/15545640/andr%c3%a9-jesus",
-        fontAwesomeIcon: "fa-brands fa-stack-overflow fa-2xl",
-        backgroundColor: "#F48024",
-      },
+      // {
+      //   name: "Stack Overflow",
+      //   url: "https://stackoverflow.com/users/15545640/andr%c3%a9-jesus",
+      //   icon: FaStackOverflow,
+      //   backgroundColor: "#F48024",
+      //   description: "Check my contributions",
+      // },
       {
         name: "Gmail",
         url: "mailto:andre.jesus.pilar@gmail.com",
-        fontAwesomeIcon: "fa-brands fa-google fa-2xl",
+        icon: FaGoogle,
         backgroundColor: "#D14836",
+        showOnFooter: true,
+        description: "Send me an email",
       },
-      {
-        name: "YouTube",
-        url: "https://www.youtube.com/@andre-j3sus",
-        fontAwesomeIcon: "fa-brands fa-youtube fa-2xl",
-        backgroundColor: "#FF0000",
-      },
+      // {
+      //   name: "YouTube",
+      //   url: "https://www.youtube.com/@andre-j3sus",
+      //   icon: FaYoutube,
+      //   backgroundColor: "#FF0000",
+      //   description: "Watch my content",
+      // },
       {
         name: "Instagram",
         url: "https://www.instagram.com/andre.j3sus",
-        fontAwesomeIcon: "fa-brands fa-instagram fa-2xl",
+        icon: FaInstagram,
         backgroundColor: "#E4405F",
+        description: "Peek into my life",
       },
-      {
-        name: "Twitter",
-        url: "https://twitter.com/andre_j3sus",
-        fontAwesomeIcon: "fa-brands fa-twitter fa-2xl",
-        backgroundColor: "#1DA1F2",
-      },
+      // {
+      //   name: "Twitter",
+      //   url: "https://twitter.com/andre_j3sus",
+      //   icon: FaTwitter,
+      //   backgroundColor: "#1DA1F2",
+      //   description: "Follow my thoughts",
+      // },
       {
         name: "Spotify",
         url: "https://open.spotify.com/user/andré.jesus",
-        fontAwesomeIcon: "fa-brands fa-spotify fa-2xl",
+        icon: FaSpotify,
         backgroundColor: "#1ED760",
+        description: "Check what I'm listening to",
       },
       {
         name: "Goodreads",
         url: "https://www.goodreads.com/user/show/108854374-andr-jesus",
-        fontAwesomeIcon: "fa-brands fa-goodreads fa-2xl",
+        icon: FaGoodreads,
         backgroundColor: "#553B08",
+        description: "See what I'm reading",
       },
       {
         name: "TV Time",
         url: "https://www.tvtime.com/en/user/28579171/profile",
-        fontAwesomeIcon: "fas fa-tv fa-2xl",
+        icon: FaTv,
         backgroundColor: "#FFD700",
+        description: "Watch my shows",
       },
     ],
   },
@@ -107,58 +132,46 @@ const personalData = {
         softwareSkills: [
           {
             skillName: "Java",
-            icon: "devicon:java",
             style: { color: "#007396" },
           },
           {
             skillName: "Kotlin",
-            icon: "devicon:kotlin",
             style: { color: "#B125EA" },
           },
           {
             skillName: "JavaScript",
-            icon: "devicon:javascript",
             style: { color: "#F7DF1E" },
           },
           {
             skillName: "TypeScript",
-            icon: "devicon:typescript",
             style: { color: "#3178C6" },
           },
-          { skillName: "C", icon: "devicon:c", style: { color: "#A8B9CC" } },
+          {
+            skillName: "C",
+            style: { color: "#A8B9CC" },
+          },
           {
             skillName: "C#",
-            icon: "devicon:csharp",
             style: { color: "#239120" },
           },
           {
             skillName: "Python",
-            icon: "devicon:python",
             style: { color: "#3776AB" },
           },
           {
             skillName: "Git",
-            icon: "devicon:git",
             style: { color: "#F05032" },
           },
           {
             skillName: "GitHub",
-            icon: "devicon:github",
             style: { color: "#181717" },
           },
           {
-            skillName: "Jenkins",
-            icon: "devicon:jenkins",
-            style: { color: "#D24939" },
-          },
-          {
             skillName: "GitHub Actions",
-            icon: "devicon:githubactions",
             style: { color: "#2088FF" },
           },
           {
             skillName: "LaTeX",
-            icon: "skill-icons:latex-light",
             style: { color: "#008080" },
           },
         ],
@@ -174,58 +187,27 @@ const personalData = {
         softwareSkills: [
           {
             skillName: "HTML5",
-            icon: "devicon-html5",
             style: { color: "#E34F26" },
           },
           {
             skillName: "CSS3",
-            icon: "devicon-css3",
             style: { color: "#1572B6" },
           },
           {
             skillName: "NodeJS",
-            icon: "devicon-nodejs",
             style: { color: "#339933" },
           },
           {
             skillName: "ExpressJS",
-            icon: "devicon-express",
             style: { color: "#000000" },
           },
           {
-            skillName: "ReactJS",
-            icon: "devicon-react",
+            skillName: "React",
             style: { color: "#61DAFB" },
           },
           {
-            skillName: "Material-UI",
-            icon: "devicon-materialui",
-            style: { color: "#0081CB" },
-          },
-          {
-            skillName: "Bootstrap",
-            icon: "devicon-bootstrap",
-            style: { color: "#563D7C" },
-          },
-          {
-            skillName: "Webpack",
-            icon: "devicon-webpack",
-            style: { color: "#8DD6F9" },
-          },
-          {
             skillName: "Spring",
-            icon: "devicon-spring",
             style: { color: "#6DB33F" },
-          },
-          {
-            skillName: "NGINX",
-            icon: "simple-icons:nginx",
-            style: { color: "#009639" },
-          },
-          {
-            skillName: "Postman",
-            icon: "simple-icons:postman",
-            style: { color: "#FF6C37" },
           },
         ],
       },
@@ -241,38 +223,31 @@ const personalData = {
         softwareSkills: [
           {
             skillName: "Docker",
-            icon: "devicon:docker",
             style: { color: "#2496ED" },
           },
           {
             skillName: "Linux",
-            icon: "flat-color-icons:linux",
             style: { color: "#FCC624" },
           },
           {
             skillName: "Android",
-            icon: "simple-icons:android",
             style: { color: "#3DDC84" },
           },
           {
+            skillName: "Cloudflare Workers",
+            style: { color: "#F38020" },
+          },
+          {
             skillName: "Google Cloud Platform",
-            icon: "devicon:googlecloud",
             style: { color: "#4285F4" },
           },
           {
             skillName: "PostgreSQL",
-            icon: "devicon:postgresql",
             style: { color: "#336791" },
           },
           {
             skillName: "MongoDB",
-            icon: "devicon:mongodb",
             style: { color: "#47A248" },
-          },
-          {
-            skillName: "Elasticsearch",
-            icon: "devicon:elasticsearch",
-            style: { color: "#005571" },
           },
         ],
       },

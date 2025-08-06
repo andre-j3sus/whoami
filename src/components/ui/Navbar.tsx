@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/theme-toggle";
+import ThemeToggle from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
 
 interface NavbarProps {
@@ -18,7 +18,7 @@ const navItems = [
   { id: "contact", label: "Contact" },
 ];
 
-export function Navbar({ activeSection, onSectionClick }: NavbarProps) {
+export default function Navbar({ activeSection, onSectionClick }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
