@@ -95,7 +95,7 @@ const EducationCard = ({
                 </div>
               </div>
             </div>
-            <div className="flex flex-col sm:flex-row gap-2 self-start">
+            <div className="flex flex-col gap-2">
               <Badge
                 variant="secondary"
                 className="flex items-center space-x-1"
@@ -106,7 +106,7 @@ const EducationCard = ({
               {degree.grade && (
                 <Badge
                   variant="outline"
-                  className="bg-primary/10 text-primary border-primary/20"
+                  className="bg-primary/10 text-primary border-primary/20 self-end"
                 >
                   Grade: {degree.grade}
                 </Badge>

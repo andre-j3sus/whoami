@@ -8,7 +8,6 @@ import {
   FaOrcid,
   FaSpotify,
   FaTv,
-  FaYoutube,
 } from "react-icons/fa6";
 import HeroSection from "@/components/sections/HeroSection";
 import SkillsSection from "@/components/sections/SkillsSection";
@@ -16,8 +15,8 @@ import ExperienceSection from "@/components/sections/ExperienceSection";
 import EducationSection from "@/components/sections/EducationSection";
 import PortfolioSection from "@/components/sections/PortfolioSection";
 import ContactSection from "@/components/sections/ContactSection";
-import Footer from "@/components/sections/Footer";
-import Navbar from "@/components/ui/Navbar";
+import Footer from "@/components/layout/Footer";
+import Navbar from "@/components/layout/Navbar";
 
 // Personal data - this would typically come from a CMS or API
 const personalData = {
@@ -265,7 +264,7 @@ const personalData = {
         title: "MSc. in Computer Science and Engineering",
         subtitle: "Instituto Superior Técnico - Universidade de Lisboa",
         logoPath: "ist.png",
-        duration: "2023 - 2025",
+        duration: "September 2023 - October 2025",
         descriptions: [
           "Focus Areas: Distributed Systems and Cyber-Security",
           'Dissertation (in progress): "Enhancing Serverless Platform Support for Snapshots"',
@@ -278,7 +277,7 @@ const personalData = {
         subtitle:
           "Instituto Superior de Engenharia de Lisboa - Instituto Politécnico de Lisboa",
         logoPath: "isel.png",
-        duration: "2020 - 2023",
+        duration: "September 2020 - July 2023",
         descriptions: [
           "I have studied basic software engineering concepts of Computer Science, such as Algorithms and Data Structures, Object-Oriented Programming, Software Engineering, Databases, Computer Networks, Operating Systems, Distributed Systems, Computer Netorks, among others.",
           "Apart from this, I were the student representative between 2022 and 2023, where I represented the students of my degree in the pedagogical council of the school.",
@@ -307,8 +306,8 @@ const personalData = {
         duration: "May 2024 - Present",
         location: "Lisbon, Portugal",
         descriptions: [
-          "Member of the Cloudflare Radar 📡 team, responsible for developing new features and maintaining both the Radar API and the Radar website.",
-          "Member of the AI Audit team 🤖, responsible for frontend development (Cloudflare dashboard).",
+          "Member of the Cloudflare Radar team, responsible for developing new features and maintaining both the Radar API and the Radar website.",
+          "Member of the AI Audit team, responsible for frontend development (Cloudflare dashboard).",
           "Contributing to other projects occasionally.",
         ],
       },

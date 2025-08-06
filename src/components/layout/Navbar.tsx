@@ -72,16 +72,15 @@ export default function Navbar({ activeSection, onSectionClick }: NavbarProps) {
                   <span className="sr-only">Toggle navigation menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-                <div className="flex flex-col space-y-4 mt-8">
-                  <div className="flex items-center justify-between">
-                    <h2 className="text-lg font-semibold">Navigation</h2>
-                  </div>
-                  <nav className="flex flex-col space-y-2">
+              <SheetContent side="right">
+                <div className="flex flex-col space-y-4">
+                  <nav className="flex flex-col">
                     {navItems.map((item) => (
                       <Button
                         key={item.id}
-                        variant={activeSection === item.id ? "default" : "ghost"}
+                        variant={
+                          activeSection === item.id ? "default" : "ghost"
+                        }
                         className="justify-start text-left h-12"
                         onClick={() => {
                           onSectionClick(item.id);

@@ -7,7 +7,7 @@ export default function ThemeToggle() {
 
   return (
     <Button
-      variant="outline"
+      variant="ghost"
       size="icon"
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
       className="border-primary/50 hover:border-primary hover:bg-primary/10"
