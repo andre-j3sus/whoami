@@ -18,7 +18,7 @@ const personalData = {
   homeImagePath: "website-creator-bro.svg",
   repository: "https://github.com/andre-j3sus/andre-j3sus-website",
   resume:
-    "https://www.canva.com/design/DAFqHQqqaGk/Q2N2Mi5I6JUUgpeB4ugMaw/view?utm_content=DAFqHQqqaGk&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink",
+    "https://www.canva.com/design/DAFqHQqqaGk/A5weUCHWBrwn62I-qRZHhA/view?utm_content=DAFqHQqqaGk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hde1e82327d",
   github: "https://github.com/andre-j3sus",
   contacts: {
     title: "Contact Me",
@@ -292,9 +292,11 @@ const personalData = {
         logoPath: "ist.png",
         duration: "2023 - 2025",
         descriptions: [
-          "Focus Areas: Distributed Systems ☁️ and Cyber-Security 🔒",
+          "Focus Areas: Distributed Systems and Cyber-Security",
+          'Dissertation (in progress): "Enhancing Serverless Platform Support for Snapshots"',
         ],
         url: "https://tecnico.ulisboa.pt/en/",
+        grade: "18/20", // Grade: 90% (18/20)
       },
       {
         title: "BSc. in Computer Science and Engineering",
@@ -308,6 +310,7 @@ const personalData = {
           "I received two merit scholarships for my academic excellence, one in 2020 and another one in 2022.",
         ],
         url: "https://www.isel.pt/en",
+        grade: "18/20", // Grade: 90% (18/20)
       },
     ],
   },
@@ -321,7 +324,7 @@ const personalData = {
       {
         title: "Systems Engineer",
         company: {
-          name: "Cloudflare, Inc.",
+          name: "Cloudflare",
           conglomerate: "Cloudflare",
           url: "https://www.cloudflare.com/",
           logoPath: "cf.png",
@@ -329,9 +332,9 @@ const personalData = {
         duration: "May 2024 - Present",
         location: "Lisbon, Portugal",
         descriptions: [
-          "Member of the Cloudflare Radar team, responsible for developing real-time security and performance monitoring solutions.",
-          "Worked on backend systems and data processing pipelines for web application analytics.",
-          "Contributed to the development of scalable infrastructure for global network monitoring.",
+          "Member of the Cloudflare Radar 📡 team, responsible for developing new features and maintaining both the Radar API and the Radar website.",
+          "Member of the AI Audit team 🤖, responsible for frontend development (Cloudflare dashboard).",
+          "Contributing to other projects occasionally.",
         ],
       },
       {
