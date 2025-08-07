@@ -85,20 +85,22 @@ const EducationCard = ({
                   <CardTitle className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground leading-tight mb-2">
                     {degree.title}
                   </CardTitle>
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-                    <h3 className="text-base sm:text-lg font-semibold text-primary">
-                      {degree.subtitle}
-                    </h3>
-                    <ExternalLink
-                      className="w-4 h-4 text-muted-foreground hover:text-primary cursor-pointer transition-colors self-start sm:self-center"
-                      onClick={() => window.open(degree.url, "_blank")}
-                    />
-                  </div>
+                  <span className="text-base sm:text-lg font-semibold text-primary">
+                    <a
+                      href={degree.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transition-colors hover:text-primary/80"
+                    >
+                      <p className="inline">{degree.subtitle}</p>
+                      <ExternalLink className="w-4 h-4 inline-flex align-middle ml-1" />
+                    </a>
+                  </span>
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-row sm:flex-col gap-2 items-start lg:items-end">
+            <div className="flex flex-col gap-2 items-start lg:items-end">
               <Badge
                 variant="secondary"
                 className="flex items-center space-x-1 text-xs"

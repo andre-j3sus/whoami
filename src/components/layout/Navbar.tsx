@@ -1,7 +1,15 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Home, User, Briefcase, GraduationCap, FolderOpen, Mail } from "lucide-react";
+import {
+  Menu,
+  Home,
+  User,
+  Briefcase,
+  GraduationCap,
+  FolderOpen,
+  Mail,
+} from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
 
