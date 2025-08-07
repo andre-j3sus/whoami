@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, X } from "lucide-react";
+import { Menu, Home, User, Briefcase, GraduationCap, FolderOpen, Mail } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
 
@@ -11,13 +11,12 @@ interface NavbarProps {
 }
 
 const navItems = [
-  { id: "hero", label: "Home" },
-  //{ id: "about", label: "About" },
-  { id: "skills", label: "Skills" },
-  { id: "experience", label: "Experience" },
-  { id: "education", label: "Education" },
-  { id: "portfolio", label: "Portfolio" },
-  { id: "contact", label: "Contact" },
+  { id: "hero", label: "Home", icon: Home },
+  { id: "skills", label: "Skills", icon: User },
+  { id: "experience", label: "Experience", icon: Briefcase },
+  { id: "education", label: "Education", icon: GraduationCap },
+  { id: "portfolio", label: "Portfolio", icon: FolderOpen },
+  { id: "contact", label: "Contact", icon: Mail },
 ];
 
 export default function Navbar({ activeSection, onSectionClick }: NavbarProps) {
@@ -72,21 +71,22 @@ export default function Navbar({ activeSection, onSectionClick }: NavbarProps) {
                   <span className="sr-only">Toggle navigation menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right">
-                <div className="flex flex-col space-y-4">
-                  <nav className="flex flex-col">
+              <SheetContent side="right" className="w-72 px-6 py-8">
+                <div className="flex flex-col space-y-6 mt-8">
+                  <nav className="flex flex-col space-y-2">
                     {navItems.map((item) => (
                       <Button
                         key={item.id}
                         variant={
                           activeSection === item.id ? "default" : "ghost"
                         }
-                        className="justify-start text-left h-12"
+                        className="justify-start text-left h-14 px-4 text-base gap-3"
                         onClick={() => {
                           onSectionClick(item.id);
                           setIsMobileMenuOpen(false);
                         }}
                       >
+                        <item.icon className="h-5 w-5" />
                         {item.label}
                       </Button>
                     ))}

@@ -72,47 +72,49 @@ const ExperienceCard = ({
       animate={isInView ? "visible" : "hidden"}
       variants={variants}
     >
-      <Card className="p-8 bg-gradient-to-br from-card to-secondary/30 border-primary/20 shadow-elegant hover:shadow-glow transition-all duration-500">
-        <CardHeader>
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-            <div className="flex items-start space-x-4">
-              {experience.company.logoPath && (
-                <div className="w-16 h-16 flex-shrink-0 bg-background rounded-lg p-2 border border-primary/20">
-                  <img
-                    src={`/logos/${experience.company.logoPath}`}
-                    alt={`${experience.company.name} logo`}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-              )}
-              <div className="space-y-2">
-                <CardTitle className="text-2xl lg:text-3xl font-bold text-foreground">
-                  {experience.title}
-                </CardTitle>
-                <div className="flex items-center space-x-2">
-                  <h3 className="text-lg font-semibold text-primary">
-                    {experience.company.name}
-                  </h3>
-                  <ExternalLink
-                    className="w-4 h-4 text-muted-foreground hover:text-primary cursor-pointer transition-colors"
-                    onClick={() =>
-                      window.open(experience.company.url, "_blank")
-                    }
-                  />
+      <Card className="p-4 sm:p-6 lg:p-8 bg-gradient-to-br from-card to-secondary/30 border-primary/20 shadow-elegant hover:shadow-glow transition-all duration-500">
+        <CardHeader className="pb-4">
+          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+            <div className="flex flex-col sm:flex-row sm:items-start gap-4 flex-1">
+              <div className="flex items-start gap-4">
+                {experience.company.logoPath && (
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0 bg-background rounded-lg p-2 border border-primary/20">
+                    <img
+                      src={`/logos/${experience.company.logoPath}`}
+                      alt={`${experience.company.name} logo`}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                )}
+                <div className="flex-1 min-w-0">
+                  <CardTitle className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground leading-tight mb-2">
+                    {experience.title}
+                  </CardTitle>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                    <h3 className="text-base sm:text-lg font-semibold text-primary">
+                      {experience.company.name}
+                    </h3>
+                    <ExternalLink
+                      className="w-4 h-4 text-muted-foreground hover:text-primary cursor-pointer transition-colors self-start sm:self-center"
+                      onClick={() =>
+                        window.open(experience.company.url, "_blank")
+                      }
+                    />
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-col gap-2 items-end">
+            <div className="flex flex-row sm:flex-col gap-2 items-start lg:items-end">
               <Badge
                 variant="secondary"
-                className="flex items-center space-x-1"
+                className="flex items-center space-x-1 text-xs"
               >
-                <CalendarDays className="w-4 h-4" />
+                <CalendarDays className="w-3 h-3" />
                 <span>{experience.duration}</span>
               </Badge>
-              <Badge variant="outline" className="flex items-center space-x-1">
-                <MapPin className="w-4 h-4" />
+              <Badge variant="outline" className="flex items-center space-x-1 text-xs">
+                <MapPin className="w-3 h-3" />
                 <span>{experience.location}</span>
               </Badge>
             </div>

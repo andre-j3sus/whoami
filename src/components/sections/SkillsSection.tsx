@@ -65,7 +65,7 @@ const SkillCard = ({
       animate={isInView ? "visible" : "hidden"}
       variants={variants}
     >
-      <Card className="p-8 bg-card border-primary/20 shadow-elegant hover:shadow-glow transition-all duration-500">
+      <Card className="p-4 sm:p-6 lg:p-8 bg-card border-primary/20 shadow-elegant hover:shadow-glow transition-all duration-500">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl lg:text-3xl font-bold text-primary">
             {category.title}
@@ -85,14 +85,14 @@ const SkillCard = ({
             </div>
 
             {/* Technology Icons */}
-            <div className="grid grid-cols-4 sm:grid-cols-6 gap-6 justify-items-center">
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 sm:gap-6 justify-items-center">
               {category.softwareSkills.map((tech, techIndex) => (
                 <div
                   key={techIndex}
-                  className="group flex flex-col items-center space-y-2 p-3 rounded-lg hover:bg-primary/10 transition-all duration-300"
+                  className="group flex flex-col items-center space-y-2 p-2 sm:p-3 rounded-lg hover:bg-primary/10 transition-all duration-300 min-w-0"
                 >
                   <div
-                    className="w-12 h-12 flex items-center justify-center rounded-lg bg-secondary/50 group-hover:scale-110 transition-transform duration-300"
+                    className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-lg bg-secondary/50 group-hover:scale-110 transition-transform duration-300"
                     style={{
                       color: tech.style.color,
                       boxShadow: `0 4px 20px ${tech.style.color}20`,
@@ -100,7 +100,7 @@ const SkillCard = ({
                   >
                     {getSkillIcon(tech.skillName, tech.style.color)}
                   </div>
-                  <span className="text-xs text-center text-muted-foreground group-hover:text-foreground transition-colors">
+                  <span className="text-xs text-center text-muted-foreground group-hover:text-foreground transition-colors leading-tight break-words">
                     {tech.skillName}
                   </span>
                 </div>
