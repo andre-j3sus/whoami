@@ -18,7 +18,7 @@ interface EducationSectionProps {
   data: {
     title: string;
     subtitle: string;
-    description: string;
+    description?: string;
     degrees: Degree[];
   };
 }
@@ -34,9 +34,11 @@ export default function EducationSection({ data }: EducationSectionProps) {
             </span>
           </h2>
           <p className="text-xl text-muted-foreground mb-4">{data.subtitle}</p>
-          <p className="text-foreground/80 max-w-3xl mx-auto">
-            {data.description}
-          </p>
+          {data.description && (
+            <p className="text-foreground/80 max-w-3xl mx-auto">
+              {data.description}
+            </p>
+          )}
         </div>
 
         <div className="space-y-8">
