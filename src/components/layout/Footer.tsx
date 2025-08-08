@@ -20,7 +20,7 @@ export default function Footer({ socialLinks }: FooterProps) {
       <div className="container mx-auto max-w-6xl">
         <div className="flex flex-col items-center space-y-4">
           {/* Social Media Icons */}
-          <div className="flex space-x-4">
+          {/* <div className="flex space-x-4">
             {mainSocialLinks.map((link, index) => (
               <button
                 key={index}
@@ -32,7 +32,7 @@ export default function Footer({ socialLinks }: FooterProps) {
                 <link.icon />
               </button>
             ))}
-          </div>
+          </div> */}
 
           {/* Copyright */}
           <p className="text-sm text-muted-foreground text-center">

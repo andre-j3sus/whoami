@@ -1,7 +1,8 @@
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { motion } from "motion/react";
 import { IconType } from "react-icons/lib";
+import { Button } from "../ui/button";
 
 interface ContactData {
   name: string;
@@ -47,17 +48,19 @@ export default function ContactSection({ data }: ContactSectionProps) {
           <Card className="p-8 bg-primary max-w-2xl mx-auto shadow-glow">
             <CardHeader>
               <CardTitle className="text-2xl font-bold text-primary-foreground">
-                Let's Work Together
+                Let's Connect!
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-primary-foreground/90 mb-6">
-                Ready to start your next project? I'm available for freelance work and collaboration opportunities.
+                I'm always happy to chat, share ideas, and connect with others.
               </p>
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 variant="secondary"
-                onClick={() => window.open('mailto:andre.jesus.pilar@gmail.com', '_blank')}
+                onClick={() =>
+                  window.open("mailto:andre.jesus.pilar@gmail.com", "_blank")
+                }
                 className="bg-background text-foreground hover:bg-background/90"
               >
                 Send Email

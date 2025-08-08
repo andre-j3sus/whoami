@@ -12,7 +12,6 @@ interface Skill {
 
 interface SkillCategory {
   title: string;
-  imagePath: string;
   skills: string[];
   softwareSkills: Skill[];
 }
@@ -29,7 +28,7 @@ export default function SkillsSection({ data }: SkillsSectionProps) {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-primary">
-            Skills & Expertise
+            Skills
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             A comprehensive overview of my technical skills and competencies
@@ -74,8 +73,8 @@ const SkillCard = ({
 
         <CardContent className="space-y-8">
           {/* Skills Description */}
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="space-y-4">
+          <div className="grid md:grid-cols-[3fr_2fr] gap-6">
+            <div className="space-y-4 self-center">
               {category.skills.map((skill, skillIndex) => (
                 <div key={skillIndex} className="flex items-start space-x-3">
                   <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
@@ -85,11 +84,12 @@ const SkillCard = ({
             </div>
 
             {/* Technology Icons */}
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 sm:gap-6 justify-items-center">
+            <div className="flex flex-wrap justify-center gap-2">
               {category.softwareSkills.map((tech, techIndex) => (
                 <div
                   key={techIndex}
-                  className="group flex flex-col items-center space-y-2 p-2 sm:p-3 rounded-lg hover:bg-primary/10 transition-all duration-300 min-w-0"
+                  className="group flex flex-col items-center space-y-2 p-2 sm:p-3 rounded-lg hover:bg-primary/10 transition-all duration-300 min-w-[64px]"
+                  style={{ flex: "0 1 64px" }} // fixed basis, no grow, shrink allowed
                 >
                   <div
                     className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-lg bg-secondary/50 group-hover:scale-110 transition-transform duration-300"

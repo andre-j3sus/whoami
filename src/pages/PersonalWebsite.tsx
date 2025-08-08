@@ -25,7 +25,6 @@ const personalData = {
   url: "https://andrejesus.com",
   headline: "Hey there 👋, welcome to my website!",
   logoName: "Andre Jesus",
-  homeImagePath: "website-creator-bro.svg",
   repository: "https://github.com/andre-j3sus/andre-j3sus-website",
   resume:
     "https://www.canva.com/design/DAFqHQqqaGk/A5weUCHWBrwn62I-qRZHhA/view?utm_content=DAFqHQqqaGk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hde1e82327d",
@@ -113,141 +112,69 @@ const personalData = {
         url: "https://www.tvtime.com/en/user/28579171/profile",
         icon: FaTv,
         backgroundColor: "#FFD700",
-        description: "Watch my shows",
+        description: "Check what I'm watching",
       },
     ],
   },
   skills: {
     data: [
       {
-        title: "Programming Languages and DevOps",
-        imagePath: "code-typing-bro.svg",
+        title: "Programming Languages",
         skills: [
+          "Proficient in modern programming languages for versatile software development.",
+          "Skilled in writing clean, maintainable, and efficient code.",
           "Well-versed in programming paradigms, enabling flexible problem-solving approaches.",
-          "Experience in developing software solutions using diverse programming languages.",
-          "Proficiency in Git, GitHub, and DevOps tools for seamless collaboration, CI/CD, and code management.",
-          "Well-versed in LaTeX for creating professional and well-formatted documents.",
         ],
         softwareSkills: [
-          {
-            skillName: "Java",
-            style: { color: "#007396" },
-          },
-          {
-            skillName: "Kotlin",
-            style: { color: "#B125EA" },
-          },
-          {
-            skillName: "JavaScript",
-            style: { color: "#F7DF1E" },
-          },
-          {
-            skillName: "TypeScript",
-            style: { color: "#3178C6" },
-          },
-          {
-            skillName: "C",
-            style: { color: "#A8B9CC" },
-          },
-          {
-            skillName: "C#",
-            style: { color: "#239120" },
-          },
-          {
-            skillName: "Python",
-            style: { color: "#3776AB" },
-          },
-          {
-            skillName: "Git",
-            style: { color: "#F05032" },
-          },
-          {
-            skillName: "GitHub",
-            style: { color: "#181717" },
-          },
-          {
-            skillName: "GitHub Actions",
-            style: { color: "#2088FF" },
-          },
-          {
-            skillName: "LaTeX",
-            style: { color: "#008080" },
-          },
+          { skillName: "JavaScript", style: { color: "#F7DF1E" } },
+          { skillName: "TypeScript", style: { color: "#3178C6" } },
+          { skillName: "Python", style: { color: "#3776AB" } },
+          { skillName: "Kotlin", style: { color: "#B125EA" } },
+          { skillName: "Java", style: { color: "#007396" } },
         ],
       },
       {
-        title: "Web Development",
-        imagePath: "domain-names-bro.svg",
+        title: "Backend Development",
         skills: [
-          "Experienced in backend development, ensuring security and scalability.",
-          "Building responsive user interfaces for web applications.",
-          "Familiarity with tools like Webpack, NGINX, and Postman for efficient development and testing processes.",
+          "Building scalable, secure backend services with modern frameworks and API design.",
+          "Expertise in relational and NoSQL databases for robust data storage and retrieval.",
+          "Experience in automated testing and CI/CD for backend reliability.",
         ],
         softwareSkills: [
-          {
-            skillName: "HTML5",
-            style: { color: "#E34F26" },
-          },
-          {
-            skillName: "CSS3",
-            style: { color: "#1572B6" },
-          },
-          {
-            skillName: "NodeJS",
-            style: { color: "#339933" },
-          },
-          {
-            skillName: "ExpressJS",
-            style: { color: "#000000" },
-          },
-          {
-            skillName: "React",
-            style: { color: "#61DAFB" },
-          },
-          {
-            skillName: "Spring",
-            style: { color: "#6DB33F" },
-          },
+          { skillName: "NodeJS", style: { color: "#339933" } },
+          { skillName: "FastAPI", style: { color: "#009688" } },
+          { skillName: "GraphQL", style: { color: "#E10098" } },
+          { skillName: "Jest", style: { color: "#99425B" } },
+          { skillName: "Spring", style: { color: "#6DB33F" } },
+          { skillName: "PostgreSQL", style: { color: "#336791" } },
+          { skillName: "MongoDB", style: { color: "#47A248" } },
         ],
       },
       {
-        title: "Cloud Infra, Databases & OS",
-        imagePath: "server-bro.svg",
+        title: "Frontend Development",
         skills: [
-          "Proficiency in Docker for efficient application deployment through containerization.",
-          "Experience in Linux for effective server management and administration.",
-          "Familiarity with Google Cloud Platform scalable and reliable cloud infrastructure solutions.",
-          "Experience in several database technologies, for efficient data storage and retrieval.",
+          "Creating responsive and dynamic user interfaces with modern frameworks.",
+          "Experienced in building data visualizations using libraries like D3.js.",
         ],
         softwareSkills: [
-          {
-            skillName: "Docker",
-            style: { color: "#2496ED" },
-          },
-          {
-            skillName: "Linux",
-            style: { color: "#FCC624" },
-          },
-          {
-            skillName: "Android",
-            style: { color: "#3DDC84" },
-          },
-          {
-            skillName: "Cloudflare Workers",
-            style: { color: "#F38020" },
-          },
-          {
-            skillName: "Google Cloud Platform",
-            style: { color: "#4285F4" },
-          },
-          {
-            skillName: "PostgreSQL",
-            style: { color: "#336791" },
-          },
-          {
-            skillName: "MongoDB",
-            style: { color: "#47A248" },
-          },
+          { skillName: "HTML5", style: { color: "#E34F26" } },
+          { skillName: "CSS3", style: { color: "#1572B6" } },
+          { skillName: "React", style: { color: "#61DAFB" } },
+          { skillName: "Remix", style: { color: "#000000" } },
+          { skillName: "Vite", style: { color: "#646CFF" } },
+        ],
+      },
+      {
+        title: "Cloud Infra & DevOps",
+        skills: [
+          "Deploying and managing applications using containerization and orchestration.",
+          "Familiar with cloud platforms and edge computing for scalable infrastructure.",
+        ],
+        softwareSkills: [
+          { skillName: "Docker", style: { color: "#2496ED" } },
+          { skillName: "Kubernetes", style: { color: "#326CE5" } },
+          { skillName: "Cloudflare Workers", style: { color: "#F38020" } },
+          { skillName: "Google Cloud Platform", style: { color: "#4285F4" } },
         ],
       },
     ],
@@ -255,9 +182,7 @@ const personalData = {
   education: {
     title: "Education",
     subtitle: "Qualification and Certifications",
-    description:
-      "Here's my educational background. I am currently finishing my Master Thesis.",
-    headerImagePath: "learning-bro.svg",
+    //description: "Here's my educational background. I am currently finishing my Master Thesis.",
     icon: "fas fa-graduation-cap",
     degrees: [
       {
@@ -266,7 +191,7 @@ const personalData = {
         logoPath: "ist.png",
         duration: "September 2023 - October 2025",
         descriptions: [
-          "Focus Areas: Distributed Systems and Cyber-Security",
+          "Focus Areas: Distributed Systems and Cybersecurity",
           'Dissertation (in progress): "Enhancing Serverless Platform Support for Snapshots"',
         ],
         url: "https://tecnico.ulisboa.pt/en/",
@@ -292,7 +217,6 @@ const personalData = {
     title: "Experience",
     subtitle: "Work, Internship and Volunteership",
     //description: "Here's my work experience so far.",
-    headerImagePath: "signing-a-contract-bro.svg",
     icon: "fas fa-briefcase",
     experiences: [
       {
@@ -301,7 +225,7 @@ const personalData = {
           name: "Cloudflare",
           conglomerate: "Cloudflare",
           url: "https://www.cloudflare.com/",
-          logoPath: "cf.png",
+          logoPath: "cf.svg",
         },
         duration: "May 2024 - Present",
         location: "Lisbon, Portugal",
@@ -336,7 +260,6 @@ const personalData = {
     subtitle: "Projects, Publications and Research Papers",
     description:
       "My projects make use of vast variety of latest technology tools. My best experience is to create Web Applications and deploy them to web services. Here's a list of my favorite projects I have worked on.",
-    headerImagePath: "timeline-bro.svg",
     icon: "fas fa-project-diagram",
     projects: [
       {
