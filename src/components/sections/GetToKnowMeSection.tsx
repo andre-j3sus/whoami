@@ -12,6 +12,8 @@ import {
 
 interface Interest {
   title: string;
+  emoji: string;
+  category: string;
   content: string;
   icon: React.ReactNode;
   link?: {
@@ -19,6 +21,7 @@ interface Interest {
     text: string;
   };
   gradient: string;
+  accentColor: string;
 }
 
 interface GetToKnowMeSectionProps {
@@ -31,18 +34,18 @@ interface GetToKnowMeSectionProps {
 
 export default function GetToKnowMeSection({ data }: GetToKnowMeSectionProps) {
   return (
-    <section id="about-me" className="py-20 px-6">
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-primary">
+    <section id="about-me" className="py-24 px-6 relative">
+      <div className="container mx-auto max-w-7xl">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-primary-glow to-primary bg-clip-text text-transparent">
             {data.title}
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl lg:text-2xl text-muted-foreground max-w-4xl mx-auto font-light">
             {data.subtitle}
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8 lg:gap-10">
           {data.interests.map((interest, index) => (
             <InterestCard key={index} interest={interest} index={index} />
           ))}
@@ -67,37 +70,63 @@ const InterestCard = ({
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={variants}
-      style={{ animationDelay: `${index * 0.1}s` }}
+      style={{ animationDelay: `${index * 0.15}s` }}
+      className="h-full"
     >
-      <Card className="p-6 bg-card border-primary/20 shadow-elegant hover:shadow-glow transition-all duration-500 h-full flex flex-col">
-        <CardHeader className="text-center pb-4">
-          <div className={`w-16 h-16 mx-auto rounded-xl flex items-center justify-center mb-4 ${interest.gradient}`}>
-            <div className="text-white text-2xl">
-              {interest.icon}
+      <Card className="group relative overflow-hidden bg-card border-border/50 hover:border-primary/30 shadow-elegant hover:shadow-glow transition-all duration-700 h-full flex flex-col backdrop-blur-sm">
+        {/* Gradient Background Overlay */}
+        <div className={`absolute inset-0 bg-gradient-to-br ${interest.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
+        
+        {/* Content */}
+        <div className="relative z-10 flex flex-col h-full">
+          <CardHeader className="text-center pb-6 pt-8">
+            {/* Emoji with animated background */}
+            <div className="relative mx-auto mb-6">
+              <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${interest.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-lg`}>
+                <span className="text-3xl filter drop-shadow-sm">
+                  {interest.emoji}
+                </span>
+              </div>
+              {/* Floating icon */}
+              <div className={`absolute -bottom-2 -right-2 w-8 h-8 rounded-full bg-card border-2 border-primary/20 flex items-center justify-center ${interest.accentColor} group-hover:scale-125 transition-transform duration-500`}>
+                {interest.icon}
+              </div>
             </div>
-          </div>
-          <CardTitle className="text-xl font-bold text-primary">
-            {interest.title}
-          </CardTitle>
-        </CardHeader>
+            
+            {/* Category badge */}
+            <div className={`inline-block px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium mb-3 ${interest.accentColor}`}>
+              {interest.category}
+            </div>
+            
+            {/* Title */}
+            <CardTitle className={`text-2xl font-bold mb-2 ${interest.accentColor} group-hover:scale-105 transition-transform duration-500`}>
+              {interest.title}
+            </CardTitle>
+          </CardHeader>
 
-        <CardContent className="flex-1 flex flex-col">
-          <p className="text-foreground/80 leading-relaxed mb-4 flex-1">
-            {interest.content}
-          </p>
-          
-          {interest.link && (
-            <a
-              href={interest.link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-medium"
-            >
-              {interest.link.text}
-              <ExternalLink className="w-4 h-4" />
-            </a>
-          )}
-        </CardContent>
+          <CardContent className="flex-1 flex flex-col px-8 pb-8">
+            <p className="text-foreground/80 leading-relaxed text-base mb-6 flex-1 line-height-7">
+              {interest.content}
+            </p>
+            
+            {interest.link && (
+              <a
+                href={interest.link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex items-center gap-2 ${interest.accentColor} hover:opacity-80 transition-all duration-300 font-semibold text-sm uppercase tracking-wide group-hover:translate-x-1`}
+              >
+                {interest.link.text}
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            )}
+          </CardContent>
+        </div>
+
+        {/* Subtle glow effect on hover */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+          <div className={`absolute inset-0 bg-gradient-to-br ${interest.gradient} blur-xl scale-110`} />
+        </div>
       </Card>
     </motion.div>
   );

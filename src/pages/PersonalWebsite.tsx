@@ -320,38 +320,53 @@ const personalData = {
     subtitle: "Beyond the code, here's what makes me tick",
     interests: [
       {
-        title: "📚 Reading & Books",
+        title: "One Book to Rule Them All",
+        emoji: "📚",
+        category: "Reading & Books",
         content: "I love reading all kinds of genres, but fantasy is my favorite. You could say I have a 'hobbit' of getting lost in great stories! One does not simply put down a good book.",
         icon: <BookOpen className="w-6 h-6" />,
         link: {
           url: "https://www.goodreads.com/user/show/108854374-andr-jesus",
           text: "Check out my Goodreads"
         },
-        gradient: "bg-gradient-to-br from-amber-500 to-orange-600"
+        gradient: "from-amber-400/20 via-orange-500/10 to-red-500/20",
+        accentColor: "text-amber-500 dark:text-amber-400"
       },
       {
-        title: "🎸 Guitar & Music",
+        title: "Strings Attached",
+        emoji: "🎸",
+        category: "Guitar & Music",
         content: "Started learning guitar in September 2023 by myself using JustinGuitar and other resources. Progress slowed in March 2024 due to work and thesis, but I'll get back to it soon. I love rock music, and my girlfriend got me into indie as well.",
         icon: <Guitar className="w-6 h-6" />,
-        gradient: "bg-gradient-to-br from-purple-500 to-pink-600"
+        gradient: "from-purple-400/20 via-pink-500/10 to-rose-500/20",
+        accentColor: "text-purple-500 dark:text-purple-400"
       },
       {
-        title: "💪 Gym & Active Lifestyle",
+        title: "Sweat Equity",
+        emoji: "💪",
+        category: "Gym & Active Lifestyle",
         content: "Swimming for 8 years, field hockey for 4, badminton for 3. University made me switch to gym, which I now love and do regularly with friends or alone.",
         icon: <Dumbbell className="w-6 h-6" />,
-        gradient: "bg-gradient-to-br from-green-500 to-teal-600"
+        gradient: "from-green-400/20 via-emerald-500/10 to-teal-500/20",
+        accentColor: "text-green-500 dark:text-green-400"
       },
       {
-        title: "🌍 Travelling & Cuisine",
+        title: "Wander Often, Eat Well",
+        emoji: "🌍",
+        category: "Travel & Cuisine",
         content: "Love exploring new places and cultures, aiming for 3+ vacations a year. Favorite cuisine is Portuguese, but also love Japanese, Asian, Spanish, and Italian food.",
         icon: <Plane className="w-6 h-6" />,
-        gradient: "bg-gradient-to-br from-blue-500 to-cyan-600"
+        gradient: "from-blue-400/20 via-cyan-500/10 to-sky-500/20",
+        accentColor: "text-blue-500 dark:text-blue-400"
       },
       {
-        title: "⚽ Soccer & Sports",
-        content: "Not a fanatic, but I love to watch a good football (or soccer for my American friends) match with a cold beer in my hand. I support Sporting Clube de Portugal (SCP) since I was little. I'm also simpatizante of Manchester United, in England. And of course, Cristiano Ronaldo is the GOAT.",
+        title: "Goals On & Off the Pitch",
+        emoji: "⚽",
+        category: "Soccer & Sports",
+        content: "Not a fanatic, but I love to watch a good football (or soccer for my American friends) match with a cold beer in my hand. I support Sporting Clube de Portugal (SCP) since I was little. I'm also a sympathizer of Manchester United in England. And of course, Cristiano Ronaldo is the GOAT.",
         icon: <Trophy className="w-6 h-6" />,
-        gradient: "bg-gradient-to-br from-emerald-500 to-green-600"
+        gradient: "from-emerald-400/20 via-green-500/10 to-lime-500/20",
+        accentColor: "text-emerald-500 dark:text-emerald-400"
       }
     ]
   },
