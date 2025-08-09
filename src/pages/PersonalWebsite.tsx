@@ -9,19 +9,13 @@ import {
   FaSpotify,
   FaTv,
 } from "react-icons/fa6";
-import { 
-  BookOpen,
-  Guitar,
-  Dumbbell,
-  Plane,
-  Trophy
-} from "lucide-react";
+import { BookOpen, Guitar, Dumbbell, Plane, Trophy } from "lucide-react";
 import HeroSection from "@/components/sections/HeroSection";
 import SkillsSection from "@/components/sections/SkillsSection";
 import ExperienceSection from "@/components/sections/ExperienceSection";
 import EducationSection from "@/components/sections/EducationSection";
 import PortfolioSection from "@/components/sections/PortfolioSection";
-import GetToKnowMeSection from "@/components/sections/GetToKnowMeSection";
+import AboutMeSection from "@/components/sections/AboutMeSection";
 import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
@@ -316,59 +310,56 @@ const personalData = {
     publications: [],
   },
   aboutMe: {
-    title: "Get to Know Me",
+    title: "About Me",
     subtitle: "Beyond the code, here's what makes me tick",
     interests: [
       {
-        title: "One Book to Rule Them All",
+        title: "Reading",
+        subtitle: "One Book to Rule Them All",
         emoji: "📚",
-        category: "Reading & Books",
-        content: "I love reading all kinds of genres, but fantasy is my favorite. You could say I have a 'hobbit' of getting lost in great stories! One does not simply put down a good book.",
-        icon: <BookOpen className="w-6 h-6" />,
+        content:
+          "I love reading all kinds of genres, but fantasy is my favorite. One does not simply put down a good book 🧙‍♂️.",
         link: {
           url: "https://www.goodreads.com/user/show/108854374-andr-jesus",
-          text: "Check out my Goodreads"
+          text: "Check out my Goodreads",
         },
-        gradient: "from-amber-400/20 via-orange-500/10 to-red-500/20",
-        accentColor: "text-amber-500 dark:text-amber-400"
       },
       {
-        title: "Strings Attached",
-        emoji: "🎸",
-        category: "Guitar & Music",
-        content: "Started learning guitar in September 2023 by myself using JustinGuitar and other resources. Progress slowed in March 2024 due to work and thesis, but I'll get back to it soon. I love rock music, and my girlfriend got me into indie as well.",
-        icon: <Guitar className="w-6 h-6" />,
-        gradient: "from-purple-400/20 via-pink-500/10 to-rose-500/20",
-        accentColor: "text-purple-500 dark:text-purple-400"
-      },
-      {
-        title: "Sweat Equity",
+        title: "Active Lifestyle",
+        subtitle: "Who's Gonna Carry The Boats?!",
         emoji: "💪",
-        category: "Gym & Active Lifestyle",
-        content: "Swimming for 8 years, field hockey for 4, badminton for 3. University made me switch to gym, which I now love and do regularly with friends or alone.",
-        icon: <Dumbbell className="w-6 h-6" />,
-        gradient: "from-green-400/20 via-emerald-500/10 to-teal-500/20",
-        accentColor: "text-green-500 dark:text-green-400"
+        content:
+          "Swimming for 8 years 🏊‍♂️, field hockey for 4 🏑, badminton for 3 🏸. University made me switch to gym 🏋️‍♂️, which I now love and do regularly with friends or alone.",
       },
       {
-        title: "Wander Often, Eat Well",
+        title: "Guitar & Music",
+        subtitle: "Livin' on a prayer!",
+        emoji: "🤘",
+        content:
+          "I picked up the 🎸 in September 2023, teaching myself with JustinGuitar and other online resources. Work and my thesis slowed me down in March 2024, but I'll be back at it soon. Rock is my jam, though my girlfriend has also pulled me into the indie scene.",
+      },
+      {
+        title: "Travel & Food",
+        subtitle: "Wander Often, Eat Well",
         emoji: "🌍",
-        category: "Travel & Cuisine",
-        content: "Love exploring new places and cultures, aiming for 3+ vacations a year. Favorite cuisine is Portuguese, but also love Japanese, Asian, Spanish, and Italian food.",
-        icon: <Plane className="w-6 h-6" />,
-        gradient: "from-blue-400/20 via-cyan-500/10 to-sky-500/20",
-        accentColor: "text-blue-500 dark:text-blue-400"
+        content:
+          "Love exploring new places and cultures, aiming for 3+ trips a year. I also really like food. Portuguese cuisine is home, but Japanese, Spanish, and Italian are close contenders.",
       },
       {
-        title: "Goals On & Off the Pitch",
+        title: "Soccer",
+        subtitle: "SIUUUU!",
         emoji: "⚽",
-        category: "Soccer & Sports",
-        content: "Not a fanatic, but I love to watch a good football (or soccer for my American friends) match with a cold beer in my hand. I support Sporting Clube de Portugal (SCP) since I was little. I'm also a sympathizer of Manchester United in England. And of course, Cristiano Ronaldo is the GOAT.",
-        icon: <Trophy className="w-6 h-6" />,
-        gradient: "from-emerald-400/20 via-green-500/10 to-lime-500/20",
-        accentColor: "text-emerald-500 dark:text-emerald-400"
-      }
-    ]
+        content:
+          "Not a fanatic, but I love to watch a good football (or soccer for my American friends) match with a cold 🍺 in my hand. I support Sporting Clube de Portugal 🦁💚 since I was little, and I'm also a sympathizer of Manchester United in England. And of course, Cristiano Ronaldo is the 🐐.",
+      },
+      {
+        title: "Gaming",
+        subtitle: "Game On",
+        emoji: "🎮",
+        content:
+          "I started gaming on a Nintendo DSi (remember playing Super Mario Bros and Pokémon Diamond), moved to the PSP (Ratchet & Clank and Jak and Daxter), then PC (spent countless hours playing Minecraft, CS:GO, Overwatch, and more). I also had a PS4 where I played Call of Duty, FIFA, Fortnite and Horizon Zero Dawn. My comfort game? Hollow Knight.",
+      },
+    ],
   },
 };
 
@@ -427,7 +418,7 @@ export default function PersonalWebsite() {
         <ExperienceSection data={personalData.experience} />
         <EducationSection data={personalData.education} />
         <PortfolioSection data={personalData.portfolio} />
-        <GetToKnowMeSection data={personalData.aboutMe} />
+        <AboutMeSection data={personalData.aboutMe} />
         <ContactSection data={personalData.contacts} />
       </main>
 

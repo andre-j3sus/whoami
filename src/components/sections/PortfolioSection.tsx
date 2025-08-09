@@ -34,7 +34,7 @@ interface PortfolioSectionProps {
 
 export default function PortfolioSection({ data }: PortfolioSectionProps) {
   return (
-    <section id="portfolio" className="py-20 px-6 bg-gradient-subtle">
+    <section id="portfolio" className="py-20 px-6">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold mb-4">

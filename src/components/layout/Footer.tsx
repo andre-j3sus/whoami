@@ -16,7 +16,7 @@ export default function Footer({ socialLinks }: FooterProps) {
   const mainSocialLinks = socialLinks.filter((link) => link.showOnFooter);
 
   return (
-    <footer className="bg-card border-t border-border py-8 px-6">
+    <footer className="bg-card border-t border-border py-8 px-6 ">
       <div className="container mx-auto max-w-6xl">
         <div className="flex flex-col items-center space-y-4">
           {/* Social Media Icons */}
