@@ -8,6 +8,7 @@ import {
   Briefcase,
   GraduationCap,
   FolderOpen,
+  Heart,
   Mail,
 } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -24,6 +25,7 @@ const navItems = [
   { id: "experience", label: "Experience", icon: Briefcase },
   { id: "education", label: "Education", icon: GraduationCap },
   { id: "portfolio", label: "Portfolio", icon: FolderOpen },
+  { id: "about-me", label: "About Me", icon: Heart },
   { id: "contact", label: "Contact", icon: Mail },
 ];
 

@@ -9,11 +9,19 @@ import {
   FaSpotify,
   FaTv,
 } from "react-icons/fa6";
+import { 
+  BookOpen,
+  Guitar,
+  Dumbbell,
+  Plane,
+  Trophy
+} from "lucide-react";
 import HeroSection from "@/components/sections/HeroSection";
 import SkillsSection from "@/components/sections/SkillsSection";
 import ExperienceSection from "@/components/sections/ExperienceSection";
 import EducationSection from "@/components/sections/EducationSection";
 import PortfolioSection from "@/components/sections/PortfolioSection";
+import GetToKnowMeSection from "@/components/sections/GetToKnowMeSection";
 import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
@@ -307,6 +315,46 @@ const personalData = {
     ],
     publications: [],
   },
+  aboutMe: {
+    title: "Get to Know Me",
+    subtitle: "Beyond the code, here's what makes me tick",
+    interests: [
+      {
+        title: "📚 Reading & Books",
+        content: "I love reading all kinds of genres, but fantasy is my favorite. You could say I have a 'hobbit' of getting lost in great stories! One does not simply put down a good book.",
+        icon: <BookOpen className="w-6 h-6" />,
+        link: {
+          url: "https://www.goodreads.com/user/show/108854374-andr-jesus",
+          text: "Check out my Goodreads"
+        },
+        gradient: "bg-gradient-to-br from-amber-500 to-orange-600"
+      },
+      {
+        title: "🎸 Guitar & Music",
+        content: "Started learning guitar in September 2023 by myself using JustinGuitar and other resources. Progress slowed in March 2024 due to work and thesis, but I'll get back to it soon. I love rock music, and my girlfriend got me into indie as well.",
+        icon: <Guitar className="w-6 h-6" />,
+        gradient: "bg-gradient-to-br from-purple-500 to-pink-600"
+      },
+      {
+        title: "💪 Gym & Active Lifestyle",
+        content: "Swimming for 8 years, field hockey for 4, badminton for 3. University made me switch to gym, which I now love and do regularly with friends or alone.",
+        icon: <Dumbbell className="w-6 h-6" />,
+        gradient: "bg-gradient-to-br from-green-500 to-teal-600"
+      },
+      {
+        title: "🌍 Travelling & Cuisine",
+        content: "Love exploring new places and cultures, aiming for 3+ vacations a year. Favorite cuisine is Portuguese, but also love Japanese, Asian, Spanish, and Italian food.",
+        icon: <Plane className="w-6 h-6" />,
+        gradient: "bg-gradient-to-br from-blue-500 to-cyan-600"
+      },
+      {
+        title: "⚽ Soccer & Sports",
+        content: "Not a fanatic, but I love to watch a good football (or soccer for my American friends) match with a cold beer in my hand. I support Sporting Clube de Portugal (SCP) since I was little. I'm also simpatizante of Manchester United, in England. And of course, Cristiano Ronaldo is the GOAT.",
+        icon: <Trophy className="w-6 h-6" />,
+        gradient: "bg-gradient-to-br from-emerald-500 to-green-600"
+      }
+    ]
+  },
 };
 
 export default function PersonalWebsite() {
@@ -320,6 +368,7 @@ export default function PersonalWebsite() {
         "experience",
         "education",
         "portfolio",
+        "about-me",
         "contact",
       ];
       const scrollPosition = window.scrollY + 100;
@@ -363,6 +412,7 @@ export default function PersonalWebsite() {
         <ExperienceSection data={personalData.experience} />
         <EducationSection data={personalData.education} />
         <PortfolioSection data={personalData.portfolio} />
+        <GetToKnowMeSection data={personalData.aboutMe} />
         <ContactSection data={personalData.contacts} />
       </main>
 
