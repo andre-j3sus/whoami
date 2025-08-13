@@ -89,7 +89,7 @@ const InterestCard = ({
                 href={interest.link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-primary hover:opacity-80 transition-all duration-300 font-semibold text-sm uppercase tracking-wide mt-auto"
+                className="inline-flex items-center gap-2 text-primary hover:opacity-80 transition-all duration-300 font-semibold text-sm tracking-wide mt-auto"
               >
                 {interest.link.text}
                 <ExternalLink className="w-4 h-4" />

@@ -8,8 +8,8 @@ import {
   FaOrcid,
   FaSpotify,
   FaTv,
+  FaSteam,
 } from "react-icons/fa6";
-import { BookOpen, Guitar, Dumbbell, Plane, Trophy } from "lucide-react";
 import HeroSection from "@/components/sections/HeroSection";
 import SkillsSection from "@/components/sections/SkillsSection";
 import ExperienceSection from "@/components/sections/ExperienceSection";
@@ -109,12 +109,19 @@ const personalData = {
         backgroundColor: "#553B08",
         description: "See what I'm reading",
       },
+      // {
+      //   name: "TV Time",
+      //   url: "https://www.tvtime.com/en/user/28579171/profile",
+      //   icon: FaTv,
+      //   backgroundColor: "#FFD700",
+      //   description: "Check what I'm watching",
+      // },
       {
-        name: "TV Time",
-        url: "https://www.tvtime.com/en/user/28579171/profile",
-        icon: FaTv,
-        backgroundColor: "#FFD700",
-        description: "Check what I'm watching",
+        name: "Steam",
+        url: "https://steamcommunity.com/id/andre-jesus/",
+        icon: FaSteam,
+        backgroundColor: "#171A21",
+        description: "Check what I'm playing",
       },
     ],
   },
@@ -125,6 +132,7 @@ const personalData = {
         skills: [
           "Proficient in modern programming languages for versatile software development.",
           "Skilled in writing clean, maintainable, and efficient code.",
+          //"Integrating linters and code formatters to enforce consistent and high-quality code standards.",
           "Well-versed in programming paradigms, enabling flexible problem-solving approaches.",
         ],
         softwareSkills: [
@@ -138,15 +146,14 @@ const personalData = {
       {
         title: "Backend Development",
         skills: [
-          "Building scalable, secure backend services with modern frameworks and API design.",
+          "Experience in building scalable, secure backend services with modern frameworks and API design.",
           "Expertise in relational and NoSQL databases for robust data storage and retrieval.",
-          "Experience in automated testing and CI/CD for backend reliability.",
         ],
         softwareSkills: [
           { skillName: "NodeJS", style: { color: "#339933" } },
           { skillName: "FastAPI", style: { color: "#009688" } },
           { skillName: "GraphQL", style: { color: "#E10098" } },
-          { skillName: "Jest", style: { color: "#99425B" } },
+          //{ skillName: "Jest", style: { color: "#99425B" } },
           { skillName: "Spring", style: { color: "#6DB33F" } },
           { skillName: "PostgreSQL", style: { color: "#336791" } },
           { skillName: "MongoDB", style: { color: "#47A248" } },
@@ -167,16 +174,25 @@ const personalData = {
         ],
       },
       {
-        title: "Cloud Infra & DevOps",
+        title: "Cloud Infrastructure & DevOps",
         skills: [
-          "Deploying and managing applications using containerization and orchestration.",
+          "Designing, implementing, and managing CI/CD pipelines for automated build, test, and deployment workflows.",
+          "Deploying and managing applications using containerization and orchestration technologies.",
           "Familiar with cloud platforms and edge computing for scalable infrastructure.",
+          "Setting up observability systems, including monitoring, logging, and alerting, to ensure reliable operations.",
         ],
         softwareSkills: [
           { skillName: "Docker", style: { color: "#2496ED" } },
           { skillName: "Kubernetes", style: { color: "#326CE5" } },
           { skillName: "Cloudflare Workers", style: { color: "#F38020" } },
           { skillName: "Google Cloud Platform", style: { color: "#4285F4" } },
+          // { skillName: "Terraform", style: { color: "#7B42BC" } },
+          { skillName: "GitHub Actions", style: { color: "#181717" } },
+          { skillName: "Prometheus", style: { color: "#E6522C" } },
+          { skillName: "Grafana", style: { color: "#F46800" } },
+          { skillName: "Sentry", style: { color: "#362D59" } },
+          // { skillName: "ESLint", style: { color: "#4B32C3" } },
+          // { skillName: "Prettier", style: { color: "#F7B93E" } },
         ],
       },
     ],
@@ -358,6 +374,10 @@ const personalData = {
         emoji: "🎮",
         content:
           "I started gaming on a Nintendo DSi (remember playing Super Mario Bros and Pokémon Diamond), moved to the PSP (Ratchet & Clank and Jak and Daxter), then PC (spent countless hours playing Minecraft, CS:GO, Overwatch, and more). I also had a PS4 where I played Call of Duty, FIFA, Fortnite and Horizon Zero Dawn. My comfort game? Hollow Knight.",
+        link: {
+          text: "Check out my Steam profile",
+          url: "https://steamcommunity.com/id/andre-jesus/",
+        },
       },
     ],
   },
