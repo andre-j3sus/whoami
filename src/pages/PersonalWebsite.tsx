@@ -23,7 +23,7 @@ import Navbar from "@/components/layout/Navbar";
 // Personal data - this would typically come from a CMS or API
 const personalData = {
   name: "André Jesus",
-  position: "Systems Engineer | Computer Science & Engineering Student",
+  position: "Systems Engineer at Cloudflare",
   url: "https://andrejesus.com",
   headline: "Hey there 👋, welcome to my website!",
   logoName: "Andre Jesus",
@@ -210,7 +210,7 @@ const personalData = {
         duration: "September 2023 - October 2025",
         descriptions: [
           "Focus Areas: Distributed Systems and Cybersecurity",
-          'Dissertation (in progress): "Enhancing Serverless Platform Support for Snapshots"',
+          'Dissertation: "Serverless Snapshot Orchestration" - 19/20 (95%)',
         ],
         url: "https://tecnico.ulisboa.pt/en/",
         grade: "18/20", // Grade: 90% (18/20)
