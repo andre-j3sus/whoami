@@ -31,7 +31,13 @@ const blogPosts: BlogPost[] = [
     external: true,
     url: "https://blog.cloudflare.com/introducing-tld-insights-on-cloudflare-radar/",
   },
-  // Add more blog posts here
+  {
+    id: "2",
+    title: "My Journey into Software Engineering",
+    date: "2024-01-20",
+    tags: ["Career", "Personal", "Software Engineering"],
+    slug: "my-journey-into-software-engineering",
+  },
 ];
 
 const socialLinks = [

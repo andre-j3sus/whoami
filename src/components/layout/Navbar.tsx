@@ -10,9 +10,11 @@ import {
   FolderOpen,
   Heart,
   Mail,
+  BookOpen,
 } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router";
 
 interface NavbarProps {
   activeSection: string;
@@ -27,6 +29,7 @@ const navItems = [
   { id: "portfolio", label: "Portfolio", icon: FolderOpen },
   { id: "about-me", label: "About Me", icon: Heart },
   { id: "contact", label: "Contact", icon: Mail },
+  { id: "blog", label: "Blog", icon: BookOpen, isRoute: true, path: "/blog" },
 ];
 
 export default function Navbar({ activeSection, onSectionClick }: NavbarProps) {
@@ -57,17 +60,29 @@ export default function Navbar({ activeSection, onSectionClick }: NavbarProps) {
             Andre Jesus
           </div>
           <div className="hidden md:flex items-center space-x-1">
-            {navItems.map((item) => (
-              <Button
-                key={item.id}
-                variant={activeSection === item.id ? "default" : "ghost"}
-                size="sm"
-                onClick={() => onSectionClick(item.id)}
-                className="transition-all duration-300"
-              >
-                {item.label}
-              </Button>
-            ))}
+            {navItems.map((item) =>
+              item.isRoute ? (
+                <Link key={item.id} to={item.path}>
+                  <Button
+                    variant={activeSection === item.id ? "default" : "ghost"}
+                    size="sm"
+                    className="transition-all duration-300"
+                  >
+                    {item.label}
+                  </Button>
+                </Link>
+              ) : (
+                <Button
+                  key={item.id}
+                  variant={activeSection === item.id ? "default" : "ghost"}
+                  size="sm"
+                  onClick={() => onSectionClick(item.id)}
+                  className="transition-all duration-300"
+                >
+                  {item.label}
+                </Button>
+              )
+            )}
             <ThemeToggle />
           </div>
 
@@ -84,22 +99,40 @@ export default function Navbar({ activeSection, onSectionClick }: NavbarProps) {
               <SheetContent side="right" className="w-72 px-6 py-8">
                 <div className="flex flex-col space-y-6 mt-8">
                   <nav className="flex flex-col space-y-2">
-                    {navItems.map((item) => (
-                      <Button
-                        key={item.id}
-                        variant={
-                          activeSection === item.id ? "default" : "ghost"
-                        }
-                        className="justify-start text-left h-14 px-4 text-base gap-3"
-                        onClick={() => {
-                          onSectionClick(item.id);
-                          setIsMobileMenuOpen(false);
-                        }}
-                      >
-                        <item.icon className="h-5 w-5" />
-                        {item.label}
-                      </Button>
-                    ))}
+                    {navItems.map((item) =>
+                      item.isRoute ? (
+                        <Link
+                          key={item.id}
+                          to={item.path}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          <Button
+                            variant={
+                              activeSection === item.id ? "default" : "ghost"
+                            }
+                            className="justify-start text-left h-14 px-4 text-base gap-3 w-full"
+                          >
+                            <item.icon className="h-5 w-5" />
+                            {item.label}
+                          </Button>
+                        </Link>
+                      ) : (
+                        <Button
+                          key={item.id}
+                          variant={
+                            activeSection === item.id ? "default" : "ghost"
+                          }
+                          className="justify-start text-left h-14 px-4 text-base gap-3"
+                          onClick={() => {
+                            onSectionClick(item.id);
+                            setIsMobileMenuOpen(false);
+                          }}
+                        >
+                          <item.icon className="h-5 w-5" />
+                          {item.label}
+                        </Button>
+                      )
+                    )}
                   </nav>
                 </div>
               </SheetContent>
