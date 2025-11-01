@@ -7,8 +7,7 @@ import {
   User,
   Briefcase,
   GraduationCap,
-  FolderOpen,
-  Heart,
+  DraftingCompass,
   Mail,
   BookOpen,
 } from "lucide-react";
@@ -18,21 +17,35 @@ import { Link } from "react-router";
 
 interface NavbarProps {
   activeSection: string;
-  onSectionClick: (section: string) => void;
 }
 
 const navItems = [
   { id: "hero", label: "Home", icon: Home },
-  { id: "skills", label: "Skills", icon: User },
+  { id: "skills", label: "Skills", icon: DraftingCompass },
   { id: "experience", label: "Experience", icon: Briefcase },
   { id: "education", label: "Education", icon: GraduationCap },
-  { id: "portfolio", label: "Portfolio", icon: FolderOpen },
-  { id: "about-me", label: "About Me", icon: Heart },
+  //{ id: "portfolio", label: "Portfolio", icon: FolderOpen },
+  { id: "about-me", label: "About Me", icon: User },
   { id: "contact", label: "Contact", icon: Mail },
   { id: "blog", label: "Blog", icon: BookOpen, isRoute: true, path: "/blog" },
 ];
 
-export default function Navbar({ activeSection, onSectionClick }: NavbarProps) {
+export default function Navbar({ activeSection }: NavbarProps) {
+  // Smooth scroll handler for section anchors
+  const handleSectionClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    sectionId: string,
+  ) => {
+    // Only intercept if already on home page
+    if (window.location.pathname === "/") {
+      e.preventDefault();
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+        window.history.replaceState(null, "", `#${sectionId}`);
+      }
+    }
+  };
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -68,20 +81,26 @@ export default function Navbar({ activeSection, onSectionClick }: NavbarProps) {
                     size="sm"
                     className="transition-all duration-300"
                   >
+                    <item.icon className="h-5 w-5" />
                     {item.label}
                   </Button>
                 </Link>
               ) : (
-                <Link key={item.id} to={item.id === "hero" ? "/" : `/#${item.id}`}>
+                <a
+                  key={item.id}
+                  href={item.id === "hero" ? "/" : `/#${item.id}`}
+                  onClick={(e) => handleSectionClick(e, item.id)}
+                >
                   <Button
                     variant={activeSection === item.id ? "default" : "ghost"}
                     size="sm"
                     className="transition-all duration-300"
                   >
+                    <item.icon className="h-5 w-5" />
                     {item.label}
                   </Button>
-                </Link>
-              )
+                </a>
+              ),
             )}
             <ThemeToggle />
           </div>
@@ -117,10 +136,13 @@ export default function Navbar({ activeSection, onSectionClick }: NavbarProps) {
                           </Button>
                         </Link>
                       ) : (
-                        <Link
+                        <a
                           key={item.id}
-                          to={item.id === "hero" ? "/" : `/#${item.id}`}
-                          onClick={() => setIsMobileMenuOpen(false)}
+                          href={`/#${item.id}`}
+                          onClick={(e) => {
+                            setIsMobileMenuOpen(false);
+                            handleSectionClick(e, item.id);
+                          }}
                         >
                           <Button
                             variant={
@@ -131,8 +153,8 @@ export default function Navbar({ activeSection, onSectionClick }: NavbarProps) {
                             <item.icon className="h-5 w-5" />
                             {item.label}
                           </Button>
-                        </Link>
-                      )
+                        </a>
+                      ),
                     )}
                   </nav>
                 </div>

@@ -3,10 +3,10 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import ThemeProvider from "@/components/ThemeProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router";
-import Index from "./pages/Index";
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
-import NotFound from "./pages/NotFound";
+import Index from "./pages";
+import Blog from "./pages/blog";
+import BlogPost from "./pages/blog/BlogPost";
+import NotFound from "./pages/not-found";
 import Toaster from "./components/ui/toaster";
 
 const queryClient = new QueryClient();

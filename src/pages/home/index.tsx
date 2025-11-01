@@ -393,7 +393,7 @@ export default function PersonalWebsite() {
         "skills",
         "experience",
         "education",
-        "portfolio",
+        //"portfolio",
         "about-me",
         "contact",
       ];
@@ -414,30 +414,40 @@ export default function PersonalWebsite() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    const handleHashChange = () => {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    };
 
-  const handleSectionClick = (section: string) => {
-    const element = document.getElementById(section);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    window.addEventListener("hashchange", handleHashChange);
+    window.addEventListener("scroll", handleScroll);
+
+    // On initial load, scroll to hash if present
+    if (window.location.hash) {
+      handleHashChange();
     }
-  };
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Navbar
-        activeSection={activeSection}
-        onSectionClick={handleSectionClick}
-      />
+      <Navbar activeSection={activeSection} />
 
       <main>
         <HeroSection data={personalData} />
         <SkillsSection data={personalData.skills} />
         <ExperienceSection data={personalData.experience} />
         <EducationSection data={personalData.education} />
-        <PortfolioSection data={personalData.portfolio} />
+        {/* <PortfolioSection data={personalData.portfolio} /> */}
         <AboutMeSection data={personalData.aboutMe} />
         <ContactSection data={personalData.contacts} />
       </main>

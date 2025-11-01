@@ -1,4 +1,4 @@
-import PersonalWebsite from "./PersonalWebsite";
+import PersonalWebsite from "./home";
 
 const Index = () => {
   return <PersonalWebsite />;

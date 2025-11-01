@@ -6,11 +6,7 @@ import { Calendar, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import {
-  FaGithub,
-  FaGoogle,
-  FaLinkedin,
-} from "react-icons/fa6";
+import { FaGithub, FaGoogle, FaLinkedin } from "react-icons/fa6";
 
 const socialLinks = [
   {
@@ -37,7 +33,10 @@ const socialLinks = [
 ];
 
 // Mock blog post content - in the future, this could be loaded from MD/MDX files
-const blogPostsContent: Record<string, { title: string; date: string; tags: string[]; content: string }> = {
+const blogPostsContent: Record<
+  string,
+  { title: string; date: string; tags: string[]; content: string }
+> = {
   "my-journey-into-software-engineering": {
     title: "My Journey into Software Engineering",
     date: "2024-01-20",
@@ -116,8 +115,8 @@ const BlogPost = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar activeSection="blog" onSectionClick={() => {}} />
-      
+      <Navbar activeSection="blog" />
+
       <main className="flex-1 container mx-auto px-4 py-24 sm:px-6 lg:px-8">
         <motion.article
           ref={ref}
@@ -134,7 +133,9 @@ const BlogPost = () => {
           </Link>
 
           <header className="mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">{post.title}</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              {post.title}
+            </h1>
             <div className="flex items-center gap-4 text-muted-foreground mb-6">
               <div className="flex items-center gap-2">
                 <Calendar className="h-4 w-4" />
@@ -155,32 +156,32 @@ const BlogPost = () => {
           </header>
 
           <div className="prose prose-lg dark:prose-invert max-w-none">
-            {post.content.split('\n').map((paragraph, index) => {
-              if (paragraph.startsWith('## ')) {
+            {post.content.split("\n").map((paragraph, index) => {
+              if (paragraph.startsWith("## ")) {
                 return (
                   <h2 key={index} className="text-3xl font-bold mt-12 mb-4">
-                    {paragraph.replace('## ', '')}
+                    {paragraph.replace("## ", "")}
                   </h2>
                 );
-              } else if (paragraph.startsWith('# ')) {
+              } else if (paragraph.startsWith("# ")) {
                 return (
                   <h1 key={index} className="text-4xl font-bold mt-12 mb-6">
-                    {paragraph.replace('# ', '')}
+                    {paragraph.replace("# ", "")}
                   </h1>
                 );
               } else if (paragraph.match(/^\d+\./)) {
                 return (
                   <li key={index} className="ml-6 mb-2">
-                    {paragraph.replace(/^\d+\.\s*/, '')}
+                    {paragraph.replace(/^\d+\.\s*/, "")}
                   </li>
                 );
-              } else if (paragraph.startsWith('- ')) {
+              } else if (paragraph.startsWith("- ")) {
                 return (
                   <li key={index} className="ml-6 mb-2 list-disc">
-                    {paragraph.replace('- ', '')}
+                    {paragraph.replace("- ", "")}
                   </li>
                 );
-              } else if (paragraph.trim() === '') {
+              } else if (paragraph.trim() === "") {
                 return <br key={index} />;
               } else {
                 return (

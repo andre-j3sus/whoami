@@ -95,7 +95,7 @@ const EducationCard = ({
                       className="transition-colors hover:text-primary/80"
                     >
                       <p className="inline">{degree.subtitle}</p>
-                      <ExternalLink className="w-4 h-4 inline-flex align-middle ml-1" />
+                      <ExternalLink className="w-4 h-4 inline-flex align-middle ml-1 -mt-1" />
                     </a>
                   </span>
                 </div>
