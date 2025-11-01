@@ -72,15 +72,15 @@ export default function Navbar({ activeSection, onSectionClick }: NavbarProps) {
                   </Button>
                 </Link>
               ) : (
-                <Button
-                  key={item.id}
-                  variant={activeSection === item.id ? "default" : "ghost"}
-                  size="sm"
-                  onClick={() => onSectionClick(item.id)}
-                  className="transition-all duration-300"
-                >
-                  {item.label}
-                </Button>
+                <Link key={item.id} to={item.id === "hero" ? "/" : `/#${item.id}`}>
+                  <Button
+                    variant={activeSection === item.id ? "default" : "ghost"}
+                    size="sm"
+                    className="transition-all duration-300"
+                  >
+                    {item.label}
+                  </Button>
+                </Link>
               )
             )}
             <ThemeToggle />
@@ -117,20 +117,21 @@ export default function Navbar({ activeSection, onSectionClick }: NavbarProps) {
                           </Button>
                         </Link>
                       ) : (
-                        <Button
+                        <Link
                           key={item.id}
-                          variant={
-                            activeSection === item.id ? "default" : "ghost"
-                          }
-                          className="justify-start text-left h-14 px-4 text-base gap-3"
-                          onClick={() => {
-                            onSectionClick(item.id);
-                            setIsMobileMenuOpen(false);
-                          }}
+                          to={item.id === "hero" ? "/" : `/#${item.id}`}
+                          onClick={() => setIsMobileMenuOpen(false)}
                         >
-                          <item.icon className="h-5 w-5" />
-                          {item.label}
-                        </Button>
+                          <Button
+                            variant={
+                              activeSection === item.id ? "default" : "ghost"
+                            }
+                            className="justify-start text-left h-14 px-4 text-base gap-3 w-full"
+                          >
+                            <item.icon className="h-5 w-5" />
+                            {item.label}
+                          </Button>
+                        </Link>
                       )
                     )}
                   </nav>
