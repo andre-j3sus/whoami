@@ -3,7 +3,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import ThemeProvider from "@/components/ThemeProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router";
-import Index from "./pages";
+import Index from "./pages/index";
 import Blog from "./pages/blog";
 import BlogPost from "./pages/blog/BlogPost";
 import NotFound from "./pages/not-found";
