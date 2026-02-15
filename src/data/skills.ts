@@ -101,6 +101,7 @@ export const skillCategories: SkillCategory[] = [
         name: "PostgreSQL",
         icon: "postgresql",
         color: "#336791",
+        darkColor: "#5B9BD5",
         url: "https://www.postgresql.org",
         featured: true,
       },
@@ -214,6 +215,7 @@ export const skillCategories: SkillCategory[] = [
         name: "Sentry",
         icon: "sentry",
         color: "#362D59",
+        darkColor: "#8B7FC7",
         url: "https://sentry.io",
       },
       {
