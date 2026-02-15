@@ -39,7 +39,7 @@ const sorted = allPosts.sort(
     ) : (
       <div class="space-y-4">
         {sorted.map((post, i) => (
-          <BlogPostCard post={post} delay={String(Math.min(i + 1, 6))} />
+          <BlogPostCard post={post} delay={String(Math.min(i + 1, 6))} headingLevel="h2" />
         ))}
       </div>
     )}

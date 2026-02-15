@@ -9,7 +9,9 @@ interface Props {
 
 const { skill, size = "md" } = Astro.props;
 const Tag = skill.url ? "a" : "div";
-const linkProps = skill.url ? { href: skill.url, target: "_blank", rel: "noopener noreferrer" } : {};
+const linkProps = skill.url
+  ? { href: skill.url, target: "_blank", rel: "noopener noreferrer", "aria-label": `${skill.name} website` }
+  : {};
 
 const sizeClasses = {
   sm: "gap-1.5 rounded-lg bg-[var(--color-bg-secondary)] px-2.5 py-1.5 text-xs",

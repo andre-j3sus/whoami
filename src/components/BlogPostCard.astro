@@ -5,9 +5,11 @@ import type { CollectionEntry } from "astro:content";
 interface Props {
   post: CollectionEntry<"blog">;
   delay?: string;
+  headingLevel?: "h2" | "h3";
 }
 
-const { post, delay } = Astro.props;
+const { post, delay, headingLevel = "h3" } = Astro.props;
+const Heading = headingLevel;
 const isExternal = !!post.data.externalUrl;
 ---
 
@@ -20,9 +22,9 @@ const isExternal = !!post.data.externalUrl;
     data-delay={delay}
   >
     <div class="flex items-center gap-2">
-      <h3 class="font-medium text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">
+      <Heading class="font-medium text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">
         {post.data.title}
-      </h3>
+      </Heading>
       {post.data.draft && (
         <span class="flex-shrink-0 rounded-full bg-amber-500/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400">
           Draft

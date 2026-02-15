@@ -1,0 +1,35 @@
+# Security headers applied to every response.
+#
+# These defend against common web attacks (XSS, clickjacking, protocol
+# downgrade, MIME sniffing) and tighten the default browser behaviour.
+
+/*
+  # Forces browsers to always use HTTPS for this domain (and subdomains)
+  # for one year. `preload` gets the domain into browsers' built-in HSTS lists
+  # so even the very first visit is over HTTPS.
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+  # Isolates the browsing context so other origins can't get a reference
+  # to this window (prevents cross-origin attacks like Spectre side-channels).
+  Cross-Origin-Opener-Policy: same-origin
+
+  # Prevents any site from embedding this page inside an <iframe>.
+  X-Frame-Options: DENY
+
+  # Controls which resources the browser is allowed to load:
+  #   - default-src 'self'           → only load resources from our own origin
+  #   - script/style 'unsafe-inline' → needed for Astro's inline <script>/<style>
+  #   - font-src 'self'              → self-hosted fonts only (Inter, Agustina)
+  #   - img-src 'self' data:         → images from our origin + inline data URIs
+  #   - frame-ancestors 'none'       → like X-Frame-Options DENY but for CSP
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; frame-ancestors 'none'
+
+  # Stops browsers from guessing (sniffing) the Content-Type of a response.
+  # Without this, a browser might execute a file that looks like JS even
+  # if the server says it's plain text — a classic XSS vector.
+  X-Content-Type-Options: nosniff
+
+  # Sends the full URL as referrer only to same-origin requests.
+  # Cross-origin requests get just the origin (e.g. "https://andrejesus.com")
+  # so outbound links don't leak the full page path to third parties.
+  Referrer-Policy: strict-origin-when-cross-origin

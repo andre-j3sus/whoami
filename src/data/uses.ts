@@ -23,6 +23,11 @@ export const usesCategories: UsesCategory[] = [
         value: "Keychron Q1 Max",
         url: "https://www.keychron.com/products/keychron-q1-max-qmk-via-wireless-custom-mechanical-keyboard",
       },
+      {
+        label: "Switches",
+        value: "Gateron G Pro 3.0 Yellow",
+        url: "https://www.gateron.com/products/gateron-g-pro-30-switch-set?VariantsId=10623",
+      },
       { label: "Mouse", value: "Logitech G402" },
       { label: "Phone", value: "Google Pixel 10", url: "https://store.google.com/product/pixel_10" },
     ],
