@@ -7,6 +7,7 @@
 - [ ] Add a map with the countries I visited, and the ones in wishlist
 - [ ] Add thumbnails to blog posts
 - [ ] Add thumbnails to projects
+- [x] Add progress bar to blog post
 
 ## Internationalization (i18n)
 
@@ -25,4 +26,4 @@
 
 ## Performance
 
-- [ ] Self-host Inter font or add `<link rel="preload">` hints to reduce render-blocking Google Fonts request
+- [x] Self-host Inter font or add `<link rel="preload">` hints to reduce render-blocking Google Fonts request

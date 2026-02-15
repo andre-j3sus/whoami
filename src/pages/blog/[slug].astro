@@ -20,6 +20,9 @@ const { Content } = await render(post);
 ---
 
 <BaseLayout title={`${post.data.title} - ${personal.name}`} description={post.data.description} ogType="article">
+  <!-- Reading progress bar -->
+  <div id="reading-progress" class="fixed top-0 left-0 h-1 z-[60] bg-[var(--color-accent)]" style="width: 0%;"></div>
+
   <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
     <header class="mb-10">
       <a
@@ -59,4 +62,20 @@ const { Content } = await render(post);
       <Content />
     </div>
   </article>
+
+  <script is:inline>
+    (function () {
+      var bar = document.getElementById("reading-progress");
+      if (!bar) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        bar.style.display = "none";
+        return;
+      }
+      window.addEventListener("scroll", function () {
+        var h = document.documentElement;
+        var progress = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+        bar.style.width = Math.min(progress, 100) + "%";
+      }, { passive: true });
+    })();
+  </script>
 </BaseLayout>
