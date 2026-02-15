@@ -189,10 +189,10 @@ a:not(.prose a):not(.btn-primary):not(.btn-outline):not(.btn-outline-sm) {
 
 /* Dark mode: darken btn bg so white text passes 4.5:1 contrast */
 .dark .btn-primary {
-  background-color: #3b7bcf;
+  background-color: #2d6bb5;
 }
 .dark .btn-primary:hover {
-  background-color: #2e6ab8;
+  background-color: #245a9e;
 }
 
 .btn-outline {
