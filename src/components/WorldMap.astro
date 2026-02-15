@@ -1,0 +1,128 @@
+---
+import { travel } from "@/data/travel";
+
+const visited = travel.visited;
+const home = travel.home;
+const count = visited.length + 1;
+const total = travel.total;
+const countries = JSON.stringify([home, ...visited]);
+---
+
+<!-- Map section -->
+<div class="glass-card-static p-6 sm:p-8">
+  <div class="flex items-center justify-between mb-6">
+    <p class="text-sm font-semibold text-[var(--color-text)]">
+      <span class="text-[var(--color-accent)]">{count}</span> of {total} countries
+    </p>
+    <span class="flex items-center gap-1.5 text-xs text-[var(--color-text-muted)]">
+      <span class="inline-block h-3 w-3 rounded-sm bg-[var(--color-accent)]" aria-hidden="true" />
+      Visited
+    </span>
+  </div>
+  <div id="world-map" class="w-full" style="height: 480px;" data-countries={countries}></div>
+</div>
+
+<script>
+  import jsVectorMap from "jsvectormap";
+  import "jsvectormap/dist/jsvectormap.min.css";
+  import "jsvectormap/dist/maps/world.js";
+
+  const mapEl = document.getElementById("world-map");
+  if (mapEl) {
+    /** Read country codes from data attribute */
+    const codes: string[] = JSON.parse(mapEl.dataset.countries || "[]");
+    const values: Record<string, string> = {};
+    for (const code of codes) {
+      values[code] = "visited";
+    }
+
+    /** Detect current theme */
+    function isDark(): boolean {
+      return document.documentElement.classList.contains("dark");
+    }
+
+    /** Get theme-aware colors */
+    function getColors() {
+      const dark = isDark();
+      return {
+        regionFill: dark ? "#3f3f46" : "#dee2e8",
+        visitedFill: dark ? "#4a8ede" : "#0c336a",
+        strokeColor: dark ? "#27272a" : "#ffffff",
+      };
+    }
+
+    let currentMap: InstanceType<typeof jsVectorMap> | null = null;
+
+    /** Create (or re-create) the map instance */
+    function createMap() {
+      if (currentMap) {
+        currentMap.destroy();
+        mapEl.innerHTML = "";
+      }
+
+      const colors = getColors();
+
+      currentMap = new jsVectorMap({
+        selector: "#world-map",
+        map: "world",
+        backgroundColor: "transparent",
+        zoomButtons: true,
+        zoomOnScroll: true,
+        zoomOnScrollSpeed: 0,
+        draggable: true,
+        showTooltip: true,
+        regionStyle: {
+          initial: {
+            fill: colors.regionFill,
+            fillOpacity: 1,
+            stroke: colors.strokeColor,
+            strokeWidth: 0.5,
+          },
+          hover: {
+            fillOpacity: 0.8,
+            cursor: "default",
+          },
+        },
+        series: {
+          regions: [
+            {
+              attribute: "fill",
+              scale: {
+                visited: colors.visitedFill,
+              },
+              values: values,
+            },
+          ],
+        },
+      });
+    }
+
+    createMap();
+
+    /** Observe dark mode class changes and re-create the map */
+    const observer = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        if (mutation.attributeName === "class") {
+          createMap();
+          break;
+        }
+      }
+    });
+
+    observer.observe(document.documentElement, { attributes: true });
+  }
+</script>
+
+<style>
+  /* -- World map overrides ---------------------------------- */
+  #world-map :global(.jvm-tooltip) {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+    font-family: var(--font-sans);
+    box-shadow: var(--glass-shadow);
+  }
+</style>

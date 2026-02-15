@@ -3,6 +3,7 @@ import { Icon } from "astro-icon/components";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { personal } from "@/data/personal";
 import { hobbies } from "@/data/hobbies";
+import WorldMap from "@/components/WorldMap.astro";
 ---
 
 <BaseLayout title={`About - ${personal.name}`} description={`About ${personal.name} - Systems Engineer at Cloudflare`}>
@@ -118,6 +119,14 @@ import { hobbies } from "@/data/hobbies";
             )}
           </div>
         ))}
+      </div>
+    </section>
+
+    <!-- Travel Map -->
+    <section class="mt-16">
+      <h2 class="section-label mb-8 animate-on-scroll">Places I've Been</h2>
+      <div class="animate-on-scroll" data-delay="1">
+        <WorldMap />
       </div>
     </section>
   </div>

@@ -4,7 +4,7 @@
 
 - [x] Convert experience and education sections into timelines
 - [ ] Add card with book I'm currently reading. Since the goodreads API is not public anymore, I probably need to create a worker with a crontrigger to scrape my public page
-- [ ] Add a map with the countries I visited, and the ones in wishlist
+- [x] Add a map with the countries I visited
 - [ ] Add thumbnails to blog posts
 - [ ] Add thumbnails to projects
 - [x] Add progress bar to blog post
