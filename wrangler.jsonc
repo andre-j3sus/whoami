@@ -1,11 +1,17 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "whoami",
+  "main": "dist/_worker.js/index.js",
   "compatibility_date": "2025-10-25",
+  "compatibility_flags": ["nodejs_compat"],
   "observability": {
     "enabled": true,
   },
   "upload_source_maps": true,
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./dist",
+  },
   "routes": [
     {
       "pattern": "andrejesus.com",
