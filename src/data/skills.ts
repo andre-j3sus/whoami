@@ -115,9 +115,10 @@ export const skillCategories: SkillCategory[] = [
   {
     title: "Frontend Development",
     descriptions: [
-      "Build responsive user interfaces with React and modern frameworks",
+      "Build responsive user interfaces with React and modern frameworks.",
       "Experience with data visualizations, using libraries like D3.js.",
       "Used on internationalization (i18n) for multi-language support.",
+      "Care about web performance, Core Web Vitals, SEO, and accessibility (WCAG). Feel free to run Lighthouse on this website to see for yourself ;)",
     ],
     skills: [
       {

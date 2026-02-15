@@ -40,10 +40,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <!-- Favicon -->
 <link rel="icon" href="/favicon.ico" />
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<!-- Fonts (self-hosted) -->
+<link rel="preload" as="font" type="font/woff2" href="/fonts/Inter-latin.woff2" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="/fonts/Agustina.woff2" crossorigin />
 
 <!-- Humans -->
 <link type="text/plain" rel="author" href="/humans.txt" />
