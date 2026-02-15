@@ -187,6 +187,14 @@ a:not(.prose a):not(.btn-primary):not(.btn-outline):not(.btn-outline-sm) {
   transform: translateY(-1px);
 }
 
+/* Dark mode: darken btn bg so white text passes 4.5:1 contrast */
+.dark .btn-primary {
+  background-color: #3b7bcf;
+}
+.dark .btn-primary:hover {
+  background-color: #2e6ab8;
+}
+
 .btn-outline {
   display: inline-flex;
   align-items: center;
@@ -294,6 +302,11 @@ main {
   border-radius: 8px;
   background: var(--color-accent-light);
   color: var(--color-accent);
+}
+
+/* Dark mode: lighten badge text so it passes 4.5:1 on glass card bg */
+.dark .badge {
+  color: #6db3f2;
 }
 
 /* ── Section heading ─────────────────────────────────────── */
