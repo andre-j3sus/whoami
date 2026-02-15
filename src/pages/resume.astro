@@ -7,6 +7,7 @@ import { education } from "@/data/education";
 import { skillCategories } from "@/data/skills";
 import SkillBadge from "@/components/SkillBadge.astro";
 import DateRange from "@/components/DateRange.astro";
+import TimelineItem from "@/components/TimelineItem.astro";
 ---
 
 <BaseLayout title={`Resume - ${personal.name}`} description={`Resume of ${personal.name} - Systems Engineer at Cloudflare`}>
@@ -31,30 +32,20 @@ import DateRange from "@/components/DateRange.astro";
     <!-- Experience -->
     <section class="mb-20">
       <h2 class="section-label mb-8 animate-on-scroll">Experience</h2>
-      <div class="space-y-6">
+      <ol reversed class="timeline list-none pl-0">
         {experiences.map((exp, i) => (
-          <div class="glass-card p-6 sm:p-8 animate-on-scroll" data-delay={String(i + 1)}>
+          <TimelineItem logo={exp.logo} logoAlt={exp.company} delay={String(i + 1)}>
             <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-              <div class="flex items-start gap-4">
-                <img
-                  src={exp.logo}
-                  alt={exp.company}
-                  width={48}
-                  height={48}
-                  loading="lazy"
-                  class="h-12 w-12 rounded-xl object-contain border border-[var(--color-border)] p-1.5 bg-white"
-                />
-                <div>
-                  <h3 class="text-lg font-semibold text-[var(--color-text)]">{exp.title}</h3>
-                  <a
-                    href={exp.companyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors"
-                  >
-                    {exp.company}
-                  </a>
-                </div>
+              <div>
+                <h3 class="text-lg font-semibold text-[var(--color-text)]">{exp.title}</h3>
+                <a
+                  href={exp.companyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors"
+                >
+                  {exp.company}
+                </a>
               </div>
               <div class="flex flex-wrap gap-2 sm:flex-col sm:items-end">
                 <span class="badge">
@@ -75,38 +66,28 @@ import DateRange from "@/components/DateRange.astro";
                 </li>
               ))}
             </ul>
-          </div>
+          </TimelineItem>
         ))}
-      </div>
+      </ol>
     </section>
 
     <!-- Education -->
     <section class="mb-20">
       <h2 class="section-label mb-8 animate-on-scroll">Education</h2>
-      <div class="space-y-6">
+      <ol reversed class="timeline list-none pl-0">
         {education.map((edu, i) => (
-          <div class="glass-card p-6 sm:p-8 animate-on-scroll" data-delay={String(i + 1)}>
+          <TimelineItem logo={edu.logo} logoAlt={edu.institution} delay={String(i + 1)}>
             <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-              <div class="flex items-start gap-4">
-                <img
-                  src={edu.logo}
-                  alt={edu.institution}
-                  width={48}
-                  height={48}
-                  loading="lazy"
-                  class="h-12 w-12 rounded-xl object-contain border border-[var(--color-border)] p-1.5 bg-white"
-                />
-                <div>
-                  <h3 class="text-lg font-semibold text-[var(--color-text)]">{edu.title}</h3>
-                  <a
-                    href={edu.institutionUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors text-sm"
-                  >
-                    {edu.institution}
-                  </a>
-                </div>
+              <div>
+                <h3 class="text-lg font-semibold text-[var(--color-text)]">{edu.title}</h3>
+                <a
+                  href={edu.institutionUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors text-sm"
+                >
+                  {edu.institution}
+                </a>
               </div>
               <div class="flex flex-wrap gap-2 sm:flex-col sm:items-end">
                 <span class="badge">
@@ -124,9 +105,9 @@ import DateRange from "@/components/DateRange.astro";
                 </li>
               ))}
             </ul>
-          </div>
+          </TimelineItem>
         ))}
-      </div>
+      </ol>
     </section>
 
     <!-- Skills -->

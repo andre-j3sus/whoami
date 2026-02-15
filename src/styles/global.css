@@ -164,6 +164,21 @@ a:not(.prose a):not(.btn-primary):not(.btn-outline):not(.btn-outline-sm) {
   transform: translateY(-2px);
 }
 
+/* ── Timeline ────────────────────────────────────────────── */
+.timeline {
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 23px;
+  top: 24px;
+  bottom: 24px;
+  width: 2px;
+  background: var(--color-border);
+}
+
 /* ── Buttons ─────────────────────────────────────────────── */
 .btn-primary {
   display: inline-flex;
