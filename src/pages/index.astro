@@ -3,7 +3,7 @@ import { Icon } from "astro-icon/components";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { personal } from "@/data/personal";
 import { getCollection } from "astro:content";
-import { featuredSkills } from "@/data/skills";
+//import { featuredSkills } from "@/data/skills";
 import SocialLinksGrid from "@/components/SocialLinksGrid.astro";
 import BlogPostCard from "@/components/BlogPostCard.astro";
 
@@ -52,7 +52,7 @@ const recentPosts = allPosts
   </section>
 
   <!-- Tech stack -->
-  <section class="mx-auto max-w-5xl px-6 pb-16">
+  <!--<section class="mx-auto max-w-5xl px-6 pb-16">
     <h2 class="section-label mb-6 animate-on-scroll">Technologies I Work With</h2>
     <div class="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
       {featuredSkills.map((skill, i) => {
@@ -76,7 +76,7 @@ const recentPosts = allPosts
         );
       })}
     </div>
-  </section>
+  </section>-->
 
   <!-- Recent writing -->
   {recentPosts.length > 0 && (
