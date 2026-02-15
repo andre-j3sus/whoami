@@ -1,0 +1,41 @@
+---
+import { Icon } from "astro-icon/components";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="404 - Page Not Found">
+  <div class="mx-auto flex max-w-5xl flex-col items-center justify-center px-6 py-32 text-center">
+    <div class="compass-wrapper animate-on-scroll">
+      <Icon name="lucide:compass" size={48} class="text-[var(--color-text-muted)]" />
+    </div>
+    <h1 class="mt-6 text-8xl font-bold text-[var(--color-text-muted)] animate-on-scroll sm:text-9xl" data-delay="1">
+      404
+    </h1>
+    <p class="mt-4 text-lg text-[var(--color-text-secondary)] italic animate-on-scroll" data-delay="2">
+      Not all who wander are lost. But you definitely are.
+    </p>
+    <div class="mt-8 animate-on-scroll" data-delay="3">
+      <a href="/" class="btn-primary">
+        <Icon name="lucide:arrow-left" size={16} />
+        Go Home
+      </a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .compass-wrapper {
+    animation: compass-wobble 3s ease-in-out infinite;
+  }
+
+  @keyframes compass-wobble {
+    0%, 100% { transform: rotate(-15deg); }
+    50% { transform: rotate(15deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .compass-wrapper {
+      animation: none;
+    }
+  }
+</style>

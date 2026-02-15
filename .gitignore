@@ -1,28 +1,28 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+# build
+dist/
+.wrangler/
 
-node_modules
-dist
-dist-ssr
-*.local
+# dependencies
+node_modules/
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+# astro
+.astro/
 
-# Cloudflare
-.wrangler
+# env
+.env
+.env.*
 .dev.vars*
+!.env.example
+
+# logs
+*.log
+
+# editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# os
+.DS_Store
+Thumbs.db

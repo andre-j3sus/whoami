@@ -1,4 +1,0 @@
-#!/bin/sh
-export PATH="$HOME/.local/share/mise/installs/node/20.19.4/bin:$PATH"
-
-npm run lint

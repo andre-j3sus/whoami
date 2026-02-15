@@ -1,0 +1,81 @@
+---
+import { Icon } from "astro-icon/components";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { personal } from "@/data/personal";
+import { getCollection } from "astro:content";
+
+const isDev = import.meta.env.DEV;
+const allPosts = await getCollection("blog", ({ data }) => isDev || !data.draft);
+const sorted = allPosts.sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+---
+
+<BaseLayout title={`Blog - ${personal.name}`} description="Thoughts on tech, life, and everything in between by André Jesus">
+  <div class="mx-auto max-w-5xl px-6 py-16 sm:py-20">
+    <div class="mb-14 animate-on-scroll">
+      <h1 class="text-3xl font-bold tracking-tight">Blog</h1>
+      <p class="mt-2 text-[var(--color-text-secondary)]">
+        Thoughts on tech, life, and everything in between
+      </p>
+    </div>
+
+    {sorted.length === 0 ? (
+      <div class="glass-card-static py-16 text-center animate-on-scroll">
+        <p class="text-[var(--color-text-muted)]">Posts coming soon.</p>
+      </div>
+    ) : (
+      <div class="space-y-4">
+        {sorted.map((post, i) => {
+          const isExternal = !!post.data.externalUrl;
+          return (
+            <a
+              href={isExternal ? post.data.externalUrl : `/blog/${post.id}`}
+              target={isExternal ? "_blank" : undefined}
+              rel={isExternal ? "noopener noreferrer" : undefined}
+              class="glass-card group block p-6 animate-on-scroll"
+              data-delay={String(Math.min(i + 1, 6))}
+            >
+              <div class="flex items-center gap-2">
+                <p class="font-medium text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">
+                  {post.data.title}
+                </p>
+                {post.data.draft && (
+                  <span class="flex-shrink-0 rounded-full bg-amber-500/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400">
+                    Draft
+                  </span>
+                )}
+                {isExternal && (
+                  <Icon
+                    name="lucide:external-link"
+                    size={16}
+                    class="flex-shrink-0 text-[var(--color-text-secondary)] group-hover:text-[var(--color-accent)] transition-colors"
+                  />
+                )}
+              </div>
+              {post.data.description && (
+                <p class="mt-2 text-sm text-[var(--color-text-secondary)] leading-relaxed line-clamp-2">
+                  {post.data.description}
+                </p>
+              )}
+              <div class="mt-3 flex items-center justify-between gap-2">
+                <div class="flex flex-wrap items-center gap-2">
+                  {post.data.tags.slice(0, 3).map((tag) => (
+                    <span class="badge">{tag}</span>
+                  ))}
+                </div>
+                <span class="flex-shrink-0 text-xs text-[var(--color-text-secondary)]">
+                  {post.data.date.toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                  })}
+                </span>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    )}
+  </div>
+</BaseLayout>

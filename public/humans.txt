@@ -1,9 +1,12 @@
 /* TEAM */
 	Developer: André Jesus
-	From:Lisbon, Portugal	
+	Contact: contact [at] andrejesus.com
+	Location: Lisbon, Portugal
 
 /* SITE */
-	Last update:2025/08
+	Last update: 2026/02
 	Language: English
-	Doctype:HTML5
-	IDE: Visual Studio Code
+	Doctype: HTML5
+	Framework: Astro
+	Hosting: Cloudflare Workers
+	IDE: IntelliJ IDEA

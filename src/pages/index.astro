@@ -1,0 +1,164 @@
+---
+import { Icon } from "astro-icon/components";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { personal } from "@/data/personal";
+import { socialLinks } from "@/data/social";
+import { getCollection } from "astro:content";
+import { featuredSkills } from "../data/skills";
+
+const allPosts = await getCollection("blog", ({ data }) => !data.draft);
+const recentPosts = allPosts
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 2);
+---
+
+<BaseLayout title={`${personal.name} - ${personal.tagline}`}>
+  <!-- Hero -->
+  <section class="mx-auto max-w-5xl px-6 pt-20 pb-12 sm:pt-28 sm:pb-16">
+    <div class="max-w-2xl">
+      <div class="animate-on-scroll">
+        <p class="section-label mb-4">Hey there 👋, welcome to my website!</p>
+        <h1 class="text-4xl font-bold tracking-tight text-[var(--color-text)] sm:text-5xl">
+          {personal.name}
+        </h1>
+        <p class="mt-3 text-xl text-[var(--color-accent)]">
+          {personal.tagline}
+        </p>
+      </div>
+
+      <div class="animate-on-scroll" data-delay="1">
+        <p class="mt-6 text-[var(--color-text-secondary)] leading-relaxed">
+          {personal.bio}
+        </p>
+      </div>
+
+      <!-- CTAs -->
+      <div class="mt-8 flex flex-wrap gap-4 animate-on-scroll" data-delay="2">
+        <a href="/resume" class="btn-primary">
+          <Icon name="lucide:briefcase" size={16} />
+          View Resume
+        </a>
+        <a href="/projects" class="btn-outline">
+          <Icon name="lucide:code" size={16} />
+          See Projects
+        </a>
+        <a href="/blog" class="btn-outline">
+          <Icon name="lucide:pen-line" size={16} />
+          Read Blog
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech stack -->
+  <section class="mx-auto max-w-5xl px-6 pb-16">
+    <p class="section-label mb-6 animate-on-scroll">Technologies I Work With</p>
+    <div class="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
+      {featuredSkills.map((skill, i) => {
+        const Tag = skill.url ? "a" : "div";
+        const linkProps = skill.url ? { href: skill.url, target: "_blank", rel: "noopener noreferrer" } : {};
+        return (
+          <Tag
+            {...linkProps}
+            class="glass-card flex flex-col items-center gap-2 p-4 animate-on-scroll"
+            data-delay={String(Math.min(i % 4 + 1, 6))}
+          >
+            <Icon
+              name={skill.icon.includes(":") ? skill.icon : `simple-icons:${skill.icon}`}
+              size={28}
+              style={`color: ${skill.color};${skill.darkColor ? ` --skill-dark: ${skill.darkColor};` : ""}`}
+            />
+            <span class="text-xs text-[var(--color-text-secondary)] text-center leading-tight h-max text-center">
+              {skill.name}
+            </span>
+          </Tag>
+        );
+      })}
+    </div>
+  </section>
+
+  <!-- Recent writing -->
+  {recentPosts.length > 0 && (
+    <section class="mx-auto max-w-5xl px-6 pb-20">
+      <p class="section-label mb-6 animate-on-scroll">Recent Writing</p>
+      <div class="grid gap-4 sm:grid-cols-2">
+        {recentPosts.map((post, i) => {
+          const isExternal = !!post.data.externalUrl;
+          return (
+            <a
+              href={isExternal ? post.data.externalUrl : `/blog/${post.id}`}
+              target={isExternal ? "_blank" : undefined}
+              rel={isExternal ? "noopener noreferrer" : undefined}
+              class="glass-card group flex flex-col p-6 animate-on-scroll"
+              data-delay={String(i + 1)}
+            >
+              <div class="flex items-center gap-2">
+                <p class="font-medium text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">
+                  {post.data.title}
+                </p>
+                {isExternal && (
+                  <Icon
+                    name="lucide:external-link"
+                    size={16}
+                    class="flex-shrink-0 text-[var(--color-text-secondary)] group-hover:text-[var(--color-accent)] transition-colors"
+                  />
+                )}
+              </div>
+              {post.data.description && (
+                <p class="mt-2 text-sm text-[var(--color-text-secondary)] leading-relaxed line-clamp-2">
+                  {post.data.description}
+                </p>
+              )}
+              <div class="mt-auto pt-3 flex items-center justify-between gap-2">
+                <div class="flex flex-wrap items-center gap-2">
+                  {post.data.tags.slice(0, 3).map((tag) => (
+                    <span class="badge">{tag}</span>
+                  ))}
+                </div>
+                <span class="flex-shrink-0 text-xs text-[var(--color-text-secondary)]">
+                  {post.data.date.toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                  })}
+                </span>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+  )}
+
+  <!-- Get in touch -->
+  <section class="mx-auto max-w-5xl px-6 pb-20">
+    <p class="section-label mb-6 animate-on-scroll">Get in Touch</p>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {socialLinks.map((link, i) => (
+        <a
+          href={link.url}
+          target={link.url.startsWith("mailto:") ? undefined : "_blank"}
+          rel={link.url.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+          class="glass-card group flex flex-col items-center gap-3 p-6 text-center animate-on-scroll"
+          data-delay={String(Math.min(i + 1, 6))}
+        >
+          <div
+            class="social-icon-wrapper flex items-center justify-center w-12 h-12 rounded-2xl transition-transform duration-300 group-hover:scale-110"
+            style={`--icon-light: ${link.color};${link.darkColor ? ` --icon-dark: ${link.darkColor};` : ""}`}
+          >
+            <Icon
+              name={link.icon === "mail" ? "lucide:mail" : `simple-icons:${link.icon}`}
+              size={24}
+            />
+          </div>
+          <div>
+            <p class="font-medium text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">
+              {link.name}
+            </p>
+            <p class="mt-0.5 text-xs text-[var(--color-text-muted)]">{link.description}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

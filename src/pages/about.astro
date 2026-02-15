@@ -1,0 +1,133 @@
+---
+import { Icon } from "astro-icon/components";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { personal } from "@/data/personal";
+import { hobbies } from "@/data/hobbies";
+
+const emojiMap: Record<string, string> = {
+  books: "\u{1F4DA}",
+  muscle: "\u{1F4AA}",
+  guitar: "\u{1F3B8}",
+  globe: "\u{1F30D}",
+  soccer: "\u26BD",
+  controller: "\u{1F3AE}",
+};
+---
+
+<BaseLayout title={`About - ${personal.name}`} description="About André Jesus - Systems Engineer at Cloudflare">
+  <div class="mx-auto max-w-5xl px-6 py-16 sm:py-20">
+    <div class="mb-14 animate-on-scroll">
+      <h1 class="text-3xl font-bold tracking-tight">About Me</h1>
+      <p class="mt-2 text-[var(--color-text-secondary)]">
+        A bit about who I am, what I do, and what drives me
+      </p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      <!-- Intro -->
+      <div class="glass-card p-6 sm:p-8 md:col-span-2 animate-on-scroll" data-delay="1">
+        <div class="space-y-4 text-[var(--color-text-secondary)] leading-relaxed">
+          <p>
+            I'm André, a Systems Engineer at <a href="https://www.cloudflare.com/" target="_blank" rel="noopener noreferrer" class="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] font-medium">Cloudflare</a>, based in Lisbon, Portugal. I work on the <a href="https://radar.cloudflare.com/" target="_blank" rel="noopener noreferrer" class="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] font-medium">Cloudflare Radar</a> team and contribute to the AI Crawl Control dashboard.
+          </p>
+          <p>
+            I'm drawn to the intersection of systems engineering and full-stack development. I care about building software that is reliable, maintainable, and thoughtfully designed. Whether it's a backend service handling real traffic or a frontend that respects the user's time, I try to approach everything with the same standard: make it work well, make it clear, and make it easy to change.
+          </p>
+        </div>
+      </div>
+
+      <!-- Background -->
+      <div class="glass-card p-6 sm:p-8 animate-on-scroll" data-delay="2">
+        <p class="section-label mb-4">Background</p>
+        <div class="space-y-3 text-sm text-[var(--color-text-secondary)] leading-relaxed">
+          <p>
+            I studied Computer Science and Engineering at <a href="https://www.isel.pt/en" target="_blank" rel="noopener noreferrer" class="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]">ISEL</a> (BSc) and <a href="https://tecnico.ulisboa.pt/en/" target="_blank" rel="noopener noreferrer" class="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]">Instituto Superior Tecnico</a> (MSc), focusing on Distributed Systems and Cybersecurity. My dissertation, "Serverless Snapshot Orchestration", scored 19/20.
+          </p>
+          <p>
+            Before Cloudflare, I was a Teaching Assistant at ISEL, helping teach Algorithms & Data Structures, Web Programming, and Software Laboratory.
+          </p>
+        </div>
+      </div>
+
+      <!-- Engineering Interests -->
+      <div class="glass-card p-6 sm:p-8 animate-on-scroll" data-delay="3">
+        <p class="section-label mb-4">Engineering Interests</p>
+        <ul class="space-y-2.5">
+          {[
+            "How distributed systems work (and break) at scale",
+            "Full-stack development — I like working across the whole stack, from APIs to UIs",
+            "Edge computing and serverless — partly why I joined Cloudflare",
+            "Developer experience and good tooling",
+            "Sharing knowledge through open source and writing",
+          ].map((item) => (
+            <li class="flex items-start gap-3 text-sm text-[var(--color-text-secondary)]">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] flex-shrink-0" />
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- CTAs -->
+    <section class="mt-16">
+      <div class="grid gap-6 sm:grid-cols-2">
+        <a href="/now" class="glass-card group flex items-center gap-5 p-6 sm:p-8 animate-on-scroll" data-delay="1">
+          <div class="flex items-center justify-center w-12 h-12 rounded-2xl bg-[var(--color-accent-light)]">
+            <Icon name="lucide:clock" size={24} class="text-[var(--color-accent)]" />
+          </div>
+          <div class="flex-1">
+            <p class="font-semibold text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">What I'm Up To Now</p>
+            <p class="mt-1 text-sm text-[var(--color-text-secondary)]">What I'm currently focused on in life</p>
+          </div>
+          <Icon name="lucide:arrow-right" size={18} class="text-[var(--color-text-muted)] group-hover:text-[var(--color-accent)] transition-colors flex-shrink-0" />
+        </a>
+        <a href="/uses" class="glass-card group flex items-center gap-5 p-6 sm:p-8 animate-on-scroll" data-delay="2">
+          <div class="flex items-center justify-center w-12 h-12 rounded-2xl bg-[var(--color-accent-light)]">
+            <Icon name="lucide:laptop" size={24} class="text-[var(--color-accent)]" />
+          </div>
+          <div class="flex-1">
+            <p class="font-semibold text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">Tools I Use</p>
+            <p class="mt-1 text-sm text-[var(--color-text-secondary)]">Hardware, software, and tools I use daily</p>
+          </div>
+          <Icon name="lucide:arrow-right" size={18} class="text-[var(--color-text-muted)] group-hover:text-[var(--color-accent)] transition-colors flex-shrink-0" />
+        </a>
+      </div>
+    </section>
+
+    <!-- Hobbies -->
+    <section class="mt-16">
+      <p class="section-label mb-8 animate-on-scroll">Beyond Work</p>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {hobbies.map((hobby, i) => (
+          <div class="glass-card p-6 animate-on-scroll" data-delay={String(Math.min(i + 1, 6))}>
+            <div class="flex items-center gap-3 mb-4">
+              <span class="text-3xl" role="img" aria-label={hobby.title}>
+                {emojiMap[hobby.emoji] || hobby.emoji}
+              </span>
+              <div>
+                <h2 class="font-semibold text-[var(--color-text)]">{hobby.title}</h2>
+                <p class="text-xs text-[var(--color-text-muted)] italic">{hobby.subtitle}</p>
+              </div>
+            </div>
+            <p class="text-sm leading-relaxed text-[var(--color-text-secondary)]">
+              {hobby.content}
+            </p>
+            {hobby.link && (
+              <a
+                href={hobby.link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-4 inline-flex items-center gap-1.5 text-sm text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors"
+              >
+                {hobby.link.text}
+                <Icon name="lucide:external-link" size={14} />
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>

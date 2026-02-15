@@ -1,0 +1,31 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { personal } from "@/data/personal";
+import { nowItems, lastUpdated } from "@/data/now";
+---
+
+<BaseLayout title={`Now - ${personal.name}`} description="What André Jesus is doing now">
+  <div class="mx-auto max-w-5xl px-6 py-16 sm:py-20">
+    <div class="mb-14 animate-on-scroll">
+      <h1 class="text-3xl font-bold tracking-tight">Now</h1>
+      <p class="mt-2 text-[var(--color-text-secondary)]">
+        What I'm focused on at this point in my life
+      </p>
+      <p class="mt-2 text-sm text-[var(--color-text-muted)] italic">
+        Inspired by <a href="https://nownownow.com/about" target="_blank" rel="noopener noreferrer" class="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] !underline underline-offset-2 decoration-[var(--color-accent)]">nownownow.com</a>.
+        Last updated: {lastUpdated}.
+      </p>
+    </div>
+
+    <div class="glass-card p-6 sm:p-8 animate-on-scroll" data-delay="1">
+      <ul class="space-y-3">
+        {nowItems.map((item) => (
+          <li class="flex items-start gap-3 text-sm text-[var(--color-text-secondary)] leading-relaxed">
+            <span class="mt-0.5 flex-shrink-0">{item.emoji}</span>
+            {item.text}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</BaseLayout>

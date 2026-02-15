@@ -1,0 +1,163 @@
+---
+import { Icon } from "astro-icon/components";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { personal } from "@/data/personal";
+import { experiences } from "@/data/experience";
+import { education } from "@/data/education";
+import { skillCategories } from "@/data/skills";
+---
+
+<BaseLayout title={`Resume - ${personal.name}`} description="Resume of André Jesus - Systems Engineer at Cloudflare">
+  <div class="mx-auto max-w-5xl px-6 py-16 sm:py-20">
+    <!-- Header -->
+    <div class="mb-14 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between animate-on-scroll">
+      <div>
+        <h1 class="text-3xl font-bold tracking-tight">Resume</h1>
+        <p class="mt-1 text-[var(--color-text-secondary)]">My professional experience and education</p>
+      </div>
+      <a
+        href={personal.resume}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary w-fit"
+      >
+        <Icon name="lucide:download" size={16} />
+        Download PDF
+      </a>
+    </div>
+
+    <!-- Experience -->
+    <section class="mb-20">
+      <p class="section-label mb-8 animate-on-scroll">Experience</p>
+      <div class="space-y-6">
+        {experiences.map((exp, i) => (
+          <div class="glass-card p-6 sm:p-8 animate-on-scroll" data-delay={String(i + 1)}>
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+              <div class="flex items-start gap-4">
+                <img
+                  src={exp.logo}
+                  alt={exp.company}
+                  class="h-12 w-12 rounded-xl object-contain border border-[var(--color-border)] p-1.5 bg-white"
+                />
+                <div>
+                  <h3 class="text-lg font-semibold text-[var(--color-text)]">{exp.title}</h3>
+                  <a
+                    href={exp.companyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors"
+                  >
+                    {exp.company}
+                  </a>
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-2 sm:flex-col sm:items-end">
+                <span class="badge">
+                  <Icon name="lucide:calendar" size={12} />
+                  {exp.duration}
+                </span>
+                <span class="badge">
+                  <Icon name="lucide:map-pin" size={12} />
+                  {exp.location}
+                </span>
+              </div>
+            </div>
+            <ul class="mt-5 space-y-2">
+              {exp.descriptions.map((desc) => (
+                <li class="flex items-start gap-3 text-sm text-[var(--color-text-secondary)]">
+                  <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] flex-shrink-0" />
+                  {desc}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="mb-20">
+      <p class="section-label mb-8 animate-on-scroll">Education</p>
+      <div class="space-y-6">
+        {education.map((edu, i) => (
+          <div class="glass-card p-6 sm:p-8 animate-on-scroll" data-delay={String(i + 1)}>
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+              <div class="flex items-start gap-4">
+                <img
+                  src={edu.logo}
+                  alt={edu.institution}
+                  class="h-12 w-12 rounded-xl object-contain border border-[var(--color-border)] p-1.5 bg-white"
+                />
+                <div>
+                  <h3 class="text-lg font-semibold text-[var(--color-text)]">{edu.title}</h3>
+                  <a
+                    href={edu.institutionUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors text-sm"
+                  >
+                    {edu.institution}
+                  </a>
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-2 sm:flex-col sm:items-end">
+                <span class="badge">
+                  <Icon name="lucide:calendar" size={12} />
+                  {edu.duration}
+                </span>
+                <span class="badge font-semibold">{edu.grade}</span>
+              </div>
+            </div>
+            <ul class="mt-5 space-y-2">
+              {edu.descriptions.map((desc) => (
+                <li class="flex items-start gap-3 text-sm text-[var(--color-text-secondary)]">
+                  <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] flex-shrink-0" />
+                  {desc}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section>
+      <p class="section-label mb-8 animate-on-scroll">Skills & Technologies</p>
+      <div class="space-y-6">
+        {skillCategories.map((cat, i) => (
+          <div class="glass-card p-6 animate-on-scroll" data-delay={String(i + 1)}>
+            <h3 class="font-semibold text-[var(--color-text)] mb-4">{cat.title}</h3>
+            <ul class="space-y-2 mb-5">
+              {cat.descriptions.map((desc) => (
+                <li class="flex items-start gap-3 text-sm text-[var(--color-text-secondary)]">
+                  <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] flex-shrink-0" />
+                  {desc}
+                </li>
+              ))}
+            </ul>
+            <div class="flex flex-wrap gap-3">
+              {cat.skills.filter((s) => !s.hidden).map((skill) => {
+                const Tag = skill.url ? "a" : "div";
+                const linkProps = skill.url ? { href: skill.url, target: "_blank", rel: "noopener noreferrer" } : {};
+                return (
+                  <Tag
+                    {...linkProps}
+                    class="flex items-center gap-2 rounded-lg bg-[var(--color-bg-secondary)] px-3 py-2 transition-transform duration-200 hover:scale-105"
+                  >
+                    <Icon
+                      name={skill.icon.includes(":") ? skill.icon : `simple-icons:${skill.icon}`}
+                      size={18}
+                      style={`color: ${skill.color};${skill.darkColor ? ` --skill-dark: ${skill.darkColor};` : ""}`}
+                    />
+                    <span class="text-sm text-[var(--color-text-secondary)]">{skill.name}</span>
+                  </Tag>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>

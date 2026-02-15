@@ -1,39 +1,47 @@
 # whoami
 
-My personal website, built with Vite, TypeScript, React, and Tailwind CSS.
+My personal website, built with Astro, TypeScript, and Tailwind CSS. Deployed on Cloudflare Workers.
 
-> **Note:** The base of this repo was created by [Lovable](https://lovable.dev/), and I have made some improvements and fixes.
-
-Deployed at [andrejesus.com](https://andrejesus.com).
-
-## Development
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Install the necessary dependencies.
-npm i
-
-# Step 2: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+Live at [andrejesus.com](https://andrejesus.com).
 
 ## Stack
 
-This project is built with:
+- [Astro](https://astro.build/) - Static site framework (zero client JS by default)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS 4](https://tailwindcss.com/)
+- [Cloudflare Workers](https://workers.cloudflare.com/) - Deployment via `@astrojs/cloudflare`
 
-- Vite
-- TypeScript
-- React
-- Tailwind CSS
+## Site Structure
+
+```
+/           Home
+/about      About
+/resume     Resume (experience, education, skills)
+/projects   Projects
+/blog       Blog (supports markdown content collection)
+/hobbies    Hobbies & interests
+/contact    Contact & social links
+/now        Now page (placeholder)
+/uses       Uses page (placeholder)
+```
+
+## Development
+
+Requires [Node.js](https://nodejs.org/) (see `.nvmrc` for version).
+
+```sh
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev
+```
 
 ## Deployment
 
-This project is automatically deployed to Cloudflare Workers using GitHub Actions, triggered by pushes to the main branch.
+Deployed to Cloudflare Workers. Pushes to `main` trigger automatic deployment via GitHub Actions.
 
-To manually deploy, run the following command:
+To deploy manually:
 
 ```sh
 npm run deploy

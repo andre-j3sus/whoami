@@ -1,0 +1,44 @@
+---
+import { Icon } from "astro-icon/components";
+import { personal } from "@/data/personal";
+import { socialLinks } from "@/data/social";
+---
+
+<footer class="mt-20 border-t border-[var(--color-border)]" style="padding-bottom: env(safe-area-inset-bottom, 0px);">
+  <div class="mx-auto max-w-5xl px-6 pt-10 pb-14 sm:pb-10">
+    <div class="flex flex-col items-center gap-6 sm:flex-row sm:justify-between">
+      <p class="text-sm text-[var(--color-text-muted)]">
+        &copy; {new Date().getFullYear()} {personal.name}
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        {socialLinks.map((link) => (
+          <a
+            href={link.url}
+            target={link.url.startsWith("mailto:") ? undefined : "_blank"}
+            rel={link.url.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+            class="group flex items-center justify-center w-9 h-9 rounded-lg hover:bg-[var(--color-accent-light)] transition-all duration-200"
+            aria-label={link.name}
+            title={link.name}
+          >
+            <Icon
+              name={link.icon === "mail" ? "lucide:mail" : `simple-icons:${link.icon}`}
+              size={18}
+              class="transition-colors duration-200 text-[var(--color-text-muted)] group-hover:text-[var(--color-text)]"
+              style={`--icon-color: ${link.color};${link.darkColor ? ` --icon-color-dark: ${link.darkColor};` : ""}`}
+            />
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  a:hover [data-icon] {
+    color: var(--icon-color) !important;
+  }
+  :global(.dark) a:hover [data-icon] {
+    color: var(--icon-color-dark, var(--icon-color)) !important;
+  }
+</style>

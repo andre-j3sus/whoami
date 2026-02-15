@@ -1,0 +1,317 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* ── Custom font ─────────────────────────────────────────── */
+@font-face {
+  font-family: "Agustina";
+  src: url("/fonts/Agustina.woff") format("woff");
+  font-display: swap;
+}
+
+/* ── Theme tokens ────────────────────────────────────────── */
+:root {
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f8fafc;
+  --color-surface: #ffffff;
+  --color-text: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94a3b8;
+  --color-border: #e2e8f0;
+  --color-accent: #0c336a;
+  --color-accent-hover: #0a2a57;
+  --color-accent-light: rgba(12, 51, 106, 0.08);
+  --color-accent-glow: rgba(12, 51, 106, 0.15);
+
+  /* Glass card */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.1);
+  --glass-shadow-hover: 0 8px 40px -8px rgba(12, 51, 106, 0.18);
+}
+
+.dark {
+  --color-bg: #18181b;
+  --color-bg-secondary: #1e1e22;
+  --color-surface: #27272a;
+  --color-text: #f4f4f5;
+  --color-text-secondary: #a1a1aa;
+  --color-text-muted: #52525b;
+  --color-border: #3f3f46;
+  --color-accent: #4a8ede;
+  --color-accent-hover: #6ba3e8;
+  --color-accent-light: rgba(74, 142, 222, 0.1);
+  --color-accent-glow: rgba(74, 142, 222, 0.2);
+
+  /* Glass card (dark) */
+  --glass-bg: rgba(39, 39, 42, 0.6);
+  --glass-border: rgba(63, 63, 70, 0.5);
+  --glass-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.2);
+  --glass-shadow-hover: 0 8px 40px -8px rgba(74, 142, 222, 0.2);
+}
+
+/* ── Tailwind v4 theme extension ─────────────────────────── */
+@theme {
+  --font-sans:
+    "Inter", "system-ui", "-apple-system", "Segoe UI", "Roboto",
+    "Helvetica Neue", "Arial", "sans-serif";
+  --font-mono: "JetBrains Mono", "Fira Code", "Consolas", monospace;
+  --font-display: "Agustina", cursive;
+}
+
+/* ── Base styles ─────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Selection ───────────────────────────────────────────── */
+::selection {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+/* ── Focus ring ──────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ── Link defaults (scoped to exclude prose content) ─────── */
+a:not(.prose a):not(.btn-primary):not(.btn-outline) {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+/* ── Social icon dark-mode color swap ────────────────────── */
+.social-icon-wrapper {
+  background-color: color-mix(in srgb, var(--icon-light) 8%, transparent);
+}
+.social-icon-wrapper [data-icon] {
+  color: var(--icon-light);
+}
+.dark .social-icon-wrapper {
+  background-color: color-mix(
+    in srgb,
+    var(--icon-dark, var(--icon-light)) 12%,
+    transparent
+  );
+}
+.dark .social-icon-wrapper [data-icon] {
+  color: var(--icon-dark, var(--icon-light));
+}
+
+/* ── Skill icon dark-mode color swap ──────────────────────── */
+.dark [data-icon][style*="--skill-dark"] {
+  color: var(--skill-dark) !important;
+}
+
+/* ── Glass card ──────────────────────────────────────────── */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: var(--glass-shadow);
+  transition:
+    box-shadow 0.4s ease,
+    transform 0.4s ease;
+}
+
+.glass-card:hover {
+  box-shadow: var(--glass-shadow-hover);
+  transform: translateY(-2px);
+}
+
+/* Glass card that doesn't lift */
+.glass-card-static {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: var(--glass-shadow);
+}
+
+/* ── Icon container ──────────────────────────────────────── */
+.icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--color-bg-secondary);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.icon-box:hover {
+  transform: scale(1.1);
+}
+
+/* ── Buttons ─────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: white;
+  background-color: var(--color-accent);
+  border-radius: 10px;
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-hover);
+  box-shadow: 0 4px 20px -4px var(--color-accent-glow);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.btn-outline:hover {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent-light);
+  transform: translateY(-1px);
+}
+
+/* ── Scroll animations ───────────────────────────────────── */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays */
+.animate-on-scroll[data-delay="1"] {
+  transition-delay: 0.1s;
+}
+.animate-on-scroll[data-delay="2"] {
+  transition-delay: 0.2s;
+}
+.animate-on-scroll[data-delay="3"] {
+  transition-delay: 0.3s;
+}
+.animate-on-scroll[data-delay="4"] {
+  transition-delay: 0.4s;
+}
+.animate-on-scroll[data-delay="5"] {
+  transition-delay: 0.5s;
+}
+.animate-on-scroll[data-delay="6"] {
+  transition-delay: 0.6s;
+}
+
+/* ── Page entrance ───────────────────────────────────────── */
+main {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Badge ───────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 8px;
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+}
+
+/* ── Section heading ─────────────────────────────────────── */
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+/* ── Prose / Blog typography ──────────────────────────────── */
+.prose {
+  --tw-prose-body: var(--color-text-secondary);
+  --tw-prose-headings: var(--color-text);
+  --tw-prose-links: var(--color-accent);
+  --tw-prose-bold: var(--color-text);
+  --tw-prose-counters: var(--color-text-muted);
+  --tw-prose-bullets: var(--color-text-muted);
+  --tw-prose-hr: var(--color-border);
+  --tw-prose-quotes: var(--color-text);
+  --tw-prose-quote-borders: var(--color-accent);
+  --tw-prose-captions: var(--color-text-muted);
+  --tw-prose-kbd: var(--color-text);
+  --tw-prose-code: var(--color-accent);
+  --tw-prose-pre-code: var(--color-text-secondary);
+  --tw-prose-pre-bg: var(--color-bg-secondary);
+  --tw-prose-th-borders: var(--color-border);
+  --tw-prose-td-borders: var(--color-border);
+}
+
+/* ── Reduced motion ──────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .glass-card:hover {
+    transform: none;
+  }
+
+  main {
+    animation: none;
+  }
+}

@@ -1,0 +1,119 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { pathname } = Astro.url;
+
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/projects", label: "Projects" },
+  { href: "/blog", label: "Blog" },
+  { href: "/resume", label: "Resume" },
+  { href: "/about", label: "About" },
+];
+
+function isActive(href: string): boolean {
+  return href === "/" ? pathname === "/" : pathname.startsWith(href);
+}
+---
+
+<header class="sticky top-0 z-50 border-b border-[var(--glass-border)]" style="background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);">
+  <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4" aria-label="Main navigation">
+    <a
+      href="/"
+      class="font-[family-name:var(--font-display)] text-lg text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors"
+    >
+      Andre Jesus
+    </a>
+
+    <!-- Desktop nav -->
+    <div class="hidden items-center gap-1 sm:flex">
+      {links.map(({ href, label }) => (
+        <a
+          href={href}
+          class:list={[
+            "relative px-3 py-1.5 text-sm rounded-lg transition-all duration-200",
+            isActive(href)
+              ? "text-[var(--color-accent)] bg-[var(--color-accent-light)] font-medium"
+              : "text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-[var(--color-accent-light)]",
+          ]}
+          aria-current={isActive(href) ? "page" : undefined}
+        >
+          {label}
+        </a>
+      ))}
+      <button
+        id="theme-toggle"
+        type="button"
+        class="ml-2 rounded-lg p-2 text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-accent-light)] transition-all duration-200"
+        aria-label="Toggle dark mode"
+      >
+        <Icon name="lucide:sun" class="hidden dark:block" size={16} />
+        <Icon name="lucide:moon" class="block dark:hidden" size={16} />
+      </button>
+    </div>
+
+    <!-- Mobile: theme toggle + hamburger -->
+    <div class="flex items-center gap-1 sm:hidden">
+      <button
+        id="theme-toggle-mobile"
+        type="button"
+        class="rounded-lg p-2 text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors"
+        aria-label="Toggle dark mode"
+      >
+        <Icon name="lucide:sun" class="hidden dark:block" size={16} />
+        <Icon name="lucide:moon" class="block dark:hidden" size={16} />
+      </button>
+      <button
+        id="mobile-menu-btn"
+        type="button"
+        class="rounded-lg p-2 text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        <Icon name="lucide:menu" id="menu-icon-open" size={20} />
+        <Icon name="lucide:x" id="menu-icon-close" class="hidden" size={20} />
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden sm:hidden">
+    <div class="border-t border-[var(--glass-border)] px-6 py-4 space-y-1">
+      {links.map(({ href, label }) => (
+        <a
+          href={href}
+          class:list={[
+            "block px-3 py-2.5 rounded-lg text-sm transition-all duration-200",
+            isActive(href)
+              ? "text-[var(--color-accent)] bg-[var(--color-accent-light)] font-medium"
+              : "text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-[var(--color-accent-light)]",
+          ]}
+          aria-current={isActive(href) ? "page" : undefined}
+        >
+          {label}
+        </a>
+      ))}
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  function toggleTheme() {
+    const isDark = document.documentElement.classList.toggle("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  }
+  document.getElementById("theme-toggle")?.addEventListener("click", toggleTheme);
+  document.getElementById("theme-toggle-mobile")?.addEventListener("click", toggleTheme);
+
+  const menuBtn = document.getElementById("mobile-menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  const iconOpen = document.getElementById("menu-icon-open");
+  const iconClose = document.getElementById("menu-icon-close");
+  menuBtn?.addEventListener("click", () => {
+    const expanded = menuBtn.getAttribute("aria-expanded") === "true";
+    menuBtn.setAttribute("aria-expanded", String(!expanded));
+    menu?.classList.toggle("hidden");
+    iconOpen?.classList.toggle("hidden");
+    iconClose?.classList.toggle("hidden");
+  });
+</script>
