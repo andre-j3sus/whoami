@@ -22,7 +22,7 @@
   #   - font-src 'self'              → self-hosted fonts only (Inter, Agustina)
   #   - img-src 'self' data:         → images from our origin + inline data URIs
   #   - frame-ancestors 'none'       → like X-Frame-Options DENY but for CSP
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; frame-ancestors 'none'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://cloudflareinsights.com; frame-ancestors 'none'
 
   # Stops browsers from guessing (sniffing) the Content-Type of a response.
   # Without this, a browser might execute a file that looks like JS even
