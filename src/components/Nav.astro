@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import { personal } from "@/data/personal";
 
 const { pathname } = Astro.url;
 
@@ -22,7 +23,7 @@ function isActive(href: string): boolean {
       href="/"
       class="font-[family-name:var(--font-display)] text-lg text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors"
     >
-      Andre Jesus
+      {personal.name}
     </a>
 
     <!-- Desktop nav -->
@@ -83,7 +84,7 @@ function isActive(href: string): boolean {
         <a
           href={href}
           class:list={[
-            "block px-3 py-2.5 rounded-lg text-sm transition-all duration-200",
+            "mobile-menu-link block px-3 py-2.5 rounded-lg text-sm transition-all duration-200",
             isActive(href)
               ? "text-[var(--color-accent)] bg-[var(--color-accent-light)] font-medium"
               : "text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-[var(--color-accent-light)]",
@@ -109,11 +110,58 @@ function isActive(href: string): boolean {
   const menu = document.getElementById("mobile-menu");
   const iconOpen = document.getElementById("menu-icon-open");
   const iconClose = document.getElementById("menu-icon-close");
-  menuBtn?.addEventListener("click", () => {
-    const expanded = menuBtn.getAttribute("aria-expanded") === "true";
-    menuBtn.setAttribute("aria-expanded", String(!expanded));
-    menu?.classList.toggle("hidden");
-    iconOpen?.classList.toggle("hidden");
-    iconClose?.classList.toggle("hidden");
+
+  function openMenu() {
+    menuBtn.setAttribute("aria-expanded", "true");
+    menuBtn.setAttribute("aria-label", "Close menu");
+    menu.classList.remove("hidden");
+    iconOpen.classList.add("hidden");
+    iconClose.classList.remove("hidden");
+    // Focus first link
+    var firstLink = menu.querySelector(".mobile-menu-link");
+    if (firstLink) firstLink.focus();
+  }
+
+  function closeMenu() {
+    menuBtn.setAttribute("aria-expanded", "false");
+    menuBtn.setAttribute("aria-label", "Open menu");
+    menu.classList.add("hidden");
+    iconOpen.classList.remove("hidden");
+    iconClose.classList.add("hidden");
+    menuBtn.focus();
+  }
+
+  menuBtn?.addEventListener("click", function () {
+    var expanded = menuBtn.getAttribute("aria-expanded") === "true";
+    if (expanded) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
   });
+
+  // Close on Escape
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && menuBtn?.getAttribute("aria-expanded") === "true") {
+      closeMenu();
+    }
+  });
+
+  // Simple focus trap within mobile menu
+  if (menu) {
+    menu.addEventListener("keydown", function (e) {
+      if (e.key !== "Tab") return;
+      var focusable = menu.querySelectorAll("a, button");
+      if (focusable.length === 0) return;
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        menuBtn.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        menuBtn.focus();
+      }
+    });
+  }
 </script>

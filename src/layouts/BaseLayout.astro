@@ -7,15 +7,16 @@ import "@/styles/global.css";
 interface Props {
   title: string;
   description?: string;
+  ogType?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, ogType } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={title} description={description} ogType={ogType} />
   </head>
   <body class="min-h-dvh flex flex-col">
     <Nav />

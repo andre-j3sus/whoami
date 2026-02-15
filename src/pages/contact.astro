@@ -1,11 +1,10 @@
 ---
-import { Icon } from "astro-icon/components";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { personal } from "@/data/personal";
-import { socialLinks } from "@/data/social";
+import SocialLinksGrid from "@/components/SocialLinksGrid.astro";
 ---
 
-<BaseLayout title={`Contact - ${personal.name}`} description="Get in touch with André Jesus">
+<BaseLayout title={`Contact - ${personal.name}`} description={`Get in touch with ${personal.name}`}>
   <div class="mx-auto max-w-5xl px-6 py-16 sm:py-20">
     <div class="mb-14 animate-on-scroll">
       <h1 class="text-3xl font-bold tracking-tight">Contact</h1>
@@ -14,32 +13,6 @@ import { socialLinks } from "@/data/social";
       </p>
     </div>
 
-    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      {socialLinks.map((link, i) => (
-        <a
-          href={link.url}
-          target={link.url.startsWith("mailto:") ? undefined : "_blank"}
-          rel={link.url.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-          class="glass-card group flex flex-col items-center gap-3 p-6 text-center animate-on-scroll"
-          data-delay={String(Math.min(i + 1, 6))}
-        >
-          <div
-            class="social-icon-wrapper flex items-center justify-center w-12 h-12 rounded-2xl transition-transform duration-300 group-hover:scale-110"
-            style={`--icon-light: ${link.color};${link.darkColor ? ` --icon-dark: ${link.darkColor};` : ""}`}
-          >
-            <Icon
-              name={link.icon === "mail" ? "lucide:mail" : `simple-icons:${link.icon}`}
-              size={24}
-            />
-          </div>
-          <div>
-            <p class="font-medium text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">
-              {link.name}
-            </p>
-            <p class="mt-0.5 text-xs text-[var(--color-text-muted)]">{link.description}</p>
-          </div>
-        </a>
-      ))}
-    </div>
+    <SocialLinksGrid />
   </div>
 </BaseLayout>

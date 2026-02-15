@@ -5,9 +5,11 @@ import { personal } from "@/data/personal";
 import { experiences } from "@/data/experience";
 import { education } from "@/data/education";
 import { skillCategories } from "@/data/skills";
+import SkillBadge from "@/components/SkillBadge.astro";
+import DateRange from "@/components/DateRange.astro";
 ---
 
-<BaseLayout title={`Resume - ${personal.name}`} description="Resume of André Jesus - Systems Engineer at Cloudflare">
+<BaseLayout title={`Resume - ${personal.name}`} description={`Resume of ${personal.name} - Systems Engineer at Cloudflare`}>
   <div class="mx-auto max-w-5xl px-6 py-16 sm:py-20">
     <!-- Header -->
     <div class="mb-14 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between animate-on-scroll">
@@ -28,7 +30,7 @@ import { skillCategories } from "@/data/skills";
 
     <!-- Experience -->
     <section class="mb-20">
-      <p class="section-label mb-8 animate-on-scroll">Experience</p>
+      <h2 class="section-label mb-8 animate-on-scroll">Experience</h2>
       <div class="space-y-6">
         {experiences.map((exp, i) => (
           <div class="glass-card p-6 sm:p-8 animate-on-scroll" data-delay={String(i + 1)}>
@@ -37,6 +39,9 @@ import { skillCategories } from "@/data/skills";
                 <img
                   src={exp.logo}
                   alt={exp.company}
+                  width={48}
+                  height={48}
+                  loading="lazy"
                   class="h-12 w-12 rounded-xl object-contain border border-[var(--color-border)] p-1.5 bg-white"
                 />
                 <div>
@@ -54,7 +59,7 @@ import { skillCategories } from "@/data/skills";
               <div class="flex flex-wrap gap-2 sm:flex-col sm:items-end">
                 <span class="badge">
                   <Icon name="lucide:calendar" size={12} />
-                  {exp.duration}
+                  <DateRange startDate={exp.startDate} endDate={exp.endDate} />
                 </span>
                 <span class="badge">
                   <Icon name="lucide:map-pin" size={12} />
@@ -65,7 +70,7 @@ import { skillCategories } from "@/data/skills";
             <ul class="mt-5 space-y-2">
               {exp.descriptions.map((desc) => (
                 <li class="flex items-start gap-3 text-sm text-[var(--color-text-secondary)]">
-                  <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] flex-shrink-0" />
+                  <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] flex-shrink-0" aria-hidden="true" />
                   {desc}
                 </li>
               ))}
@@ -77,7 +82,7 @@ import { skillCategories } from "@/data/skills";
 
     <!-- Education -->
     <section class="mb-20">
-      <p class="section-label mb-8 animate-on-scroll">Education</p>
+      <h2 class="section-label mb-8 animate-on-scroll">Education</h2>
       <div class="space-y-6">
         {education.map((edu, i) => (
           <div class="glass-card p-6 sm:p-8 animate-on-scroll" data-delay={String(i + 1)}>
@@ -86,6 +91,9 @@ import { skillCategories } from "@/data/skills";
                 <img
                   src={edu.logo}
                   alt={edu.institution}
+                  width={48}
+                  height={48}
+                  loading="lazy"
                   class="h-12 w-12 rounded-xl object-contain border border-[var(--color-border)] p-1.5 bg-white"
                 />
                 <div>
@@ -103,7 +111,7 @@ import { skillCategories } from "@/data/skills";
               <div class="flex flex-wrap gap-2 sm:flex-col sm:items-end">
                 <span class="badge">
                   <Icon name="lucide:calendar" size={12} />
-                  {edu.duration}
+                  <DateRange startDate={edu.startDate} endDate={edu.endDate} />
                 </span>
                 <span class="badge font-semibold">{edu.grade}</span>
               </div>
@@ -111,7 +119,7 @@ import { skillCategories } from "@/data/skills";
             <ul class="mt-5 space-y-2">
               {edu.descriptions.map((desc) => (
                 <li class="flex items-start gap-3 text-sm text-[var(--color-text-secondary)]">
-                  <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] flex-shrink-0" />
+                  <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] flex-shrink-0" aria-hidden="true" />
                   {desc}
                 </li>
               ))}
@@ -123,7 +131,7 @@ import { skillCategories } from "@/data/skills";
 
     <!-- Skills -->
     <section>
-      <p class="section-label mb-8 animate-on-scroll">Skills & Technologies</p>
+      <h2 class="section-label mb-8 animate-on-scroll">Skills & Technologies</h2>
       <div class="space-y-6">
         {skillCategories.map((cat, i) => (
           <div class="glass-card p-6 animate-on-scroll" data-delay={String(i + 1)}>
@@ -131,29 +139,15 @@ import { skillCategories } from "@/data/skills";
             <ul class="space-y-2 mb-5">
               {cat.descriptions.map((desc) => (
                 <li class="flex items-start gap-3 text-sm text-[var(--color-text-secondary)]">
-                  <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] flex-shrink-0" />
+                  <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] flex-shrink-0" aria-hidden="true" />
                   {desc}
                 </li>
               ))}
             </ul>
             <div class="flex flex-wrap gap-3">
-              {cat.skills.filter((s) => !s.hidden).map((skill) => {
-                const Tag = skill.url ? "a" : "div";
-                const linkProps = skill.url ? { href: skill.url, target: "_blank", rel: "noopener noreferrer" } : {};
-                return (
-                  <Tag
-                    {...linkProps}
-                    class="flex items-center gap-2 rounded-lg bg-[var(--color-bg-secondary)] px-3 py-2 transition-transform duration-200 hover:scale-105"
-                  >
-                    <Icon
-                      name={skill.icon.includes(":") ? skill.icon : `simple-icons:${skill.icon}`}
-                      size={18}
-                      style={`color: ${skill.color};${skill.darkColor ? ` --skill-dark: ${skill.darkColor};` : ""}`}
-                    />
-                    <span class="text-sm text-[var(--color-text-secondary)]">{skill.name}</span>
-                  </Tag>
-                );
-              })}
+              {cat.skills.filter((s) => !s.hidden).map((skill) => (
+                <SkillBadge skill={skill} />
+              ))}
             </div>
           </div>
         ))}

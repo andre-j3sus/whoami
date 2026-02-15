@@ -5,7 +5,9 @@ export interface Project {
   role: string;
   githubUrl?: string;
   url?: string;
-  duration: string;
+  startDate: string;
+  endDate?: string;
+  ongoing?: boolean;
   techStack: string[];
   tags: string[];
 }
@@ -18,7 +20,8 @@ export const projects: Project[] = [
       "Cloudflare Radar is a hub that showcases global Internet traffic trends and insights, powered by data from Cloudflare's global network and aggregated, anonymized data from Cloudflare's 1.1.1.1 public DNS Resolver. I maintain and implement new API features, build frontend pages and data visualizations, and handle infrastructure and DevOps work across the platform.",
     role: "Developer",
     url: "https://radar.cloudflare.com/",
-    duration: "May 2024 - Present",
+    startDate: "2024-05",
+    ongoing: true,
     techStack: ["TypeScript", "React", "Remix", "Cloudflare Workers", "Python", "FastAPI", "GraphQL"],
     tags: ["full-stack", "data-visualization"],
   },
@@ -30,7 +33,8 @@ export const projects: Project[] = [
     role: "Contributor",
     githubUrl: "https://github.com/vhive-serverless/vHive",
     url: "https://vhive-serverless.github.io/",
-    duration: "August 2024 - October 2025",
+    startDate: "2024-08",
+    endDate: "2025-10",
     techStack: ["Go", "Docker", "Kubernetes", "Firecracker"],
     tags: ["research", "open-source", "thesis"],
   },
@@ -41,8 +45,9 @@ export const projects: Project[] = [
       "PHYLOViZ Web Platform is a web platform, developed in the context of the PHYLOViZ initiative, that allows users to access and perform phylogenetic analyses from anywhere with an internet connection, without requiring installation of software or access to HPC resources. It's modular, making it maintainable and extensible. Supports large scale analyses by relying on a workflow system that enables the distribution of parallel computations on cloud and HPC environments.",
     role: "Developer",
     githubUrl: "https://github.com/phyloviz/phyloviz-web-platform",
-    url: "http://www.phyloviz.net/",
-    duration: "February 2023 - January 2024",
+    url: "https://www.phyloviz.net/",
+    startDate: "2023-02",
+    endDate: "2024-01",
     techStack: ["TypeScript", "React", "Java", "Spring", "Docker", "MongoDB"],
     tags: ["full-stack", "open-source", "research"],
   },
@@ -50,11 +55,11 @@ export const projects: Project[] = [
     title: "APTO Website",
     subtitle: "Website for a Tutoring Center in Lisbon",
     description:
-      "Website for APTO (Apoio Pedagógico Total), a tutoring center in Benfica, Lisbon. I studied there for 5 years and taught for 1 year, and built this site to help them improve their online presence.",
+      "Website for APTO (Apoio Pedag\u00f3gico Total), a tutoring center in Benfica, Lisbon. I studied there for 5 years and taught for 1 year, and built this site to help them improve their online presence.",
     role: "Developer",
     githubUrl: "https://github.com/andre-j3sus/apto-website",
     url: "https://apto.pt",
-    duration: "July 2025",
+    startDate: "2025-07",
     techStack: ["React", "TypeScript", "Vite", "Cloudflare Workers"],
     tags: ["frontend"],
   },
@@ -66,7 +71,8 @@ export const projects: Project[] = [
     role: "Author",
     githubUrl: "https://github.com/andre-j3sus/isel-leic-notes",
     url: "https://isel-leic-notes.andrejesus.com/",
-    duration: "September 2020 - July 2023",
+    startDate: "2020-09",
+    endDate: "2023-07",
     techStack: ["Astro", "TypeScript", "Cloudflare Workers"],
     tags: ["education", "frontend"],
   },

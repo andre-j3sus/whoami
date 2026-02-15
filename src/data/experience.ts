@@ -3,7 +3,8 @@ export interface Experience {
   company: string;
   companyUrl: string;
   logo: string;
-  duration: string;
+  startDate: string;
+  endDate?: string;
   location: string;
   descriptions: string[];
 }
@@ -14,7 +15,7 @@ export const experiences: Experience[] = [
     company: "Cloudflare",
     companyUrl: "https://www.cloudflare.com/",
     logo: "/logos/cf.svg",
-    duration: "May 2024 - Present",
+    startDate: "2024-05",
     location: "Lisbon, Portugal",
     descriptions: [
       "Member of the Cloudflare Radar team, responsible for developing new features and maintaining both the Radar API and the Radar website.",
@@ -27,7 +28,8 @@ export const experiences: Experience[] = [
     company: "Instituto Superior de Engenharia de Lisboa",
     companyUrl: "https://www.isel.pt/en",
     logo: "/logos/isel.png",
-    duration: "October 2022 - May 2024",
+    startDate: "2022-10",
+    endDate: "2024-05",
     location: "Lisbon, Portugal",
     descriptions: [
       "Support for the functioning of the Algorithms and Data Structures, Introduction to Web Programming and Software Laboratory curricular units of the 2nd, 3rd and 4th semesters of the BSc in Computer Science and Computer Engineering.",

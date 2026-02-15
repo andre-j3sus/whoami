@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { personal } from "@/data/personal";
 import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
@@ -18,7 +19,7 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<BaseLayout title={`${post.data.title} - André Jesus`} description={post.data.description}>
+<BaseLayout title={`${post.data.title} - ${personal.name}`} description={post.data.description} ogType="article">
   <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
     <header class="mb-10">
       <a

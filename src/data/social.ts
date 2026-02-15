@@ -5,7 +5,6 @@ export interface SocialLink {
   icon: string;
   color: string;
   darkColor?: string;
-  showInNav?: boolean;
 }
 
 export const socialLinks: SocialLink[] = [
@@ -16,7 +15,6 @@ export const socialLinks: SocialLink[] = [
     icon: "mail",
     color: "#0c336a",
     darkColor: "#4a8ede",
-    showInNav: true,
   },
   {
     name: "LinkedIn",
@@ -24,7 +22,6 @@ export const socialLinks: SocialLink[] = [
     description: "Let's connect",
     icon: "linkedin",
     color: "#0A66C2",
-    showInNav: true,
   },
   {
     name: "GitHub",
@@ -33,7 +30,6 @@ export const socialLinks: SocialLink[] = [
     icon: "github",
     color: "#181717",
     darkColor: "#f4f4f5",
-    showInNav: true,
   },
   {
     name: "ORCID",

@@ -3,18 +3,9 @@ import { Icon } from "astro-icon/components";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { personal } from "@/data/personal";
 import { hobbies } from "@/data/hobbies";
-
-const emojiMap: Record<string, string> = {
-  books: "\u{1F4DA}",
-  muscle: "\u{1F4AA}",
-  guitar: "\u{1F3B8}",
-  globe: "\u{1F30D}",
-  soccer: "\u26BD",
-  controller: "\u{1F3AE}",
-};
 ---
 
-<BaseLayout title={`About - ${personal.name}`} description="About André Jesus - Systems Engineer at Cloudflare">
+<BaseLayout title={`About - ${personal.name}`} description={`About ${personal.name} - Systems Engineer at Cloudflare`}>
   <div class="mx-auto max-w-5xl px-6 py-16 sm:py-20">
     <div class="mb-14 animate-on-scroll">
       <h1 class="text-3xl font-bold tracking-tight">About Me</h1>
@@ -38,7 +29,7 @@ const emojiMap: Record<string, string> = {
 
       <!-- Background -->
       <div class="glass-card p-6 sm:p-8 animate-on-scroll" data-delay="2">
-        <p class="section-label mb-4">Background</p>
+        <h2 class="section-label mb-4">Background</h2>
         <div class="space-y-3 text-sm text-[var(--color-text-secondary)] leading-relaxed">
           <p>
             I studied Computer Science and Engineering at <a href="https://www.isel.pt/en" target="_blank" rel="noopener noreferrer" class="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]">ISEL</a> (BSc) and <a href="https://tecnico.ulisboa.pt/en/" target="_blank" rel="noopener noreferrer" class="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]">Instituto Superior Tecnico</a> (MSc), focusing on Distributed Systems and Cybersecurity. My dissertation, "Serverless Snapshot Orchestration", scored 19/20.
@@ -51,7 +42,7 @@ const emojiMap: Record<string, string> = {
 
       <!-- Engineering Interests -->
       <div class="glass-card p-6 sm:p-8 animate-on-scroll" data-delay="3">
-        <p class="section-label mb-4">Engineering Interests</p>
+        <h2 class="section-label mb-4">Engineering Interests</h2>
         <ul class="space-y-2.5">
           {[
             "How distributed systems work (and break) at scale",
@@ -61,7 +52,7 @@ const emojiMap: Record<string, string> = {
             "Sharing knowledge through open source and writing",
           ].map((item) => (
             <li class="flex items-start gap-3 text-sm text-[var(--color-text-secondary)]">
-              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] flex-shrink-0" />
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] flex-shrink-0" aria-hidden="true" />
               {item}
             </li>
           ))}
@@ -98,16 +89,16 @@ const emojiMap: Record<string, string> = {
 
     <!-- Hobbies -->
     <section class="mt-16">
-      <p class="section-label mb-8 animate-on-scroll">Beyond Work</p>
+      <h2 class="section-label mb-8 animate-on-scroll">Beyond Work</h2>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {hobbies.map((hobby, i) => (
           <div class="glass-card p-6 animate-on-scroll" data-delay={String(Math.min(i + 1, 6))}>
             <div class="flex items-center gap-3 mb-4">
               <span class="text-3xl" role="img" aria-label={hobby.title}>
-                {emojiMap[hobby.emoji] || hobby.emoji}
+                {hobby.emoji}
               </span>
               <div>
-                <h2 class="font-semibold text-[var(--color-text)]">{hobby.title}</h2>
+                <h3 class="font-semibold text-[var(--color-text)]">{hobby.title}</h3>
                 <p class="text-xs text-[var(--color-text-muted)] italic">{hobby.subtitle}</p>
               </div>
             </div>

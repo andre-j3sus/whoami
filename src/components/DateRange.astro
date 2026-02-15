@@ -1,0 +1,20 @@
+---
+import { formatYearMonth } from "@/utils/dates";
+
+interface Props {
+  startDate: string;
+  endDate?: string;
+}
+
+const { startDate, endDate } = Astro.props;
+---
+
+{endDate ? (
+  <Fragment>
+    <time datetime={startDate}>{formatYearMonth(startDate)}</time>&thinsp;&ndash;&thinsp;<time datetime={endDate}>{formatYearMonth(endDate)}</time>
+  </Fragment>
+) : (
+  <Fragment>
+    <time datetime={startDate}>{formatYearMonth(startDate)}</time>&thinsp;&ndash;&thinsp;<span>Present</span>
+  </Fragment>
+)}

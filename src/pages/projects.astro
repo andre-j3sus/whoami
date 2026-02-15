@@ -4,15 +4,18 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import { personal } from "@/data/personal";
 import { projects } from "@/data/projects";
 import { skillCategories } from "@/data/skills";
+import SkillBadge from "@/components/SkillBadge.astro";
+import DateRange from "@/components/DateRange.astro";
+import { formatYearMonth } from "@/utils/dates";
 
-// Build a map from tech name to icon/color/url
-const techMap = new Map<string, { icon: string; color: string; darkColor?: string; url?: string }>();
+// Build a map from tech name to skill object
+const techMap = new Map<string, (typeof skillCategories)[number]["skills"][number]>();
 skillCategories.forEach((cat) =>
-  cat.skills.forEach((s) => techMap.set(s.name, { icon: s.icon, color: s.color, darkColor: s.darkColor, url: s.url }))
+  cat.skills.forEach((s) => techMap.set(s.name, s))
 );
 ---
 
-<BaseLayout title={`Projects - ${personal.name}`} description="Projects by André Jesus">
+<BaseLayout title={`Projects - ${personal.name}`} description={`Projects by ${personal.name}`}>
   <div class="mx-auto max-w-5xl px-6 py-16 sm:py-20">
     <div class="mb-14 animate-on-scroll">
       <h1 class="text-3xl font-bold tracking-tight">Projects</h1>
@@ -30,9 +33,14 @@ skillCategories.forEach((cat) =>
               <p class="mt-1 text-sm text-[var(--color-text-muted)]">{project.subtitle}</p>
             </div>
             <div class="flex items-center gap-2">
+              <span class="badge">{project.role}</span>
               <span class="badge">
                 <Icon name="lucide:calendar" size={12} />
-                {project.duration}
+                {project.endDate || project.ongoing ? (
+                  <DateRange startDate={project.startDate} endDate={project.endDate} />
+                ) : (
+                  <time datetime={project.startDate}>{formatYearMonth(project.startDate)}</time>
+                )}
               </span>
             </div>
           </div>
@@ -44,23 +52,13 @@ skillCategories.forEach((cat) =>
           <!-- Tech stack with icons -->
           <div class="mt-5 flex flex-wrap gap-2">
             {project.techStack.map((tech) => {
-              const info = techMap.get(tech);
-              const Tag = info?.url ? "a" : "span";
-              const linkProps = info?.url ? { href: info.url, target: "_blank", rel: "noopener noreferrer" } : {};
-              return (
-                <Tag
-                  {...linkProps}
-                  class="flex items-center gap-1.5 rounded-lg bg-[var(--color-bg-secondary)] px-2.5 py-1.5 text-xs text-[var(--color-text-secondary)] hover:scale-105 transition-transform duration-200"
-                >
-                  {info && (
-                    <Icon
-                      name={info.icon.includes(":") ? info.icon : `simple-icons:${info.icon}`}
-                      size={14}
-                      style={`color: ${info.color};${info.darkColor ? ` --skill-dark: ${info.darkColor};` : ""}`}
-                    />
-                  )}
+              const skill = techMap.get(tech);
+              return skill ? (
+                <SkillBadge skill={skill} size="sm" />
+              ) : (
+                <span class="flex items-center gap-1.5 rounded-lg bg-[var(--color-bg-secondary)] px-2.5 py-1.5 text-xs text-[var(--color-text-secondary)]">
                   {tech}
-                </Tag>
+                </span>
               );
             })}
           </div>
@@ -76,7 +74,7 @@ skillCategories.forEach((cat) =>
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="btn-outline !py-1.5 !px-3 !text-xs"
+                class="btn-outline-sm"
                 aria-label={`View ${project.title} on GitHub`}
               >
                 <Icon name="simple-icons:github" size={14} />
@@ -88,7 +86,7 @@ skillCategories.forEach((cat) =>
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="btn-outline !py-1.5 !px-3 !text-xs"
+                class="btn-outline-sm"
               >
                 <Icon name="lucide:external-link" size={14} />
                 Website

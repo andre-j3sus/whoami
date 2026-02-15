@@ -5,6 +5,7 @@ export interface Skill {
   darkColor?: string;
   url?: string;
   hidden?: boolean;
+  featured?: boolean;
 }
 
 export interface SkillCategory {
@@ -12,45 +13,6 @@ export interface SkillCategory {
   descriptions: string[];
   skills: Skill[];
 }
-
-export const featuredSkills = [
-  {
-    name: "TypeScript",
-    icon: "typescript",
-    color: "#3178C6",
-    url: "https://www.typescriptlang.org",
-  },
-  {
-    name: "Python",
-    icon: "python",
-    color: "#3776AB",
-    url: "https://www.python.org",
-  },
-  {
-    name: "FastAPI",
-    icon: "fastapi",
-    color: "#009688",
-    url: "https://fastapi.tiangolo.com",
-  },
-  {
-    name: "PostgreSQL",
-    icon: "postgresql",
-    color: "#336791",
-    url: "https://www.postgresql.org",
-  },
-  {
-    name: "React",
-    icon: "react",
-    color: "#61DAFB",
-    url: "https://react.dev",
-  },
-  {
-    name: "Cloudflare Workers",
-    icon: "cloudflare",
-    color: "#F38020",
-    url: "https://workers.cloudflare.com",
-  },
-]
 
 export const skillCategories: SkillCategory[] = [
   {
@@ -63,7 +25,8 @@ export const skillCategories: SkillCategory[] = [
       {
         name: "JavaScript",
         icon: "javascript",
-        color: "#F7DF1E",
+        color: "#B8A600",
+        darkColor: "#F7DF1E",
         url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
       },
       {
@@ -71,12 +34,14 @@ export const skillCategories: SkillCategory[] = [
         icon: "typescript",
         color: "#3178C6",
         url: "https://www.typescriptlang.org",
+        featured: true,
       },
       {
         name: "Python",
         icon: "python",
         color: "#3776AB",
         url: "https://www.python.org",
+        featured: true,
       },
       {
         name: "Kotlin",
@@ -118,6 +83,7 @@ export const skillCategories: SkillCategory[] = [
         icon: "fastapi",
         color: "#009688",
         url: "https://fastapi.tiangolo.com",
+        featured: true,
       },
       {
         name: "GraphQL",
@@ -136,6 +102,7 @@ export const skillCategories: SkillCategory[] = [
         icon: "postgresql",
         color: "#336791",
         url: "https://www.postgresql.org",
+        featured: true,
       },
       {
         name: "MongoDB",
@@ -170,6 +137,7 @@ export const skillCategories: SkillCategory[] = [
         icon: "react",
         color: "#61DAFB",
         url: "https://react.dev",
+        featured: true,
       },
       {
         name: "Remix",
@@ -209,6 +177,7 @@ export const skillCategories: SkillCategory[] = [
         icon: "cloudflare",
         color: "#F38020",
         url: "https://workers.cloudflare.com",
+        featured: true,
       },
       {
         name: "Google Cloud Platform",
@@ -256,3 +225,8 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
 ];
+
+/** Skills marked as `featured` across all categories, for the homepage tech grid. */
+export const featuredSkills: Skill[] = skillCategories
+  .flatMap((cat) => cat.skills)
+  .filter((s) => s.featured);

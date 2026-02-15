@@ -1,10 +1,13 @@
 ---
+import { personal } from "@/data/personal";
+
 interface Props {
   title: string;
   description?: string;
+  ogType?: string;
 }
 
-const { title, description = "André Jesus - Systems Engineer" } = Astro.props;
+const { title, description = `${personal.name} - Systems Engineer`, ogType = "website" } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -15,15 +18,19 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <!-- SEO -->
 <title>{title}</title>
 <meta name="description" content={description} />
-<meta name="author" content="André Jesus" />
+<meta name="author" content={personal.name} />
 <link rel="canonical" href={canonicalURL} />
+
+<!-- Theme color (light + dark) -->
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#18181b" media="(prefers-color-scheme: dark)" />
 
 <!-- Open Graph -->
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:type" content="website" />
+<meta property="og:type" content={ogType} />
 <meta property="og:url" content={canonicalURL} />
-<meta property="og:site_name" content="André Jesus" />
+<meta property="og:site_name" content={personal.name} />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary" />
@@ -41,9 +48,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <!-- Humans -->
 <link type="text/plain" rel="author" href="/humans.txt" />
 
-<!-- Dark mode: prevent FOUC -->
+<!-- Dark mode: prevent FOUC + enable JS-dependent styles -->
 <script is:inline>
   (function () {
+    document.documentElement.classList.replace("no-js", "js");
     const theme = localStorage.getItem("theme");
     if (
       theme === "dark" ||
