@@ -17,7 +17,11 @@ export const usesCategories: UsesCategory[] = [
     items: [
       { label: "Work Laptop", value: "MacBook Pro 14\"" },
       { label: "Personal Laptop", value: "Lenovo Legion 5" },
-      { label: "Monitor", value: "Dell 27\"" },
+      {
+        label: "Monitor",
+        value: "Dell 27 Monitor - P2722H",
+        url: "https://www.dell.com/en-us/shop/dell-27-monitor-p2722h/apd/210-bbck/monitors-monitor-accessories"
+      },
       {
         label: "Keyboard",
         value: "Keychron Q1 Max",
