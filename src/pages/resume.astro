@@ -34,7 +34,7 @@ import TimelineItem from "@/components/TimelineItem.astro";
       <h2 class="section-label mb-8 animate-on-scroll">Experience</h2>
       <ol reversed class="timeline list-none pl-0">
         {experiences.map((exp, i) => (
-          <TimelineItem logo={exp.logo} logoAlt={exp.company} delay={String(i + 1)}>
+          <TimelineItem logo={exp.logo} logoAlt={exp.company} logoUrl={exp.companyUrl} delay={String(i + 1)}>
             <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <h3 class="text-lg font-semibold text-[var(--color-text)]">{exp.title}</h3>
@@ -42,7 +42,7 @@ import TimelineItem from "@/components/TimelineItem.astro";
                   href={exp.companyUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors"
+                  class="text-link"
                 >
                   {exp.company}
                 </a>
@@ -76,7 +76,7 @@ import TimelineItem from "@/components/TimelineItem.astro";
       <h2 class="section-label mb-8 animate-on-scroll">Education</h2>
       <ol reversed class="timeline list-none pl-0">
         {education.map((edu, i) => (
-          <TimelineItem logo={edu.logo} logoAlt={edu.institution} delay={String(i + 1)}>
+          <TimelineItem logo={edu.logo} logoAlt={edu.institution} logoUrl={edu.institutionUrl} delay={String(i + 1)}>
             <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <h3 class="text-lg font-semibold text-[var(--color-text)]">{edu.title}</h3>
@@ -84,7 +84,7 @@ import TimelineItem from "@/components/TimelineItem.astro";
                   href={edu.institutionUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors text-sm"
+                  class="text-link text-sm"
                 >
                   {edu.institution}
                 </a>

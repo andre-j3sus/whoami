@@ -111,6 +111,22 @@ a:not(.prose a):not(.btn-primary):not(.btn-outline):not(.btn-outline-sm) {
   transition: color 0.2s ease;
 }
 
+/* ── Inline text link ─────────────────────────────────────── */
+.text-link {
+  color: var(--color-accent) !important;
+  text-decoration: none !important;
+  text-underline-offset: 3px !important;
+  transition:
+    color 0.2s ease,
+    text-decoration-color 0.2s ease !important;
+}
+
+.text-link:hover {
+  color: var(--color-accent-hover) !important;
+  text-decoration: underline !important;
+  text-decoration-color: var(--color-accent-hover) !important;
+}
+
 /* ── Social icon dark-mode color swap ────────────────────── */
 .social-icon-wrapper {
   background-color: color-mix(in srgb, var(--icon-light) 8%, transparent);

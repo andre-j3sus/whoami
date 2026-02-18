@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import ExternalLink from "@/components/ExternalLink.astro";
 import { personal } from "@/data/personal";
 import { usesCategories } from "@/data/uses";
 ---
@@ -12,7 +13,7 @@ import { usesCategories } from "@/data/uses";
         Hardware, software, and tools I use daily
       </p>
       <p class="mt-2 text-sm text-[var(--color-text-muted)] italic">
-        Inspired by <a href="https://uses.tech/" target="_blank" rel="noopener noreferrer" class="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] !underline underline-offset-2 decoration-[var(--color-accent)]">uses.tech</a>.
+        Inspired by <ExternalLink href="https://uses.tech/">uses.tech</ExternalLink>.
       </p>
     </div>
 
@@ -29,14 +30,9 @@ import { usesCategories } from "@/data/uses";
                 <dt class="font-medium text-[var(--color-text-muted)] flex-shrink-0">{item.label}:</dt>
                 <dd class="text-[var(--color-text-secondary)]">
                   {item.url ? (
-                    <a
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors"
-                    >
+                    <ExternalLink href={item.url}>
                       {item.value}
-                    </a>
+                    </ExternalLink>
                   ) : (
                     item.value
                   )}

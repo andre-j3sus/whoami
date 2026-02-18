@@ -1,0 +1,20 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  href: string;
+  class?: string;
+}
+
+const { href, class: className } = Astro.props;
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class:list={["text-link inline-flex items-center gap-1", className]}
+>
+  <slot />
+  <Icon name="lucide:external-link" size={12} class="flex-shrink-0" />
+</a>

@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import ExternalLink from "@/components/ExternalLink.astro";
 import { personal } from "@/data/personal";
 import { hobbies } from "@/data/hobbies";
 import WorldMap from "@/components/WorldMap.astro";
@@ -20,7 +21,7 @@ import WorldMap from "@/components/WorldMap.astro";
       <div class="glass-card p-6 sm:p-8 md:col-span-2 animate-on-scroll" data-delay="1">
         <div class="space-y-4 text-[var(--color-text-secondary)] leading-relaxed">
           <p>
-            I'm André, a Systems Engineer at <a href="https://www.cloudflare.com/" target="_blank" rel="noopener noreferrer" class="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] font-medium">Cloudflare</a>, based in Lisbon, Portugal. I work on the <a href="https://radar.cloudflare.com/" target="_blank" rel="noopener noreferrer" class="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] font-medium">Cloudflare Radar</a> team and contribute to the AI Crawl Control dashboard.
+            I'm André, a Systems Engineer at <ExternalLink href="https://www.cloudflare.com/" class="font-medium">Cloudflare</ExternalLink>, based in Lisbon, Portugal. I work on the <ExternalLink href="https://radar.cloudflare.com/" class="font-medium">Cloudflare Radar</ExternalLink> team and contribute to the AI Crawl Control dashboard.
           </p>
           <p>
             I'm drawn to the intersection of systems engineering and full-stack development. I care about building software that is reliable, maintainable, and thoughtfully designed. Whether it's a backend service handling real traffic or a frontend that respects the user's time, I try to approach everything with the same standard: make it work well, make it clear, and make it easy to change.
@@ -33,7 +34,7 @@ import WorldMap from "@/components/WorldMap.astro";
         <h2 class="section-label mb-4">Background</h2>
         <div class="space-y-3 text-sm text-[var(--color-text-secondary)] leading-relaxed">
           <p>
-            I studied Computer Science and Engineering at <a href="https://www.isel.pt/en" target="_blank" rel="noopener noreferrer" class="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]">ISEL</a> (BSc) and <a href="https://tecnico.ulisboa.pt/en/" target="_blank" rel="noopener noreferrer" class="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]">Instituto Superior Tecnico</a> (MSc), focusing on Distributed Systems and Cybersecurity. My dissertation, "Serverless Snapshot Orchestration", scored 19/20.
+            I studied Computer Science and Engineering at <ExternalLink href="https://www.isel.pt/en">ISEL</ExternalLink> (BSc) and <ExternalLink href="https://tecnico.ulisboa.pt/en/">Instituto Superior Tecnico</ExternalLink> (MSc), focusing on Distributed Systems and Cybersecurity. My dissertation, "Serverless Snapshot Orchestration", scored 19/20.
           </p>
           <p>
             Before Cloudflare, I was a Teaching Assistant at ISEL, helping teach Algorithms & Data Structures, Web Programming, and Software Laboratory.
@@ -107,15 +108,9 @@ import WorldMap from "@/components/WorldMap.astro";
               {hobby.content}
             </p>
             {hobby.link && (
-              <a
-                href={hobby.link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="mt-4 inline-flex items-center gap-1.5 text-sm text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors"
-              >
+              <ExternalLink href={hobby.link.url} class="mt-4 text-sm">
                 {hobby.link.text}
-                <Icon name="lucide:external-link" size={14} />
-              </a>
+              </ExternalLink>
             )}
           </div>
         ))}

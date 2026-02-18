@@ -2,22 +2,27 @@
 interface Props {
   logo: string;
   logoAlt: string;
+  logoUrl?: string;
   delay?: string;
 }
 
-const { logo, logoAlt, delay } = Astro.props;
+const { logo, logoAlt, logoUrl, delay } = Astro.props;
+const Tag = logoUrl ? "a" : "div";
+const linkProps = logoUrl ? { href: logoUrl, target: "_blank", rel: "noopener noreferrer" } : {};
 ---
 
 <li class="timeline-item relative flex gap-5 sm:gap-6 animate-on-scroll" data-delay={delay}>
   <div class="relative z-10 flex-shrink-0">
-    <img
-      src={logo}
-      alt={logoAlt}
-      width={48}
-      height={48}
-      loading="lazy"
-      class="h-12 w-12 rounded-xl object-contain border border-[var(--color-border)] p-1.5 bg-white dark:bg-[var(--color-bg)]"
-    />
+    <Tag {...linkProps}>
+      <img
+        src={logo}
+        alt={logoAlt}
+        width={48}
+        height={48}
+        loading="lazy"
+        class="h-12 w-12 rounded-xl object-contain border border-[var(--color-border)] p-1.5 bg-white dark:bg-[var(--color-bg)]"
+      />
+    </Tag>
   </div>
   <div class="glass-card-static flex-1 p-6 sm:p-8 mb-6">
     <slot />

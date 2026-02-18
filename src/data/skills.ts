@@ -129,9 +129,9 @@ export const skillCategories: SkillCategory[] = [
         url: "https://developer.mozilla.org/en-US/docs/Web/HTML",
       },
       {
-        name: "CSS3",
-        icon: "css3",
-        color: "#1572B6",
+        name: "CSS",
+        icon: "css",
+        color: "#663399",
         url: "https://developer.mozilla.org/en-US/docs/Web/CSS",
       },
       {
@@ -176,7 +176,7 @@ export const skillCategories: SkillCategory[] = [
       },
       {
         name: "Cloudflare Workers",
-        icon: "cloudflare",
+        icon: "cloudflareworkers",
         color: "#F38020",
         url: "https://workers.cloudflare.com",
         featured: true,

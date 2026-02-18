@@ -18,9 +18,13 @@ export const experiences: Experience[] = [
     startDate: "2024-05",
     location: "Lisbon, Portugal",
     descriptions: [
-      "Member of the Cloudflare Radar team, responsible for developing new features and maintaining both the Radar API and the Radar website.",
-      "Member of the AI Crawl Control team, responsible for frontend development (Cloudflare dashboard).",
-      "Contributing to other projects occasionally.",
+      "Member of the Cloudflare Radar team, building and shipping full-stack features across the Radar API and website — including pages on DNS, Certificate Transparency, AI insights, and Internet services rankings, among others.",
+      "Built the Radar MCP Server, enabling AI assistants to query Radar data.",
+      "Contributing frontend work to AI Crawl Control on the Cloudflare dashboard.",
+      "Contributed to CI pipeline migrations, Infrastructure-as-Code adoption, and system resilience efforts.",
+      "Involved in ongoing platform maintenance: SEO improvements, dependency upgrades, high-availability work, and testing.",
+      "Mentored an intern on a full-stack feature spanning both API and frontend.",
+      "Started as a Software Engineer Intern (May 2024), transitioned to full-time Systems Engineer (September 2024).",
     ],
   },
   {
@@ -32,11 +36,10 @@ export const experiences: Experience[] = [
     endDate: "2024-05",
     location: "Lisbon, Portugal",
     descriptions: [
-      "Support for the functioning of the Algorithms and Data Structures, Introduction to Web Programming and Software Laboratory curricular units of the 2nd, 3rd and 4th semesters of the BSc in Computer Science and Computer Engineering.",
-      "Support to practical lessons.",
-      "Clarification of doubts to students.",
-      "Maintenance of software installed on the server used in Software Laboratory curricular unit projects.",
-      "Vigilance and correction of the moments of evaluation of the curricular units.",
+      "Teaching assistant for Algorithms & Data Structures, Introduction to Web Programming, and Software Laboratory across the 2nd to 4th semesters of the BSc in Computer Science and Engineering.",
+      "Led practical lab sessions and provided one-on-one support to students.",
+      "Maintained server infrastructure used by students for Software Laboratory projects.",
+      "Assisted in the preparation and grading of exams and assignments.",
     ],
   },
 ];

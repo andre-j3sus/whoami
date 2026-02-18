@@ -19,6 +19,7 @@
   - Translate static content strings across all pages
   - Consider URL strategy: `/pt/` prefix vs subdomain vs language toggle
   - Update `formatYearMonth()` to accept a locale parameter
+  - https://docs.astro.build/en/guides/internationalization/
 
 ## SEO
 

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import ExternalLink from "@/components/ExternalLink.astro";
 import { personal } from "@/data/personal";
 import { nowItems, lastUpdated } from "@/data/now";
 import { formatYearMonth } from "@/utils/dates";
@@ -13,7 +14,7 @@ import { formatYearMonth } from "@/utils/dates";
         What I'm focused on at this point in my life
       </p>
       <p class="mt-2 text-sm text-[var(--color-text-muted)] italic">
-        Inspired by <a href="https://nownownow.com/about" target="_blank" rel="noopener noreferrer" class="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] !underline underline-offset-2 decoration-[var(--color-accent)]">nownownow.com</a>.
+        Inspired by <ExternalLink href="https://nownownow.com/about">nownownow.com</ExternalLink>.
         Last updated: <time datetime={lastUpdated}>{formatYearMonth(lastUpdated)}</time>.
       </p>
     </div>
