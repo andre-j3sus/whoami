@@ -10,5 +10,8 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  build: {
+    inlineStylesheets: "always"
+  },
   site: "https://andrejesus.com",
 });
