@@ -8,6 +8,8 @@
 - [ ] Add thumbnails to blog posts
 - [ ] Add thumbnails to projects
 - [x] Add progress bar to blog post
+- [ ] Add link to gMaps Portuguese restaurants list
+- [ ] Add link to GitHub repo of the website code
 
 ## Internationalization (i18n)
 

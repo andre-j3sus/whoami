@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import { personal } from "@/data/personal";
+import BrandName from "@/components/BrandName.astro";
 
 const { pathname } = Astro.url;
 
@@ -21,9 +22,10 @@ function isActive(href: string): boolean {
   <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4" aria-label="Main navigation">
     <a
       href="/"
-      class="font-[family-name:var(--font-display)] text-lg text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors"
+      class="text-lg text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors"
     >
-      {personal.name}
+      <BrandName class="h-[1.75em] w-auto" />
+      <span class="sr-only">{personal.name}</span>
     </a>
 
     <!-- Desktop nav -->
