@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+@variant dark (&:where(.dark, .dark *));
 
 /* ── Custom fonts ────────────────────────────────────────── */
 
@@ -80,6 +81,10 @@
 /* ── Base styles ─────────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
+}
+
+button {
+  cursor: pointer;
 }
 
 body {
