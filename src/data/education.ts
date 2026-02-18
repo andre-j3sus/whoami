@@ -21,6 +21,7 @@ export const education: Education[] = [
     descriptions: [
       "Focus Areas: Distributed Systems and Cybersecurity",
       'Dissertation: "Serverless Snapshot Orchestration" - 19/20 (95%)',
+      "Key coursework: Distributed Applications, Cloud Computing and Virtualization, Parallel and Distributed Computing, Software Security, Forensics Cyber-Security, Highly Dependable Systems, Deep Learning, and Data Science.",
     ],
   },
   {
