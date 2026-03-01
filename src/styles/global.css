@@ -349,6 +349,18 @@ main {
   --tw-prose-td-borders: var(--color-border);
 }
 
+.prose blockquote {
+  font-style: normal;
+}
+
+.prose blockquote p:first-of-type::before {
+  content: none;
+}
+
+.prose blockquote p:last-of-type::after {
+  content: none;
+}
+
 /* ── Reduced motion ──────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .js .animate-on-scroll {

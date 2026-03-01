@@ -2,7 +2,7 @@
 title: "How to Write a Blog Post"
 description: "A sample post showing how to use the blog. This is a draft — it only appears in dev mode."
 date: 2026-02-14
-tags: ["guide", "meta"]
+tags: ["Guide", "Meta"]
 draft: true
 ---
 
@@ -21,7 +21,7 @@ Every post needs a frontmatter block at the top:
 title: "Your Post Title"
 description: "A short description for SEO and the blog listing."
 date: 2026-03-01
-tags: ["tech", "cloudflare"]
+tags: ["Tech", "Cloudflare"]
 draft: false
 ---
 ```
