@@ -26,6 +26,6 @@
     "@iconify-json/lucide": "^1.2.90",
     "@iconify-json/simple-icons": "^1.2.70",
     "typescript": "^5.9.3",
-    "wrangler": "^4.45.0"
+    "wrangler": "^4.69.0"
   }
 }
