@@ -58,7 +58,7 @@
   --color-text-secondary: #a1a1aa;
   --color-text-muted: #909098;
   --color-border: #3f3f46;
-  --color-accent: #4a8ede;
+  --color-accent: #69afff;
   --color-accent-hover: #6ba3e8;
   --color-accent-light: rgba(74, 142, 222, 0.1);
   --color-accent-glow: rgba(74, 142, 222, 0.2);
@@ -115,7 +115,7 @@ a:not(.prose a):not(.btn-primary):not(.btn-outline):not(.btn-outline-sm) {
 /* ── Inline text link ─────────────────────────────────────── */
 .text-link {
   color: var(--color-accent) !important;
-  text-decoration: none !important;
+  text-decoration: underline !important;
   text-underline-offset: 3px !important;
   transition:
     color 0.2s ease,
