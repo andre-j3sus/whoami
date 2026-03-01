@@ -9,6 +9,10 @@ Built with **Astro 5**, **TypeScript 5 (strict)**, and **Tailwind CSS 4**.
 Deployed to **Cloudflare Workers** via the `@astrojs/cloudflare` adapter.
 Package manager is **npm**. Module system is **ESM** (`"type": "module"`).
 
+## Git Workflow
+
+Commit directly to `main`. No feature branches needed for this repo.
+
 ## Build / Dev / Deploy Commands
 
 ```bash
