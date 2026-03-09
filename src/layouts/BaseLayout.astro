@@ -45,5 +45,104 @@ const { title, description, ogType } = Astro.props;
         });
       })();
     </script>
+
+    <!-- WebMCP: expose site tools to AI agents via the browser -->
+    <script is:inline>
+      (function () {
+        if (!navigator.modelContext || typeof navigator.modelContext.provideContext !== "function") return;
+
+        var pages = [
+          { name: "home", path: "/", description: "Homepage with intro and recent blog posts" },
+          { name: "projects", path: "/projects", description: "Notable projects and contributions" },
+          { name: "blog", path: "/blog", description: "Technical writing and personal posts" },
+          { name: "resume", path: "/resume", description: "Professional experience, education, and skills" },
+          { name: "about", path: "/about", description: "Background, hobbies, and interests" },
+          { name: "now", path: "/now", description: "What I am currently up to" },
+          { name: "uses", path: "/uses", description: "Hardware, software, and tools I use" },
+          { name: "contact", path: "/contact", description: "How to get in touch" }
+        ];
+
+        navigator.modelContext.provideContext({
+          tools: [
+            {
+              name: "navigate",
+              description: "Navigate to a page on this portfolio site. Available pages: " + pages.map(function (p) { return p.name; }).join(", "),
+              inputSchema: {
+                type: "object",
+                properties: {
+                  page: {
+                    type: "string",
+                    enum: pages.map(function (p) { return p.name; }),
+                    description: "The page to navigate to"
+                  }
+                },
+                required: ["page"]
+              },
+              execute: function (input) {
+                var match = pages.find(function (p) { return p.name === input.page; });
+                if (match) {
+                  window.location.href = match.path;
+                  return { success: true, navigatedTo: match.path };
+                }
+                return { success: false, error: "Unknown page: " + input.page };
+              }
+            },
+            {
+              name: "get_site_info",
+              description: "Get structured information about this portfolio site and its owner, including bio, role, and available sections",
+              inputSchema: {
+                type: "object",
+                properties: {},
+                required: []
+              },
+              execute: function () {
+                return {
+                  name: "Andre Jesus",
+                  role: "Systems Engineer at Cloudflare",
+                  url: "https://andrejesus.com",
+                  sections: pages,
+                  feeds: {
+                    rss: "/rss.xml",
+                    sitemap: "/sitemap-index.xml",
+                    llmsTxt: "/llms.txt",
+                    llmsFullTxt: "/llms-full.txt"
+                  }
+                };
+              }
+            },
+            {
+              name: "get_blog_posts",
+              description: "Get a list of all published blog posts with titles, descriptions, dates, tags, and URLs",
+              inputSchema: {
+                type: "object",
+                properties: {},
+                required: []
+              },
+              execute: function () {
+                var cards = document.querySelectorAll("[data-blog-post]");
+                if (cards.length > 0) {
+                  var posts = [];
+                  cards.forEach(function (card) {
+                    posts.push({
+                      title: card.getAttribute("data-blog-title") || "",
+                      description: card.getAttribute("data-blog-description") || "",
+                      url: card.getAttribute("data-blog-url") || "",
+                      date: card.getAttribute("data-blog-date") || "",
+                      tags: (card.getAttribute("data-blog-tags") || "").split(",").filter(Boolean)
+                    });
+                  });
+                  return { posts: posts };
+                }
+                return {
+                  message: "Navigate to /blog to see all posts, or fetch /llms.txt for a full listing",
+                  blogUrl: "/blog",
+                  llmsTxt: "/llms.txt"
+                };
+              }
+            }
+          ]
+        });
+      })();
+    </script>
   </body>
 </html>

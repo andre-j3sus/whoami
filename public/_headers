@@ -3,6 +3,16 @@
 # These defend against common web attacks (XSS, clickjacking, protocol
 # downgrade, MIME sniffing) and tighten the default browser behaviour.
 
+# -- Agent discovery headers (RFC 8288) --------------------------------- #
+# Advertise machine-readable resources so AI agents and crawlers can
+# discover what's available on this site.
+/
+  Link: </llms.txt>; rel="describedby"; type="text/plain"; title="LLM-friendly site overview"
+  Link: </llms-full.txt>; rel="describedby"; type="text/plain"; title="Full LLM content"
+  Link: </rss.xml>; rel="alternate"; type="application/rss+xml"; title="RSS Feed"
+  Link: </sitemap-index.xml>; rel="sitemap"
+
+# -- Security headers --------------------------------------------------- #
 /*
   # Forces browsers to always use HTTPS for this domain (and subdomains)
   # for one year. `preload` gets the domain into browsers' built-in HSTS lists

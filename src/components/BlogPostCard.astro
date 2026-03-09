@@ -13,7 +13,14 @@ const Heading = headingLevel;
 const isExternal = !!post.data.externalUrl;
 ---
 
-<article>
+<article
+  data-blog-post
+  data-blog-title={post.data.title}
+  data-blog-description={post.data.description}
+  data-blog-url={isExternal ? post.data.externalUrl : `/blog/${post.id}`}
+  data-blog-date={post.data.date.toISOString().split("T")[0]}
+  data-blog-tags={post.data.tags.join(",")}
+>
   <a
     href={isExternal ? post.data.externalUrl : `/blog/${post.id}`}
     target={isExternal ? "_blank" : undefined}
