@@ -12,6 +12,14 @@
   Link: </rss.xml>; rel="alternate"; type="application/rss+xml"; title="RSS Feed"
   Link: </sitemap-index.xml>; rel="sitemap"
 
+# -- UTF-8 charset for plain-text endpoints ----------------------------- #
+# Cloudflare's static asset serving infers text/plain from .txt but omits
+# charset, causing non-ASCII characters (e.g. é) to be mangled as Latin-1.
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+/llms-full.txt
+  Content-Type: text/plain; charset=utf-8
+
 # -- Security headers --------------------------------------------------- #
 /*
   # Forces browsers to always use HTTPS for this domain (and subdomains)
