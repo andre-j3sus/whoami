@@ -1,0 +1,48 @@
+---
+import { Icon } from "astro-icon/components";
+import type { Award } from "@/data/awards";
+import { formatYearMonth } from "@/utils/dates";
+
+interface Props {
+  award: Award;
+  delay?: string;
+}
+
+const { award, delay } = Astro.props;
+---
+
+<div class="glass-card-static p-6 animate-on-scroll" data-delay={delay}>
+  <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+    <div>
+      <h3 class="font-semibold text-[var(--color-text)]">{award.title}</h3>
+      <p class="text-sm text-[var(--color-text-secondary)] mt-0.5">
+        {award.issuer}
+        {" · "}
+        <a
+          href={award.institutionUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-link"
+        >
+          {award.institution}
+        </a>
+      </p>
+    </div>
+    <span class="badge flex-shrink-0">
+      <Icon name="lucide:calendar" size={12} />
+      {formatYearMonth(award.date)}
+    </span>
+  </div>
+  <p class="mt-3 text-sm text-[var(--color-text-secondary)]">{award.description}</p>
+  {award.url && (
+    <a
+      href={award.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mt-3 inline-flex items-center gap-1.5 text-sm text-link"
+    >
+      <Icon name="lucide:file-text" size={14} />
+      {award.urlLabel ?? "View"}
+    </a>
+  )}
+</div>

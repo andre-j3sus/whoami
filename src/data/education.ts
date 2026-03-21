@@ -36,7 +36,6 @@ export const education: Education[] = [
     descriptions: [
       "Studied core computer science fundamentals: Algorithms and Data Structures, Object-Oriented Programming, Software Engineering, Databases, Computer Networks, Operating Systems, Distributed Systems.",
       "Student representative between 2022 and 2023, representing the students of the degree in the pedagogical council of the school.",
-      "Received two merit scholarships for academic excellence, in 2020 and 2022.",
     ],
   },
 ];

@@ -2,6 +2,9 @@
 
 ## Features
 
+- [ ] Add certificate PDFs for the "Best Student Award" and "Santander Award" entries in `src/data/awards.ts`
+  - Place PDFs under `public/certificates/` (e.g. `best-student-award-2024.pdf`, `santander-award-2020.pdf`)
+  - Set the `url` and `urlLabel` fields on the corresponding entries
 - [x] Convert experience and education sections into timelines
 - [ ] Add card with book I'm currently reading. Since the goodreads API is not public anymore, I probably need to create a worker with a crontrigger to scrape my public page
 - [x] Add a map with the countries I visited

@@ -227,6 +227,27 @@ export const skillCategories: SkillCategory[] = [
       },
     ],
   },
+  {
+    title: "AI & Developer Tools",
+    descriptions: [
+      "Experienced using AI coding tools to accelerate productivity across the full development lifecycle — coding, testing, debugging, writing documentation, and drafting specs.",
+      "Familiar with tools like OpenCode and Windsurf, and comfortable integrating AI assistants into daily workflows.",
+    ],
+    skills: [
+      {
+        name: "OpenCode",
+        icon: "lucide:terminal",
+        color: "#F48024",
+        url: "https://opencode.ai",
+      },
+      {
+        name: "Windsurf",
+        icon: "lucide:wind",
+        color: "#0EA5E9",
+        url: "https://windsurf.com",
+      },
+    ],
+  },
 ];
 
 /** Skills marked as `featured` across all categories, for the homepage tech grid. */

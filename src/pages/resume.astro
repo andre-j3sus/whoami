@@ -4,8 +4,10 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import { personal } from "@/data/personal";
 import { experiences } from "@/data/experience";
 import { education } from "@/data/education";
+import { awards } from "@/data/awards";
 import { skillCategories } from "@/data/skills";
 import SkillBadge from "@/components/SkillBadge.astro";
+import AwardItem from "@/components/AwardItem.astro";
 import DateRange from "@/components/DateRange.astro";
 import TimelineItem from "@/components/TimelineItem.astro";
 ---
@@ -71,6 +73,31 @@ import TimelineItem from "@/components/TimelineItem.astro";
       </ol>
     </section>
 
+    <!-- Skills -->
+    <section class="mb-20">
+      <h2 class="section-label mb-8 animate-on-scroll">Skills & Technologies</h2>
+      <div class="space-y-6">
+        {skillCategories.map((cat, i) => (
+          <div class="glass-card p-6 animate-on-scroll" data-delay={String(i + 1)}>
+            <h3 class="font-semibold text-[var(--color-text)] mb-4">{cat.title}</h3>
+            <ul class="space-y-2 mb-5">
+              {cat.descriptions.map((desc) => (
+                <li class="flex items-start gap-3 text-sm text-[var(--color-text-secondary)]">
+                  <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] flex-shrink-0" aria-hidden="true" />
+                  {desc}
+                </li>
+              ))}
+            </ul>
+            <div class="flex flex-wrap gap-3">
+              {cat.skills.filter((s) => !s.hidden).map((skill) => (
+                <SkillBadge skill={skill} />
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
     <!-- Education -->
     <section class="mb-20">
       <h2 class="section-label mb-8 animate-on-scroll">Education</h2>
@@ -110,27 +137,12 @@ import TimelineItem from "@/components/TimelineItem.astro";
       </ol>
     </section>
 
-    <!-- Skills -->
+    <!-- Honors & Awards -->
     <section>
-      <h2 class="section-label mb-8 animate-on-scroll">Skills & Technologies</h2>
-      <div class="space-y-6">
-        {skillCategories.map((cat, i) => (
-          <div class="glass-card p-6 animate-on-scroll" data-delay={String(i + 1)}>
-            <h3 class="font-semibold text-[var(--color-text)] mb-4">{cat.title}</h3>
-            <ul class="space-y-2 mb-5">
-              {cat.descriptions.map((desc) => (
-                <li class="flex items-start gap-3 text-sm text-[var(--color-text-secondary)]">
-                  <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] flex-shrink-0" aria-hidden="true" />
-                  {desc}
-                </li>
-              ))}
-            </ul>
-            <div class="flex flex-wrap gap-3">
-              {cat.skills.filter((s) => !s.hidden).map((skill) => (
-                <SkillBadge skill={skill} />
-              ))}
-            </div>
-          </div>
+      <h2 class="section-label mb-8 animate-on-scroll">Honors & Awards</h2>
+      <div class="space-y-4">
+        {awards.map((award, i) => (
+          <AwardItem award={award} delay={String(i + 1)} />
         ))}
       </div>
     </section>
