@@ -5,7 +5,7 @@ import icon from "astro-icon";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  adapter: cloudflare(),
+  adapter: cloudflare({ imageService: "compile" }),
   integrations: [icon(), sitemap()],
   vite: {
     plugins: [tailwindcss()],

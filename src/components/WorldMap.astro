@@ -57,7 +57,7 @@ const countries = JSON.stringify([home, ...visited]);
     function createMap() {
       if (currentMap) {
         currentMap.destroy();
-        mapEl.innerHTML = "";
+        mapEl!.innerHTML = "";
       }
 
       const colors = getColors();
