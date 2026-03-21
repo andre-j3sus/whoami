@@ -4,6 +4,7 @@ description: "A sample post showing how to use the blog. This is a draft — it 
 date: 2026-02-14
 tags: ["Guide", "Meta"]
 draft: true
+ogImage: "/images/buying-a-house-in-lisbon-in-2025.png"
 ---
 
 > **This is a sample post.** It has `draft: true` in frontmatter, so it only shows up when running `npm run dev`. It will never appear in production builds. Delete this file when you're ready, or use it as a reference.

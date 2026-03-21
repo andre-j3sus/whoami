@@ -4,4 +4,5 @@ description: "Cloudflare Radar has launched a new Top-Level Domain page, providi
 date: 2025-10-27
 tags: ["Cloudflare", "Radar", "DNS"]
 externalUrl: "https://blog.cloudflare.com/introducing-tld-insights-on-cloudflare-radar/"
+ogImage: "/images/tld-insights-cloudflare-radar.webp"
 ---

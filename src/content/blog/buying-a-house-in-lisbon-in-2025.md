@@ -3,6 +3,7 @@ title: "Buying a house near Lisbon in our 20s"
 description: "How my girlfriend and I bought our first house near Lisbon in our 20s — the process we followed from planning to getting the keys."
 date: 2026-03-01
 tags: [ "Lifestyle", "Home", "Portugal" ]
+ogImage: "/images/buying-a-house-in-lisbon-in-2025.png"
 ---
 
 Last year, my girlfriend (24) and I (23) bought a house in Odivelas (yes, I know: it’s not *technically* Lisbon, but it

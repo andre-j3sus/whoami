@@ -8,15 +8,16 @@ interface Props {
   title: string;
   description?: string;
   ogType?: string;
+  ogImage?: string;
 }
 
-const { title, description, ogType } = Astro.props;
+const { title, description, ogType, ogImage } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
-    <BaseHead title={title} description={description} ogType={ogType} />
+    <BaseHead title={title} description={description} ogType={ogType} ogImage={ogImage} />
   </head>
   <body class="min-h-dvh flex flex-col">
     <Nav />

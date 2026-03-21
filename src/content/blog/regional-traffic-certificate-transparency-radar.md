@@ -4,4 +4,5 @@ description: "Cloudflare Radar now offers regional Internet traffic visibility f
 date: 2025-09-26
 tags: ["Cloudflare", "Radar", "Certificate Transparency"]
 externalUrl: "https://blog.cloudflare.com/new-regional-internet-traffic-and-certificate-transparency-insights-on-radar/"
+ogImage: "/images/regional-traffic-certificate-transparency-radar.webp"
 ---
