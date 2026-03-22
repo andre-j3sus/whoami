@@ -213,3 +213,17 @@ Blog posts live in `src/content/blog/*.md`. Schema (in `content.config.ts`):
 `title` (string), `description` (string), `date` (date), `tags` (string[],
 default `[]`), `draft` (boolean, default `false`), `externalUrl` (URL, optional).
 Draft posts (`draft: true`) are filtered out from production builds.
+
+## Resume Consistency
+
+`main.tex` is the LaTeX source for the PDF resume. Its content must stay in
+sync with the site's data files (`src/data/education.ts`,
+`src/data/experience.ts`, `src/data/projects.ts`, `src/data/awards.ts`).
+
+Rules:
+- Facts (dates, grades, titles, institution names, award names) must match
+  exactly across both sources.
+- Wording may differ — the LaTeX resume uses more formal, concise language;
+  the site data can be more descriptive and narrative.
+- When updating either source, check the other and apply the equivalent
+  factual change. Never let them diverge on facts.

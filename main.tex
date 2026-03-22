@@ -1,0 +1,260 @@
+%-------------------------
+% Resume in Latex
+% Author : André Jesus
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\newcommand{\resumePublicationHeading}[2]{
+    \item
+    \small{#1} \\
+    \textit{\small #2}\vspace{-5pt}
+}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape André Jesus} \\ \vspace{4pt}
+    \small
+    \faMapMarker* \hspace{1pt} Lisbon, Portugal
+    \hspace{6pt}$\cdot$\hspace{6pt}
+    \faEnvelope \hspace{1pt} \href{mailto:contact@andrejesus.com}{\underline{contact@andrejesus.com}}
+    \hspace{6pt}$\cdot$\hspace{6pt}
+    \faLinkedin \hspace{1pt} \href{https://linkedin.com/in/andre-j3sus}{\underline{linkedin.com/in/andre-j3sus}}
+    \hspace{6pt}$\cdot$\hspace{6pt}
+    \faGithub \hspace{1pt} \href{https://github.com/andre-j3sus}{\underline{github.com/andre-j3sus}}
+    \hspace{6pt}$\cdot$\hspace{6pt}
+    \faGlobe \hspace{1pt} \href{https://andrejesus.com}{\underline{andrejesus.com}}
+\end{center}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {T\'{e}cnico -- Universidade de Lisboa}{Lisbon, Portugal}
+      {MSc in Computer Science and Engineering \textnormal{-- Final Grade: 18/20}}{Sep. 2023 -- Oct. 2025}
+      \resumeItemListStart
+        \resumeItem{Specialisations in \textbf{Distributed Systems} and \textbf{Cybersecurity}}
+        \resumeItem{Dissertation: \emph{``Serverless Snapshot Orchestration''} -- scored 19/20; designed and implemented a snapshot orchestration system in \href{https://github.com/vhive-serverless/vHive}{vHive} in collaboration with NTU Singapore}
+        \resumeItem{Key courses: Distributed Applications, Cloud Computing \& Virtualization, Parallel \& Distributed Computing, Software Security, Forensics Cyber-Security, Highly Dependable Systems, Deep Learning, Data Science}
+      \resumeItemListEnd
+    \resumeSubheading
+      {Instituto Superior de Engenharia de Lisboa}{Lisbon, Portugal}
+      {BSc in Computer Science and Engineering \textnormal{-- Final Grade: 18/20}}{Sep. 2020 -- Jul. 2023}
+      \resumeItemListStart
+        \resumeItem{Fundamentals of algorithms \& data structures, software engineering, databases, computer networks, operating systems, and distributed systems}
+        \resumeItem{Student representative in the Pedagogical Council (2022--2023)}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Systems Engineer \textnormal{(Software Engineer Intern $\to$ Full-time, Sep. 2024)}}{May 2024 -- Present}
+      {Cloudflare}{Lisbon, Portugal}
+      \resumeItemListStart
+        \resumeItem{Member of the \textbf{Cloudflare Radar} team, building and maintaining the platform's API and website that surfaces global Internet traffic trends and insights}
+        \resumeItem{Designed and shipped the \textbf{Radar MCP Server}, enabling AI assistants to query real-time Radar data programmatically}
+        \resumeItem{Built full-stack features across DNS analytics, Certificate Transparency, AI usage insights, TLD insights, and Internet services rankings, spanning FastAPI, GraphQL, React, and Remix}
+        \resumeItem{Contributed frontend work to the \textbf{AI Crawl Control} product on the Cloudflare dashboard, improving bot management UX for customers}
+        \resumeItem{Drove CI pipeline migrations, Infrastructure-as-Code adoption (Terraform), high-availability improvements, and SEO optimisations across the platform}
+        \resumeItem{Mentored a software engineering intern through the full lifecycle of a cross-cutting API and frontend feature}
+        \resumeItem{Co-authored several \href{https://blog.cloudflare.com}{Cloudflare blog} posts covering new Radar capabilities shipped to production}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Teaching Assistant}{Oct. 2022 -- May 2024}
+      {Instituto Superior de Engenharia de Lisboa}{Lisbon, Portugal}
+      \resumeItemListStart
+        \resumeItem{Teaching assistant for \textbf{Algorithms \& Data Structures}, \textbf{Introduction to Web Programming}, and \textbf{Software Laboratory} (semesters 2--4 of the BSc)}
+        \resumeItem{Led weekly practical lab sessions and provided one-on-one student support during office hours}
+        \resumeItem{Maintained Linux server infrastructure used by students for project development and evaluation}
+        \resumeItem{Assisted with the design and grading of exams and assignments}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+
+      \resumeProjectHeading
+          {\textbf{Cloudflare Radar} $|$ \emph{TypeScript, React, Remix, Cloudflare Workers, Python, FastAPI, GraphQL}}{May 2024 -- Present}
+          \resumeItemListStart
+            \resumeItem{Contributed to \href{https://radar.cloudflare.com}{radar.cloudflare.com} -- a globally used platform surfacing Internet trends, traffic anomalies, and security data}
+            \resumeItem{Shipped features spanning DNS, Certificate Transparency, AI adoption metrics, and TLD analytics}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{vHive -- Serverless Snapshot Orchestration} $|$ \emph{Go, Docker, Kubernetes, Firecracker}}{Aug. 2024 -- Oct. 2025}
+          \resumeItemListStart
+            \resumeItem{MSc thesis project in collaboration with NTU Singapore; contributed to the \href{https://github.com/vhive-serverless/vHive}{vHive} open-source serverless framework}
+            \resumeItem{Designed a distributed snapshot orchestration system with local caching and a snapshot-aware scheduler, significantly reducing cold-start latency in serverless functions}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{PHYLOViZ Web Platform} $|$ \emph{TypeScript, React, Java, Spring, Docker, MongoDB}}{Feb. 2023 -- Jan. 2024}
+          \resumeItemListStart
+            \resumeItem{Contributed to \href{https://www.phyloviz.net}{phyloviz}, an open-source modular web platform for phylogenetic analysis with distributed computation support}
+          \resumeItemListEnd
+
+    \resumeSubHeadingListEnd
+
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: TypeScript, JavaScript, Python, Go, Kotlin, Java} \\
+     \textbf{Backend}{: FastAPI, Node.js, GraphQL, Spring, PostgreSQL, MongoDB} \\
+     \textbf{Frontend}{: React, Remix, Astro, Vite, HTML/CSS} \\
+     \textbf{Infrastructure \& DevOps}{: Cloudflare Workers, Docker, Kubernetes, Terraform, Google Cloud Platform, GitLab CI, Prometheus, Grafana, Sentry, Firecracker} \\
+     \textbf{Areas}{: Distributed Systems, Serverless, Edge Computing, Cloud Infrastructure, Full-Stack Web Development}
+    }}
+ \end{itemize}
+
+
+%-----------PUBLICATIONS & WRITING-----------
+\section{Publications \& Writing}
+  \resumeSubHeadingListStart
+    \resumePublicationHeading
+        {\textbf{Cloudflare Blog} -- \href{https://blog.cloudflare.com/radar-origin-pq-key-transparency-aspa/}{Bringing more transparency to post-quantum usage, encrypted messaging, and routing security}}{Feb. 2026}
+    \resumePublicationHeading
+        {\textbf{Cloudflare Blog} -- \href{https://blog.cloudflare.com/introducing-tld-insights-on-cloudflare-radar/}{From .com to .anything: introducing Top-Level Domain (TLD) insights on Cloudflare Radar}}{Oct. 2025}
+    \resumePublicationHeading
+        {\textbf{Cloudflare Blog} -- \href{https://blog.cloudflare.com/new-regional-internet-traffic-and-certificate-transparency-insights-on-radar/}{Introducing new regional Internet traffic and Certificate Transparency insights on Cloudflare Radar}}{Sep. 2025}
+  \resumeSubHeadingListEnd
+
+
+%-----------TALKS & SPEAKING-----------
+\section{Talks \& Speaking}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+        {\href{https://lu.ma/lvr717q6}{\textbf{Empowering AI with MCP}} $|$ \emph{AI Frameworks Meetup, Cloudflare Lisbon}}{May 2025}
+        \resumeItemListStart
+          \resumeItem{Introduced the Model Context Protocol (MCP) and demonstrated building and deploying a Remote MCP server on Cloudflare}
+        \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+
+%-----------HONORS & AWARDS-----------
+\section{Honors \& Awards}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+        {\textbf{Merit Scholarship} \textnormal{-- DGES, Directorate General for Higher Education}}{Nov. 2024}
+    \resumeProjectHeading
+        {\textbf{Best Student Award}, BSc CSE 2022/2023 \textnormal{-- ISEL / Santander}}{Oct. 2024}
+    \resumeProjectHeading
+        {\textbf{Merit Scholarship} \textnormal{-- DGES, Directorate General for Higher Education}}{Sep. 2022}
+    \resumeProjectHeading
+        {\textbf{Santander Award} \textnormal{-- ISEL / Santander}}{Oct. 2020}
+  \resumeSubHeadingListEnd
+
+
+%-------------------------------------------
+\end{document}

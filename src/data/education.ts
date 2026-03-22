@@ -12,7 +12,7 @@ export interface Education {
 export const education: Education[] = [
   {
     title: "MSc. in Computer Science and Engineering",
-    institution: "Instituto Superior Tecnico - Universidade de Lisboa",
+    institution: "Técnico - Universidade de Lisboa",
     institutionUrl: "https://tecnico.ulisboa.pt/en/",
     logo: "/logos/ist.png",
     startDate: "2023-09",
@@ -26,8 +26,7 @@ export const education: Education[] = [
   },
   {
     title: "BSc. in Computer Science and Engineering",
-    institution:
-      "Instituto Superior de Engenharia de Lisboa - Instituto Politecnico de Lisboa",
+    institution: "Instituto Superior de Engenharia de Lisboa",
     institutionUrl: "https://www.isel.pt/en",
     logo: "/logos/isel.png",
     startDate: "2020-09",
