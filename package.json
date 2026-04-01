@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@iconify-json/lucide": "^1.2.98",
-    "@iconify-json/simple-icons": "^1.2.74",
+    "@iconify-json/simple-icons": "^1.2.76",
     "typescript": "^5.9.3",
     "wrangler": "^4.76.0"
   }
