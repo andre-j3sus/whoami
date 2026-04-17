@@ -6,6 +6,7 @@ import { experiences } from "@/data/experience";
 import { education } from "@/data/education";
 import { awards } from "@/data/awards";
 import { talks } from "@/data/talks";
+import { shows } from "@/data/shows";
 import { skillCategories } from "@/data/skills";
 import SkillBadge from "@/components/SkillBadge.astro";
 import AwardItem from "@/components/AwardItem.astro";
@@ -141,7 +142,8 @@ import TimelineItem from "@/components/TimelineItem.astro";
           <div class="glass-card-static p-6 animate-on-scroll" data-delay={String(i + 1)}>
             <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div>
-                <a href={talk.eventUrl} target="_blank" rel="noopener noreferrer" class="text-link font-semibold text-base">
+                <a href={talk.videoUrl ?? talk.eventUrl} target="_blank" rel="noopener noreferrer" class="text-link font-semibold text-base">
+                  {talk.videoUrl && <Icon name="lucide:video" size={14} class="inline-block mr-1 align-[-2px]" />}
                   {talk.title}
                 </a>
                 <p class="mt-1 text-sm text-[var(--color-text-secondary)]">{talk.event} &middot; {talk.location}</p>
@@ -152,6 +154,29 @@ import TimelineItem from "@/components/TimelineItem.astro";
               </span>
             </div>
             <p class="mt-3 text-sm text-[var(--color-text-secondary)]">{talk.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Media Appearances -->
+    <section class="mb-20">
+      <h2 class="section-label mb-8 animate-on-scroll">Media Appearances</h2>
+      <div class="space-y-4">
+        {shows.map((show, i) => (
+          <div class="glass-card-static p-6 animate-on-scroll" data-delay={String(i + 1)}>
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <a href={show.url} target="_blank" rel="noopener noreferrer" class="text-link font-semibold text-base">
+                  {show.title}
+                </a>
+                <p class="mt-1 text-sm text-[var(--color-text-secondary)]">{show.show}</p>
+              </div>
+              <span class="badge flex-shrink-0">
+                <Icon name="lucide:calendar" size={12} />
+                {new Date(show.date).toLocaleDateString("en-GB", { month: "long", year: "numeric" })}
+              </span>
+            </div>
           </div>
         ))}
       </div>

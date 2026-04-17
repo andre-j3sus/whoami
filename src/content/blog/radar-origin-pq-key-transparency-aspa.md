@@ -4,5 +4,5 @@ description: "Cloudflare Radar has added new tools for monitoring PQ adoption, K
 date: 2026-02-27
 tags: ["Cloudflare", "Radar", "Security", "Post-Quantum"]
 externalUrl: "https://blog.cloudflare.com/radar-origin-pq-key-transparency-aspa/"
-ogImage: "/images/radar-origin-pq-key-transparency-aspa.webp"
+ogImage: "/images/radar-origin-pq-key-transparency-aspa.png"
 ---
