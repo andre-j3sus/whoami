@@ -1,4 +1,5 @@
 ---
+import { getLangFromUrl, useTranslations, getDateLocale } from "@/i18n/utils";
 import { formatYearMonth } from "@/utils/dates";
 
 interface Props {
@@ -7,14 +8,17 @@ interface Props {
 }
 
 const { startDate, endDate } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const dateLocale = getDateLocale(lang);
 ---
 
 {endDate ? (
   <Fragment>
-    <time datetime={startDate}>{formatYearMonth(startDate)}</time>&thinsp;&ndash;&thinsp;<time datetime={endDate}>{formatYearMonth(endDate)}</time>
+    <time datetime={startDate}>{formatYearMonth(startDate, dateLocale)}</time>&thinsp;&ndash;&thinsp;<time datetime={endDate}>{formatYearMonth(endDate, dateLocale)}</time>
   </Fragment>
 ) : (
   <Fragment>
-    <time datetime={startDate}>{formatYearMonth(startDate)}</time>&thinsp;&ndash;&thinsp;<span>Present</span>
+    <time datetime={startDate}>{formatYearMonth(startDate, dateLocale)}</time>&thinsp;&ndash;&thinsp;<span>{t("common.present")}</span>
   </Fragment>
 )}

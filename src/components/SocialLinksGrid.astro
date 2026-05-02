@@ -1,6 +1,10 @@
 ---
 import { Icon } from "astro-icon/components";
 import { socialLinks } from "@/data/social";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -11,7 +15,7 @@ import { socialLinks } from "@/data/social";
       rel={link.url.startsWith("mailto:") ? undefined : "noopener noreferrer"}
       class="glass-card group flex flex-col items-center gap-3 p-6 text-center animate-on-scroll"
       data-delay={String(Math.min(i + 1, 6))}
-      aria-label={link.name}
+      aria-label={t(link.name)}
     >
       <div
         class="social-icon-wrapper flex items-center justify-center w-12 h-12 rounded-2xl transition-transform duration-300 group-hover:scale-110"
@@ -24,9 +28,9 @@ import { socialLinks } from "@/data/social";
       </div>
       <div>
         <p class="font-medium text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">
-          {link.name}
+          {t(link.name)}
         </p>
-        <p class="mt-0.5 text-xs text-[var(--color-text-muted)]">{link.description}</p>
+        <p class="mt-0.5 text-xs text-[var(--color-text-muted)]">{t(link.description)}</p>
       </div>
     </a>
   ))}

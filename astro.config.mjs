@@ -25,7 +25,18 @@ function noExternalPlugin() {
 
 export default defineConfig({
   adapter: cloudflare({ imageService: "compile" }),
-  integrations: [icon(), sitemap()],
+  integrations: [
+    icon(),
+    sitemap({
+      i18n: {
+        defaultLocale: "en",
+        locales: {
+          en: "en",
+          pt: "pt-PT",
+        },
+      },
+    }),
+  ],
   vite: {
     plugins: [tailwindcss(), noExternalPlugin()],
   },
@@ -33,4 +44,11 @@ export default defineConfig({
     inlineStylesheets: "always",
   },
   site: "https://andrejesus.com",
+  i18n: {
+    locales: ["en", { path: "pt", codes: ["pt-PT", "pt"] }],
+    defaultLocale: "en",
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
 });

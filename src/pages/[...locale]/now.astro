@@ -4,18 +4,24 @@ import ExternalLink from "@/components/ExternalLink.astro";
 import { personal } from "@/data/personal";
 import { nowItems, lastUpdated } from "@/data/now";
 import { formatYearMonth } from "@/utils/dates";
+import { getLangFromUrl, useTranslations, getDateLocale } from "@/i18n/utils";
+export { getLocalePaths as getStaticPaths } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const dateLocale = getDateLocale(lang);
 ---
 
-<BaseLayout title={`Now - ${personal.name}`} description={`What ${personal.name} is doing now`}>
+<BaseLayout title={`${t("now.title")} - ${personal.name}`} description={t("now.subtitle")}>
   <div class="mx-auto max-w-5xl px-6 py-16 sm:py-20">
     <div class="mb-14 animate-on-scroll">
-      <h1 class="text-3xl font-bold tracking-tight">Now</h1>
+      <h1 class="text-3xl font-bold tracking-tight">{t("now.title")}</h1>
       <p class="mt-2 text-[var(--color-text-secondary)]">
-        What I'm focused on at this point in my life
+        {t("now.subtitle")}
       </p>
       <p class="mt-2 text-sm text-[var(--color-text-muted)] italic">
-        Inspired by <ExternalLink href="https://nownownow.com/about">nownownow.com</ExternalLink>.
-        Last updated: <time datetime={lastUpdated}>{formatYearMonth(lastUpdated)}</time>.
+        {t("now.inspiredBy")} <ExternalLink href="https://nownownow.com/about">nownownow.com</ExternalLink>.
+        {t("now.lastUpdated")}: <time datetime={lastUpdated}>{formatYearMonth(lastUpdated, dateLocale)}</time>.
       </p>
     </div>
 
@@ -24,7 +30,7 @@ import { formatYearMonth } from "@/utils/dates";
         {nowItems.map((item) => (
           <li class="flex items-start gap-3 text-sm text-[var(--color-text-secondary)] leading-relaxed">
             <span class="mt-0.5 flex-shrink-0" aria-hidden="true">{item.emoji}</span>
-            {item.text}
+            {t(item.text)}
           </li>
         ))}
       </ul>

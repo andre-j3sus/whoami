@@ -4,37 +4,49 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import { personal } from "@/data/personal";
 import { getCollection } from "astro:content";
 import BlogPostCard from "@/components/BlogPostCard.astro";
+import { getLangFromUrl, useTranslations, getBlogPostSlug } from "@/i18n/utils";
+export { getLocalePaths as getStaticPaths } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const isDev = import.meta.env.DEV;
 const allPosts = await getCollection("blog", ({ data }) => isDev || !data.draft);
-const sorted = allPosts.sort(
+
+/* Show locale posts + EN fallbacks for posts without a translation */
+const localePosts = allPosts.filter((p) => p.id.startsWith(`${lang}/`));
+const localeSlugs = new Set(localePosts.map((p) => getBlogPostSlug(p.id)));
+const fallbackPosts = lang !== "en"
+  ? allPosts.filter((p) => p.id.startsWith("en/") && !localeSlugs.has(getBlogPostSlug(p.id)))
+  : [];
+const sorted = [...localePosts, ...fallbackPosts].sort(
   (a, b) => b.data.date.getTime() - a.data.date.getTime()
 );
 ---
 
-<BaseLayout title={`Blog - ${personal.name}`} description={`Thoughts on tech, life, and everything in between by ${personal.name}`}>
+<BaseLayout title={`${t("blog.title")} - ${personal.name}`} description={t("blog.subtitle")}>
   <div class="mx-auto max-w-5xl px-6 py-16 sm:py-20">
     <div class="mb-14 animate-on-scroll">
       <div class="flex items-center justify-between">
-        <h1 class="text-3xl font-bold tracking-tight">Blog</h1>
+        <h1 class="text-3xl font-bold tracking-tight">{t("blog.title")}</h1>
         <a
           href="/rss.xml"
           target="_blank"
           class="rounded-lg p-2 text-[var(--color-text-muted)] hover:text-[var(--color-accent)] hover:bg-[var(--color-accent-light)] transition-all duration-200"
-          aria-label="RSS Feed"
-          title="RSS Feed"
+          aria-label={t("blog.rssFeed")}
+          title={t("blog.rssFeed")}
         >
           <Icon name="lucide:rss" size={18} />
         </a>
       </div>
       <p class="mt-2 text-[var(--color-text-secondary)]">
-        Thoughts on tech, life, and everything in between
+        {t("blog.subtitle")}
       </p>
     </div>
 
     {sorted.length === 0 ? (
       <div class="glass-card-static py-16 text-center animate-on-scroll">
-        <p class="text-[var(--color-text-muted)]">Posts coming soon.</p>
+        <p class="text-[var(--color-text-muted)]">{t("blog.noPosts")}</p>
       </div>
     ) : (
       <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">

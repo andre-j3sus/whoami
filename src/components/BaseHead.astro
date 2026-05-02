@@ -1,5 +1,6 @@
 ---
 import { personal } from "@/data/personal";
+import { getLangFromUrl, stripLocale } from "@/i18n/utils";
 
 interface Props {
   title: string;
@@ -9,8 +10,15 @@ interface Props {
 }
 
 const { title, description = `${personal.name} - Systems Engineer`, ogType = "website", ogImage } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = ogImage ? new URL(ogImage, Astro.site).toString() : undefined;
+
+/* -- hreflang alternates ------------------------------------------------- */
+const basePath = stripLocale(Astro.url.pathname, lang);
+const enUrl = new URL(basePath, Astro.site);
+const ptUrl = new URL(`/pt${basePath}`, Astro.site);
+const ogLocale = lang === "pt" ? "pt_PT" : "en_US";
 ---
 
 <meta charset="utf-8" />
@@ -23,6 +31,11 @@ const ogImageURL = ogImage ? new URL(ogImage, Astro.site).toString() : undefined
 <meta name="author" content={personal.name} />
 <link rel="canonical" href={canonicalURL} />
 
+<!-- Alternate languages -->
+<link rel="alternate" hreflang="en" href={enUrl} />
+<link rel="alternate" hreflang="pt-PT" href={ptUrl} />
+<link rel="alternate" hreflang="x-default" href={enUrl} />
+
 <!-- Theme color (light + dark) -->
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#18181b" media="(prefers-color-scheme: dark)" />
@@ -33,6 +46,7 @@ const ogImageURL = ogImage ? new URL(ogImage, Astro.site).toString() : undefined
 <meta property="og:type" content={ogType} />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:site_name" content={personal.name} />
+<meta property="og:locale" content={ogLocale} />
 {ogImageURL && <meta property="og:image" content={ogImageURL} />}
 {ogImageURL && <meta property="og:image:width" content="1200" />}
 {ogImageURL && <meta property="og:image:height" content="630" />}

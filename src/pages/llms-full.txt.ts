@@ -1,6 +1,7 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
 import { personal } from "@/data/personal";
+import { getBlogPostSlug } from "@/i18n/utils";
 import { experiences } from "@/data/experience";
 import { education } from "@/data/education";
 import { projects } from "@/data/projects";
@@ -26,7 +27,9 @@ function stripMarkdown(md: string): string {
 }
 
 export const GET: APIRoute = async () => {
-  const allPosts = await getCollection("blog", ({ data }) => !data.draft);
+  const allPosts = await getCollection("blog", ({ id, data }) =>
+    !data.draft && id.startsWith("en/")
+  );
   const posts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
   const sections: string[] = [];
@@ -112,7 +115,7 @@ export const GET: APIRoute = async () => {
   /* ------------------------------------------------------------------ */
   sections.push("## Blog Posts", "");
   for (const post of posts) {
-    const url = post.data.externalUrl ?? `${personal.url}/blog/${post.id}`;
+    const url = post.data.externalUrl ?? `${personal.url}/blog/${getBlogPostSlug(post.id)}`;
     const date = post.data.date.toISOString().split("T")[0];
     sections.push(`### ${post.data.title} (${date})`, "");
     sections.push(post.data.description);

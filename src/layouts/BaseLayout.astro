@@ -3,6 +3,7 @@ import BaseHead from "@/components/BaseHead.astro";
 import Nav from "@/components/Nav.astro";
 import Footer from "@/components/Footer.astro";
 import "@/styles/global.css";
+import { getLangFromUrl, getHtmlLang } from "@/i18n/utils";
 
 interface Props {
   title: string;
@@ -12,10 +13,12 @@ interface Props {
 }
 
 const { title, description, ogType, ogImage } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const htmlLang = getHtmlLang(lang);
 ---
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang={htmlLang} class="no-js">
   <head>
     <BaseHead title={title} description={description} ogType={ogType} ogImage={ogImage} />
   </head>

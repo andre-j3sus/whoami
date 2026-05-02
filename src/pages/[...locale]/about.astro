@@ -1,0 +1,168 @@
+---
+import { Icon } from "astro-icon/components";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ExternalLink from "@/components/ExternalLink.astro";
+import { personal } from "@/data/personal";
+import { hobbies } from "@/data/hobbies";
+import WorldMap from "@/components/WorldMap.astro";
+import { getLangFromUrl, useTranslations, useTranslatedPath } from "@/i18n/utils";
+export { getLocalePaths as getStaticPaths } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+
+const interests = [
+  t("about.interest.1"),
+  t("about.interest.2"),
+  t("about.interest.3"),
+  t("about.interest.4"),
+  t("about.interest.5"),
+];
+---
+
+<BaseLayout title={`${t("about.title")} - ${personal.name}`} description={t("about.subtitle")}>
+  <div class="mx-auto max-w-5xl px-6 py-16 sm:py-20">
+    <div class="mb-14 animate-on-scroll">
+      <h1 class="text-3xl font-bold tracking-tight">{t("about.title")}</h1>
+      <p class="mt-2 text-[var(--color-text-secondary)]">
+        {t("about.subtitle")}
+      </p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      <!-- Intro -->
+      <div class="glass-card p-6 sm:p-8 md:col-span-2 animate-on-scroll" data-delay="1">
+        <div class="space-y-4 text-[var(--color-text-secondary)] leading-relaxed">
+          {lang === "en" ? (
+            <Fragment>
+              <p>
+                I'm Andre, a Systems Engineer at <ExternalLink href="https://www.cloudflare.com/" class="font-medium">Cloudflare</ExternalLink>, based in Lisbon, Portugal. I work on the <ExternalLink href="https://radar.cloudflare.com/" class="font-medium">Cloudflare Radar</ExternalLink> team and contribute to the AI Crawl Control dashboard.
+              </p>
+              <p>
+                I'm drawn to the intersection of systems engineering and full-stack development. I care about building software that is reliable, maintainable, and thoughtfully designed. Whether it's a backend service handling real traffic or a frontend that respects the user's time, I try to approach everything with the same standard: make it work well, make it clear, and make it easy to change.
+              </p>
+              <p>
+                I also have a strong bias toward doing things myself and figuring things out along the way. In Portugal we call it <em>desenrasca</em> — the art of resourcefully solving problems with what you have. Whether it's a home repair, a side project, or learning something new from scratch, I'd rather get my hands dirty than outsource the experience.
+              </p>
+            </Fragment>
+          ) : (
+            <Fragment>
+              <p>
+                Sou o Andre, Engenheiro de Sistemas na <ExternalLink href="https://www.cloudflare.com/" class="font-medium">Cloudflare</ExternalLink>, a viver em Lisboa. Trabalho na equipa do <ExternalLink href="https://radar.cloudflare.com/" class="font-medium">Cloudflare Radar</ExternalLink> e contribuo para o dashboard de AI Crawl Control.
+              </p>
+              <p>
+                Interesso-me pela intersecao entre engenharia de sistemas e desenvolvimento full-stack. Preocupo-me em construir software que seja fiavel, facil de manter e bem pensado. Seja um servico de backend a lidar com trafego real ou um frontend que respeite o tempo do utilizador, tento abordar tudo com o mesmo padrao: que funcione bem, que seja claro e que seja facil de alterar.
+              </p>
+              <p>
+                Tambem tenho uma forte tendencia para fazer as coisas eu proprio e ir descobrindo pelo caminho. Em Portugal chamamos-lhe <em>desenrasca</em> — a arte de resolver problemas com o que temos. Seja uma reparacao em casa, um projeto pessoal ou aprender algo novo do zero, prefiro meter as maos na massa do que delegar a experiencia.
+              </p>
+            </Fragment>
+          )}
+        </div>
+      </div>
+
+      <!-- Background -->
+      <div class="glass-card p-6 sm:p-8 animate-on-scroll" data-delay="2">
+        <h2 class="section-label mb-4">{t("about.background")}</h2>
+        <div class="space-y-3 text-sm text-[var(--color-text-secondary)] leading-relaxed">
+          {lang === "en" ? (
+            <Fragment>
+              <p>
+                I studied Computer Science and Engineering at <ExternalLink href="https://www.isel.pt/en">ISEL</ExternalLink> (BSc) and <ExternalLink href="https://tecnico.ulisboa.pt/en/">Instituto Superior Tecnico</ExternalLink> (MSc), focusing on Distributed Systems and Cybersecurity. My dissertation, "Serverless Snapshot Orchestration", scored 19/20.
+              </p>
+              <p>
+                Before Cloudflare, I was a Teaching Assistant at ISEL, helping teach Algorithms & Data Structures, Web Programming, and Software Laboratory.
+              </p>
+            </Fragment>
+          ) : (
+            <Fragment>
+              <p>
+                Estudei Engenharia Informatica e de Computadores no <ExternalLink href="https://www.isel.pt/">ISEL</ExternalLink> (Licenciatura) e no <ExternalLink href="https://tecnico.ulisboa.pt/">Instituto Superior Tecnico</ExternalLink> (Mestrado), com foco em Sistemas Distribuidos e Ciberseguranca. A minha dissertacao, "Serverless Snapshot Orchestration", teve nota de 19/20.
+              </p>
+              <p>
+                Antes da Cloudflare, fui Monitor no ISEL, ajudando a lecionar Algoritmos e Estruturas de Dados, Programacao Web e Laboratorio de Software.
+              </p>
+            </Fragment>
+          )}
+        </div>
+      </div>
+
+      <!-- Engineering Interests -->
+      <div class="glass-card p-6 sm:p-8 animate-on-scroll" data-delay="3">
+        <h2 class="section-label mb-4">{t("about.interests")}</h2>
+        <ul class="space-y-2.5">
+          {interests.map((item) => (
+            <li class="flex items-start gap-3 text-sm text-[var(--color-text-secondary)]">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] flex-shrink-0" aria-hidden="true" />
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- CTAs -->
+    <section class="mt-16">
+      <div class="grid gap-6 sm:grid-cols-2">
+        <a href={translatePath("/now")} class="glass-card group flex items-center gap-5 p-6 sm:p-8 animate-on-scroll" data-delay="1">
+          <div class="flex items-center justify-center w-12 h-12 rounded-2xl bg-[var(--color-accent-light)]">
+            <Icon name="lucide:clock" size={24} class="text-[var(--color-accent)]" />
+          </div>
+          <div class="flex-1">
+            <p class="font-semibold text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">{t("about.whatImUpToNow")}</p>
+            <p class="mt-1 text-sm text-[var(--color-text-secondary)]">{t("about.whatImFocusedOn")}</p>
+          </div>
+          <Icon name="lucide:arrow-right" size={18} class="text-[var(--color-text-muted)] group-hover:text-[var(--color-accent)] transition-colors flex-shrink-0" />
+        </a>
+        <a href={translatePath("/uses")} class="glass-card group flex items-center gap-5 p-6 sm:p-8 animate-on-scroll" data-delay="2">
+          <div class="flex items-center justify-center w-12 h-12 rounded-2xl bg-[var(--color-accent-light)]">
+            <Icon name="lucide:laptop" size={24} class="text-[var(--color-accent)]" />
+          </div>
+          <div class="flex-1">
+            <p class="font-semibold text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">{t("about.toolsIUse")}</p>
+            <p class="mt-1 text-sm text-[var(--color-text-secondary)]">{t("about.toolsDesc")}</p>
+          </div>
+          <Icon name="lucide:arrow-right" size={18} class="text-[var(--color-text-muted)] group-hover:text-[var(--color-accent)] transition-colors flex-shrink-0" />
+        </a>
+      </div>
+    </section>
+
+    <!-- Hobbies -->
+    <section class="mt-16">
+      <h2 class="section-label mb-8 animate-on-scroll">{t("about.beyondWork")}</h2>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {hobbies.map((hobby, i) => (
+          <div class="glass-card p-6 animate-on-scroll" data-delay={String(Math.min(i + 1, 6))}>
+            <div class="flex items-center gap-3 mb-4">
+               <span class="text-3xl" role="img" aria-label={t(hobby.title)}>
+                {hobby.emoji}
+              </span>
+              <div>
+                <h3 class="font-semibold text-[var(--color-text)]">{t(hobby.title)}</h3>
+                <p class="text-xs text-[var(--color-text-muted)] italic">{t(hobby.subtitle)}</p>
+              </div>
+            </div>
+            <p class="text-sm leading-relaxed text-[var(--color-text-secondary)]">
+              {t(hobby.content)}
+            </p>
+            {hobby.link && (
+              <ExternalLink href={hobby.link.url} class="mt-4 text-sm">
+                {t(hobby.link.text)}
+              </ExternalLink>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Travel Map -->
+    <section class="mt-16">
+      <h2 class="section-label mb-8 animate-on-scroll">{t("about.placesIveBeen")}</h2>
+      <div class="animate-on-scroll" data-delay="1">
+        <WorldMap />
+      </div>
+    </section>
+  </div>
+</BaseLayout>

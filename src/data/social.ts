@@ -1,7 +1,9 @@
+import type { TranslationKey } from "@/i18n/utils";
+
 export interface SocialLink {
-  name: string;
+  name: TranslationKey;
   url: string;
-  description: string;
+  description: TranslationKey;
   icon: string;
   color: string;
   darkColor?: string;
@@ -9,61 +11,61 @@ export interface SocialLink {
 
 export const socialLinks: SocialLink[] = [
   {
-    name: "Email",
+    name: "social.email.name",
     url: "mailto:contact@andrejesus.com",
-    description: "Send me an email",
+    description: "social.email.description",
     icon: "mail",
     color: "#0c336a",
     darkColor: "#4a8ede",
   },
   {
-    name: "LinkedIn",
+    name: "social.linkedin.name",
     url: "https://www.linkedin.com/in/andre-j3sus",
-    description: "Let's connect",
+    description: "social.linkedin.description",
     icon: "linkedin",
     color: "#0A66C2",
   },
   {
-    name: "GitHub",
+    name: "social.github.name",
     url: "https://github.com/andre-j3sus",
-    description: "Check out my projects",
+    description: "social.github.description",
     icon: "github",
     color: "#181717",
     darkColor: "#f4f4f5",
   },
   {
-    name: "ORCID",
+    name: "social.orcid.name",
     url: "https://orcid.org/0009-0007-8693-7054",
-    description: "View my research",
+    description: "social.orcid.description",
     icon: "orcid",
     color: "#A6CE39",
   },
   {
-    name: "Instagram",
+    name: "social.instagram.name",
     url: "https://www.instagram.com/andre.j3sus",
-    description: "Peek into my life",
+    description: "social.instagram.description",
     icon: "instagram",
     color: "#E4405F",
   },
   {
-    name: "Spotify",
+    name: "social.spotify.name",
     url: "https://open.spotify.com/user/andr%C3%A9.jesus",
-    description: "Check what I'm listening to",
+    description: "social.spotify.description",
     icon: "spotify",
     color: "#1DB954",
   },
   {
-    name: "Goodreads",
+    name: "social.goodreads.name",
     url: "https://www.goodreads.com/user/show/108854374-andr-jesus",
-    description: "See what I'm reading",
+    description: "social.goodreads.description",
     icon: "goodreads",
     color: "#382110",
     darkColor: "#e0c8a8",
   },
   {
-    name: "Steam",
+    name: "social.steam.name",
     url: "https://steamcommunity.com/id/andre-jesus/",
-    description: "Check what I'm playing",
+    description: "social.steam.description",
     icon: "steam",
     color: "#000000",
     darkColor: "#66c0f4",

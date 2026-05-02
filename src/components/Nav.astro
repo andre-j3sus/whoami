@@ -2,26 +2,42 @@
 import { Icon } from "astro-icon/components";
 import { personal } from "@/data/personal";
 import BrandName from "@/components/BrandName.astro";
+import { getLangFromUrl, useTranslations, useTranslatedPath, stripLocale, locales } from "@/i18n/utils";
+import type { Locale } from "@/i18n/utils";
+import { languages, defaultLang } from "@/i18n/ui";
 
 const { pathname } = Astro.url;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+
+const basePath = stripLocale(pathname, lang);
 
 const links = [
-  { href: "/", label: "Home" },
-  { href: "/projects", label: "Projects" },
-  { href: "/blog", label: "Blog" },
-  { href: "/resume", label: "Resume" },
-  { href: "/about", label: "About" },
+  { href: "/", label: t("nav.home") },
+  { href: "/projects", label: t("nav.projects") },
+  { href: "/blog", label: t("nav.blog") },
+  { href: "/resume", label: t("nav.resume") },
+  { href: "/about", label: t("nav.about") },
 ];
 
-function isActive(href: string): boolean {
-  return href === "/" ? pathname === "/" : pathname.startsWith(href);
+function isActive(baseHref: string): boolean {
+  return baseHref === "/" ? basePath === "/" : basePath.startsWith(baseHref);
 }
+
+/* -- Language switcher --------------------------------------------------- */
+const localeLinks = locales.map((code) => ({
+  code,
+  name: languages[code],
+  url: useTranslatedPath(code as Locale)(basePath),
+  current: code === lang,
+}));
 ---
 
 <header class="sticky top-0 z-50 border-b border-[var(--glass-border)]" style="background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);">
-  <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4" aria-label="Main navigation">
+  <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4" aria-label={t("nav.mainNav")}>
     <a
-      href="/"
+      href={translatePath("/")}
       class="text-lg text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors"
     >
       <BrandName class="h-[1.75em] w-auto" />
@@ -32,7 +48,7 @@ function isActive(href: string): boolean {
     <div class="hidden items-center gap-1 sm:flex">
       {links.map(({ href, label }) => (
         <a
-          href={href}
+          href={translatePath(href)}
           class:list={[
             "relative px-3 py-1.5 text-sm rounded-lg transition-all duration-200",
             isActive(href)
@@ -44,24 +60,84 @@ function isActive(href: string): boolean {
           {label}
         </a>
       ))}
+
+      <!-- Language dropdown (desktop) -->
+      <div class="relative ml-1">
+        <button
+          type="button"
+          class="lang-toggle rounded-lg p-2 text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-accent-light)] transition-all duration-200"
+          aria-label={t("nav.switchLanguage")}
+          aria-expanded="false"
+        >
+          <Icon name="lucide:languages" size={16} />
+        </button>
+        <div class="lang-dropdown hidden absolute right-0 mt-2 min-w-[10rem] rounded-xl border border-[var(--glass-border)] py-1.5 shadow-lg" style="background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);">
+          {localeLinks.map(({ name, url, current }) => (
+            <a
+              href={url}
+              class:list={[
+                "flex items-center justify-between gap-3 px-4 py-2 text-sm transition-colors",
+                current
+                  ? "text-[var(--color-accent)] font-medium"
+                  : "text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-[var(--color-accent-light)]",
+              ]}
+              aria-current={current ? "true" : undefined}
+            >
+              {name}
+              {current && <Icon name="lucide:check" size={14} />}
+            </a>
+          ))}
+        </div>
+      </div>
+
       <button
         id="theme-toggle"
         type="button"
-        class="ml-2 rounded-lg p-2 text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-accent-light)] transition-all duration-200"
-        aria-label="Toggle dark mode"
+        class="ml-1 rounded-lg p-2 text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-accent-light)] transition-all duration-200"
+        aria-label={t("nav.toggleDarkMode")}
       >
         <Icon name="lucide:sun" class="hidden dark:block" size={16} />
         <Icon name="lucide:moon" class="block dark:hidden" size={16} />
       </button>
     </div>
 
-    <!-- Mobile: theme toggle + hamburger -->
+    <!-- Mobile: lang + theme toggle + hamburger -->
     <div class="flex items-center gap-1 sm:hidden">
+
+      <!-- Language dropdown (mobile) -->
+      <div class="relative">
+        <button
+          type="button"
+          class="lang-toggle rounded-lg p-2 text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors"
+          aria-label={t("nav.switchLanguage")}
+          aria-expanded="false"
+        >
+          <Icon name="lucide:languages" size={16} />
+        </button>
+        <div class="lang-dropdown hidden absolute right-0 mt-2 min-w-[10rem] rounded-xl border border-[var(--glass-border)] py-1.5 shadow-lg" style="background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);">
+          {localeLinks.map(({ name, url, current }) => (
+            <a
+              href={url}
+              class:list={[
+                "flex items-center justify-between gap-3 px-4 py-2 text-sm transition-colors",
+                current
+                  ? "text-[var(--color-accent)] font-medium"
+                  : "text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-[var(--color-accent-light)]",
+              ]}
+              aria-current={current ? "true" : undefined}
+            >
+              {name}
+              {current && <Icon name="lucide:check" size={14} />}
+            </a>
+          ))}
+        </div>
+      </div>
+
       <button
         id="theme-toggle-mobile"
         type="button"
         class="rounded-lg p-2 text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors"
-        aria-label="Toggle dark mode"
+        aria-label={t("nav.toggleDarkMode")}
       >
         <Icon name="lucide:sun" class="hidden dark:block" size={16} />
         <Icon name="lucide:moon" class="block dark:hidden" size={16} />
@@ -70,8 +146,10 @@ function isActive(href: string): boolean {
         id="mobile-menu-btn"
         type="button"
         class="rounded-lg p-2 text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors"
-        aria-label="Open menu"
+        aria-label={t("nav.openMenu")}
         aria-expanded="false"
+        data-label-open={t("nav.openMenu")}
+        data-label-close={t("nav.closeMenu")}
       >
         <Icon name="lucide:menu" id="menu-icon-open" size={20} />
         <Icon name="lucide:x" id="menu-icon-close" class="hidden" size={20} />
@@ -84,7 +162,7 @@ function isActive(href: string): boolean {
     <div class="border-t border-[var(--glass-border)] px-6 py-4 space-y-1">
       {links.map(({ href, label }) => (
         <a
-          href={href}
+          href={translatePath(href)}
           class:list={[
             "mobile-menu-link block px-3 py-2.5 rounded-lg text-sm transition-all duration-200",
             isActive(href)
@@ -101,6 +179,7 @@ function isActive(href: string): boolean {
 </header>
 
 <script is:inline>
+  /* -- Theme toggle ------------------------------------------------------- */
   function toggleTheme() {
     const isDark = document.documentElement.classList.toggle("dark");
     localStorage.setItem("theme", isDark ? "dark" : "light");
@@ -108,25 +187,45 @@ function isActive(href: string): boolean {
   document.getElementById("theme-toggle")?.addEventListener("click", toggleTheme);
   document.getElementById("theme-toggle-mobile")?.addEventListener("click", toggleTheme);
 
-  const menuBtn = document.getElementById("mobile-menu-btn");
-  const menu = document.getElementById("mobile-menu");
-  const iconOpen = document.getElementById("menu-icon-open");
-  const iconClose = document.getElementById("menu-icon-close");
+  /* -- Language dropdown -------------------------------------------------- */
+  function closeLangDropdowns() {
+    document.querySelectorAll(".lang-dropdown").forEach(function (d) { d.classList.add("hidden"); });
+    document.querySelectorAll(".lang-toggle").forEach(function (b) { b.setAttribute("aria-expanded", "false"); });
+  }
+
+  document.querySelectorAll(".lang-toggle").forEach(function (btn) {
+    var dropdown = btn.nextElementSibling;
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var isOpen = btn.getAttribute("aria-expanded") === "true";
+      closeLangDropdowns();
+      if (!isOpen) {
+        dropdown.classList.remove("hidden");
+        btn.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+
+  /* -- Mobile menu -------------------------------------------------------- */
+  var menuBtn = document.getElementById("mobile-menu-btn");
+  var menu = document.getElementById("mobile-menu");
+  var iconOpen = document.getElementById("menu-icon-open");
+  var iconClose = document.getElementById("menu-icon-close");
 
   function openMenu() {
+    closeLangDropdowns();
     menuBtn.setAttribute("aria-expanded", "true");
-    menuBtn.setAttribute("aria-label", "Close menu");
+    menuBtn.setAttribute("aria-label", menuBtn.dataset.labelClose || "Close menu");
     menu.classList.remove("hidden");
     iconOpen.classList.add("hidden");
     iconClose.classList.remove("hidden");
-    // Focus first link
     var firstLink = menu.querySelector(".mobile-menu-link");
     if (firstLink) firstLink.focus();
   }
 
   function closeMenu() {
     menuBtn.setAttribute("aria-expanded", "false");
-    menuBtn.setAttribute("aria-label", "Open menu");
+    menuBtn.setAttribute("aria-label", menuBtn.dataset.labelOpen || "Open menu");
     menu.classList.add("hidden");
     iconOpen.classList.remove("hidden");
     iconClose.classList.add("hidden");
@@ -142,14 +241,20 @@ function isActive(href: string): boolean {
     }
   });
 
-  // Close on Escape
+  /* -- Global: close on click outside / Escape ---------------------------- */
+  document.addEventListener("click", function () {
+    closeLangDropdowns();
+  });
+
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && menuBtn?.getAttribute("aria-expanded") === "true") {
+    if (e.key !== "Escape") return;
+    closeLangDropdowns();
+    if (menuBtn?.getAttribute("aria-expanded") === "true") {
       closeMenu();
     }
   });
 
-  // Simple focus trap within mobile menu
+  /* -- Mobile menu focus trap --------------------------------------------- */
   if (menu) {
     menu.addEventListener("keydown", function (e) {
       if (e.key !== "Tab") return;

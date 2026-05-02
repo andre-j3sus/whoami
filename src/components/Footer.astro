@@ -2,6 +2,10 @@
 import { Icon } from "astro-icon/components";
 import { personal } from "@/data/personal";
 import { socialLinks } from "@/data/social";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <footer class="mt-20 border-t border-[var(--color-border)]" style="padding-bottom: env(safe-area-inset-bottom, 0px);">
@@ -12,13 +16,13 @@ import { socialLinks } from "@/data/social";
           &copy; {new Date().getFullYear()} {personal.name}
         </p>
         <p class="flex items-center gap-1.5 flex-wrap justify-center text-xs text-[var(--color-text-muted)]">
-          Built with
+          {t("footer.builtWith")}
           <Icon name="simple-icons:astro" size={14} class="text-[#BC52EE]" />
-          <span>Astro,</span>
+          <span>{t("footer.astro")}</span>
           <Icon name="simple-icons:tailwindcss" size={14} class="text-[#06B6D4]" />
-          <span>Tailwind CSS &amp; deployed on</span>
+          <span>{t("footer.tailwindDeployedOn")}</span>
           <Icon name="simple-icons:cloudflareworkers" size={14} class="text-[#F38020]" />
-          <span>Cloudflare Workers</span>
+          <span>{t("footer.cloudflareWorkers")}</span>
           <span>&middot;</span>
           <a
             href={personal.repository}
@@ -27,7 +31,7 @@ import { socialLinks } from "@/data/social";
             class="text-link inline-flex items-center gap-1"
           >
             <Icon name="simple-icons:github" size={12} />
-            Source
+            {t("footer.source")}
           </a>
         </p>
       </div>
@@ -39,8 +43,8 @@ import { socialLinks } from "@/data/social";
             target={link.url.startsWith("mailto:") ? undefined : "_blank"}
             rel={link.url.startsWith("mailto:") ? undefined : "noopener noreferrer"}
             class="group flex items-center justify-center w-9 h-9 rounded-lg hover:bg-[var(--color-accent-light)] transition-all duration-200"
-            aria-label={link.name}
-            title={link.name}
+            aria-label={t(link.name)}
+            title={t(link.name)}
           >
             <Icon
               name={link.icon === "mail" ? "lucide:mail" : `simple-icons:${link.icon}`}

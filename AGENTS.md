@@ -209,10 +209,108 @@ docs: add conventional commits guidelines to AGENTS.md
 
 ## Content Collections
 
-Blog posts live in `src/content/blog/*.md`. Schema (in `content.config.ts`):
+Blog posts live in `src/content/blog/en/*.md` (English) and
+`src/content/blog/pt/*.md` (Portuguese). Schema (in `content.config.ts`):
 `title` (string), `description` (string), `date` (date), `tags` (string[],
-default `[]`), `draft` (boolean, default `false`), `externalUrl` (URL, optional).
+default `[]`), `draft` (boolean, default `false`), `externalUrl` (URL,
+optional), `ogImage` (string, optional), `lang` (enum `"en"` | `"pt"`,
+default `"en"`).
+
 Draft posts (`draft: true`) are filtered out from production builds.
+Paired translations share the same filename across the `en/` and `pt/`
+directories. EN posts without a PT counterpart are shown as fallback on
+the Portuguese blog listing.
+
+## Internationalization (i18n)
+
+The site supports English (default, no URL prefix) and Portuguese (`/pt/`
+prefix). Astro's built-in i18n config is in `astro.config.mjs`. Pages live
+in `src/pages/[...locale]/` using rest params with `getStaticPaths`.
+
+### Translation Architecture
+
+- **`src/i18n/en.ts`** — Source of truth. Every translation key must exist
+  here.
+- **`src/i18n/pt.ts`** — Portuguese overrides. Only keys that differ from
+  English. Missing keys fall back to English automatically via `t()`.
+- **`src/i18n/ui.ts`** — Barrel file that imports and re-exports both
+  locales.
+- **`src/i18n/utils.ts`** — Helpers: `getLangFromUrl()`,
+  `useTranslations()`, `useTranslatedPath()`, `getLocalePaths()`, etc.
+
+### Data Files & Translation Keys
+
+Data files in `src/data/*.ts` store **translation keys** (not content) for
+translatable fields. The `TranslationKey` type (exported from
+`src/i18n/utils.ts`) documents this intent in interfaces. Structural fields
+(URLs, dates, colors, tech stacks) remain literal values.
+
+Example:
+```ts
+// src/data/experience.ts
+{ title: "experience.cloudflare.title", company: "Cloudflare", ... }
+
+// src/i18n/en.ts
+"experience.cloudflare.title": "Systems Engineer",
+
+// src/i18n/pt.ts
+"experience.cloudflare.title": "Engenheiro de Sistemas",
+```
+
+Pages resolve keys at render time: `{t(exp.title)}`.
+
+## Portuguese Translation Guidelines
+
+### Tone & Register
+
+- Use **informal *tu*** form, not formal *você*. The tone should be casual
+  and conversational — like talking to a friend.
+- For blog posts addressing multiple readers, use **vocês** (plural
+  informal).
+- Avoid uncommon or overly formal words. Prefer everyday Portuguese.
+  - "Termos Técnicos" not "Jargão Técnico"
+  - "Dica" not "Dica Pro"
+  - "Vê" not "Veja"
+
+### When to Keep English
+
+English terms are acceptable (and often preferred) when they are:
+
+- **Technical terms** widely used in PT tech context: *spread*, *cold start*,
+  *full-stack*, *deploy*, *frontend*, *backend*, *serverless*
+- **Proper nouns**: project names, company names, product names, talk titles,
+  award names, brand names
+- **Expressions** that don't translate well: *must-have*, *nice-to-have*,
+  *trade-off*, *Game On*, *One Book to Rule Them All*
+
+Use italic formatting for English terms embedded in Portuguese prose:
+`os nossos *must-haves* incluíam`.
+
+### What to Translate
+
+- UI strings (nav, footer, headings, labels, buttons) — always translate.
+- Page descriptions and subtitles — always translate.
+- Data content (experience descriptions, project descriptions, hobby content,
+  now items, skill category descriptions) — translate where it adds value.
+- Blog posts — write native PT content, not word-for-word translations of
+  the EN version. The PT version can differ in phrasing and structure.
+
+### What NOT to Translate
+
+- Talk and show titles (specific presentation names)
+- Product names in the /uses page (e.g., "MacBook Pro 14\"")
+- Skill names (technical terms: "TypeScript", "Docker", "React")
+- Company and institution names
+- The LaTeX resume (`main.tex`) — English only
+
+### European Portuguese (PT-PT)
+
+Always use PT-PT, not PT-BR:
+
+- "telemóvel" not "celular"
+- "autocarro" not "ônibus"
+- "ecrã" not "tela"
+- "pequeno-almoço" not "café da manhã"
 
 ## Resume Consistency
 

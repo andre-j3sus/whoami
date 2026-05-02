@@ -1,11 +1,14 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
 import { personal } from "@/data/personal";
+import { getBlogPostSlug } from "@/i18n/utils";
 
 export const prerender = true;
 
 export const GET: APIRoute = async () => {
-  const allPosts = await getCollection("blog", ({ data }) => !data.draft);
+  const allPosts = await getCollection("blog", ({ id, data }) =>
+    !data.draft && id.startsWith("en/")
+  );
   const posts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
   const lines = [
@@ -31,7 +34,8 @@ export const GET: APIRoute = async () => {
     "## Blog posts",
     "",
     ...posts.map((post) => {
-      const url = post.data.externalUrl ?? `${personal.url}/blog/${post.id}`;
+      const slug = getBlogPostSlug(post.id);
+      const url = post.data.externalUrl ?? `${personal.url}/blog/${slug}`;
       return `- [${post.data.title}](${url}): ${post.data.description}`;
     }),
     "",

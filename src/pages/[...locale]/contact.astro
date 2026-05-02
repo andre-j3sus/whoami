@@ -1,0 +1,23 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { personal } from "@/data/personal";
+import SocialLinksGrid from "@/components/SocialLinksGrid.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+export { getLocalePaths as getStaticPaths } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<BaseLayout title={`${t("contact.title")} - ${personal.name}`} description={t("contact.subtitle")}>
+  <div class="mx-auto max-w-5xl px-6 py-16 sm:py-20">
+    <div class="mb-14 animate-on-scroll">
+      <h1 class="text-3xl font-bold tracking-tight">{t("contact.title")}</h1>
+      <p class="mt-2 text-[var(--color-text-secondary)]">
+        {t("contact.subtitle")}
+      </p>
+    </div>
+
+    <SocialLinksGrid />
+  </div>
+</BaseLayout>

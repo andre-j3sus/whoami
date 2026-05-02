@@ -1,3 +1,5 @@
+import type { TranslationKey } from "@/i18n/utils";
+
 export interface Skill {
   name: string;
   icon: string;
@@ -9,17 +11,17 @@ export interface Skill {
 }
 
 export interface SkillCategory {
-  title: string;
-  descriptions: string[];
+  title: TranslationKey;
+  descriptions: TranslationKey[];
   skills: Skill[];
 }
 
 export const skillCategories: SkillCategory[] = [
   {
-    title: "Programming Languages",
+    title: "skills.programmingLanguages.title",
     descriptions: [
-      "Comfortable working across multiple languages, picking the right tool for the job.",
-      "Care about writing clean, maintainable, and efficient code.",
+      "skills.programmingLanguages.desc.1",
+      "skills.programmingLanguages.desc.2",
     ],
     skills: [
       {
@@ -65,11 +67,11 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    title: "Backend Development",
+    title: "skills.backend.title",
     descriptions: [
-      "Experience in building scalable, secure backend services with modern frameworks.",
-      "Designing and implementing RESTful and GraphQL APIs.",
-      "Work with relational and NoSQL databases.",
+      "skills.backend.desc.1",
+      "skills.backend.desc.2",
+      "skills.backend.desc.3",
     ],
     skills: [
       {
@@ -114,12 +116,12 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    title: "Frontend Development",
+    title: "skills.frontend.title",
     descriptions: [
-      "Build responsive user interfaces with React and modern frameworks.",
-      "Experience with data visualizations, using libraries like D3.js.",
-      "Used on internationalization (i18n) for multi-language support.",
-      "Care about web performance, Core Web Vitals, SEO, and accessibility (WCAG). Feel free to run Lighthouse on this website to see for yourself ;)",
+      "skills.frontend.desc.1",
+      "skills.frontend.desc.2",
+      "skills.frontend.desc.3",
+      "skills.frontend.desc.4",
     ],
     skills: [
       {
@@ -153,13 +155,13 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    title: "Infrastructure & DevOps",
+    title: "skills.infrastructure.title",
     descriptions: [
-      "Set up and maintain CI/CD pipelines.",
-      "Deploying and managing applications using containerization and orchestration technologies.",
-      "Familiar with cloud platforms and edge computing for scalable infrastructure.",
-      "Managing infrastructure as code for reproducible and version-controlled environments.",
-      "Setting up observability systems, including monitoring, logging, and alerting.",
+      "skills.infrastructure.desc.1",
+      "skills.infrastructure.desc.2",
+      "skills.infrastructure.desc.3",
+      "skills.infrastructure.desc.4",
+      "skills.infrastructure.desc.5",
     ],
     skills: [
       {
@@ -228,10 +230,10 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    title: "AI & Developer Tools",
+    title: "skills.aiTools.title",
     descriptions: [
-      "Experienced using AI coding tools to accelerate productivity across the full development lifecycle — coding, testing, debugging, writing documentation, and drafting specs.",
-      "Familiar with tools like OpenCode and Windsurf, and comfortable integrating AI assistants into daily workflows.",
+      "skills.aiTools.desc.1",
+      "skills.aiTools.desc.2",
     ],
     skills: [
       {

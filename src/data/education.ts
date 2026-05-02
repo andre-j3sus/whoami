@@ -1,17 +1,19 @@
+import type { TranslationKey } from "@/i18n/utils";
+
 export interface Education {
-  title: string;
+  title: TranslationKey;
   institution: string;
   institutionUrl: string;
   logo: string;
   startDate: string;
   endDate?: string;
   grade: string;
-  descriptions: string[];
+  descriptions: TranslationKey[];
 }
 
 export const education: Education[] = [
   {
-    title: "MSc. in Computer Science and Engineering",
+    title: "education.master.title",
     institution: "Técnico - Universidade de Lisboa",
     institutionUrl: "https://tecnico.ulisboa.pt/en/",
     logo: "/logos/ist.png",
@@ -19,13 +21,13 @@ export const education: Education[] = [
     endDate: "2025-10",
     grade: "18/20",
     descriptions: [
-      "Focus Areas: Distributed Systems and Cybersecurity",
-      'Dissertation: "Serverless Snapshot Orchestration" - 19/20 (95%)',
-      "Key coursework: Distributed Applications, Cloud Computing and Virtualization, Parallel and Distributed Computing, Software Security, Forensics Cyber-Security, Highly Dependable Systems, Deep Learning, and Data Science.",
+      "education.master.desc.1",
+      "education.master.desc.2",
+      "education.master.desc.3",
     ],
   },
   {
-    title: "BSc. in Computer Science and Engineering",
+    title: "education.bachelor.title",
     institution: "Instituto Superior de Engenharia de Lisboa",
     institutionUrl: "https://www.isel.pt/en",
     logo: "/logos/isel.png",
@@ -33,8 +35,8 @@ export const education: Education[] = [
     endDate: "2023-07",
     grade: "18/20",
     descriptions: [
-      "Studied core computer science fundamentals: Algorithms and Data Structures, Object-Oriented Programming, Software Engineering, Databases, Computer Networks, Operating Systems, Distributed Systems.",
-      "Student representative between 2022 and 2023, representing the students of the degree in the pedagogical council of the school.",
+      "education.bachelor.desc.1",
+      "education.bachelor.desc.2",
     ],
   },
 ];

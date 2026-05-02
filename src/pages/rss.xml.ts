@@ -1,10 +1,13 @@
 import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
 import { personal } from "@/data/personal";
+import { getBlogPostSlug } from "@/i18n/utils";
 import type { APIContext } from "astro";
 
 export async function GET(context: APIContext) {
-  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  const posts = await getCollection("blog", ({ id, data }) =>
+    !data.draft && id.startsWith("en/")
+  );
   const sorted = posts.sort(
     (a, b) => b.data.date.getTime() - a.data.date.getTime()
   );
@@ -17,7 +20,7 @@ export async function GET(context: APIContext) {
       title: post.data.title,
       description: post.data.description,
       pubDate: post.data.date,
-      link: post.data.externalUrl ?? `/blog/${post.id}`,
+      link: post.data.externalUrl ?? `/blog/${getBlogPostSlug(post.id)}`,
     })),
   });
 }

@@ -1,51 +1,49 @@
+import type { TranslationKey } from "@/i18n/utils";
+
 export interface Award {
-  title: string;
+  title: TranslationKey;
   issuer: string;
   date: string;
   institution: string;
   institutionUrl: string;
-  description: string;
+  description: TranslationKey;
   url?: string;
   urlLabel?: string;
 }
 
 export const awards: Award[] = [
   {
-    title: "Merit Scholarship 2022/2023",
+    title: "awards.meritScholarship2023.title",
     issuer: "DGES - Directorate General for Higher Education",
     date: "2024-11",
     institution: "Instituto Superior de Engenharia de Lisboa - Instituto Politecnico de Lisboa",
     institutionUrl: "https://www.isel.pt/en",
-    description:
-      "Merit scholarships are awarded by Public and Private Higher Education Institutions to students with exceptional performance, regardless of their income, in accordance with the Regulation of Allocation of Scholarships for Students of Higher Education Institutions.",
+    description: "awards.meritScholarship2023.description",
   },
   {
-    title: "Best Student Award",
+    title: "awards.bestStudent.title",
     issuer: "ISEL / Santander",
     date: "2024-10",
     institution: "Instituto Superior de Engenharia de Lisboa - Instituto Politecnico de Lisboa",
     institutionUrl: "https://www.isel.pt/en",
-    description:
-      "Academic Merit Award given by Santander Bank, to the best student in the Bachelor's Degree in Computer Science and Engineering for the 2022/2023 academic year.",
+    description: "awards.bestStudent.description",
     // TODO: add certificate PDF (public/certificates/best-student-award-2024.pdf)
   },
   {
-    title: "Merit Scholarship 2020/2021",
+    title: "awards.meritScholarship2021.title",
     issuer: "DGES - Directorate General for Higher Education",
     date: "2022-09",
     institution: "Instituto Superior de Engenharia de Lisboa - Instituto Politecnico de Lisboa",
     institutionUrl: "https://www.isel.pt/en",
-    description:
-      "Merit scholarships are awarded by Public and Private Higher Education Institutions to students with exceptional performance, regardless of their income, in accordance with the Regulation of Allocation of Scholarships for Students of Higher Education Institutions.",
+    description: "awards.meritScholarship2021.description",
   },
   {
-    title: "Santander Award",
+    title: "awards.santander.title",
     issuer: "ISEL / Santander",
     date: "2020-10",
     institution: "Instituto Superior de Engenharia de Lisboa - Instituto Politecnico de Lisboa",
     institutionUrl: "https://www.isel.pt/en",
-    description:
-      "Award given by Santander in recognition of academic excellence, to the student enrolled in the Degree in Computer Science and Computer Engineering in the academic year 2020/2021.",
+    description: "awards.santander.description",
     // TODO: add certificate PDF (public/certificates/santander-award-2020.pdf)
   },
 ];
