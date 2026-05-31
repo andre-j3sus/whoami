@@ -170,6 +170,8 @@ export default {
   "projects.notes.role": "Author",
 
   // -- Awards -------------------------------------------------------------
+  "awards.academicExcellence.title": "Academic Excellence Certificate 2024/2025",
+  "awards.academicExcellence.description": "Awarded to students who achieved an 'A' classification on the ECTS grading scale, by passing all enrolled courses (minimum 57 ECTS) in the 2024/2025 academic year with a weighted GPA in the top tier of their program.",
   "awards.meritScholarship2023.title": "Merit Scholarship 2022/2023",
   "awards.meritScholarship2023.description": "Merit scholarships are awarded by Public and Private Higher Education Institutions to students with exceptional performance, regardless of their income, in accordance with the Regulation of Allocation of Scholarships for Students of Higher Education Institutions.",
   "awards.bestStudent.title": "Best Student Award",

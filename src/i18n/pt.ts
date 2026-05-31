@@ -147,6 +147,8 @@ export default {
   "projects.notes.role": "Autor",
 
   // -- Awards -------------------------------------------------------------
+  "awards.academicExcellence.title": "Diploma de Excel\u00eancia Acad\u00e9mica 2024/2025",
+  "awards.academicExcellence.description": "Atribu\u00eddo a estudantes que obtiveram a classifica\u00e7\u00e3o 'A' segundo a Escala de Nota ECTS, tendo aprova\u00e7\u00e3o a todas as unidades curriculares inscritas (m\u00ednimo 57 ECTS) no ano letivo 2024/2025, com m\u00e9dia ponderada no topo do seu programa.",
   "awards.meritScholarship2023.title": "Bolsa de M\u00e9rito 2022/2023",
   "awards.meritScholarship2023.description": "As bolsas de m\u00e9rito s\u00e3o atribu\u00eddas pelas Institui\u00e7\u00f5es de Ensino Superior P\u00fablicas e Privadas a estudantes com desempenho excecional, independentemente do seu rendimento, de acordo com o Regulamento de Atribui\u00e7\u00e3o de Bolsas de Estudo a Estudantes de Institui\u00e7\u00f5es de Ensino Superior.",
   "awards.bestStudent.title": "Pr\u00e9mio Melhor Aluno",

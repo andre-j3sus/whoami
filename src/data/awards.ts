@@ -13,6 +13,14 @@ export interface Award {
 
 export const awards: Award[] = [
   {
+    title: "awards.academicExcellence.title",
+    issuer: "IST",
+    date: "2026-05",
+    institution: "Técnico - Universidade de Lisboa",
+    institutionUrl: "https://tecnico.ulisboa.pt",
+    description: "awards.academicExcellence.description",
+  },
+  {
     title: "awards.meritScholarship2023.title",
     issuer: "DGES - Directorate General for Higher Education",
     date: "2024-11",
